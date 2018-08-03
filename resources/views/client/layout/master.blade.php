@@ -7,6 +7,8 @@
     </title>
     
     @include('client.assets.css')
+    
+    @yield('css')
 
 </head>
 <body>

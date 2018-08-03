@@ -19,6 +19,21 @@ return [
         'featured' => 'Sản phẩm nổi bật',
         'newproduct' => 'Sản phẩm mới',
         'loadmore' => 'Xem thêm sản phẩm',
+    ],
+    'category' => [
+        'category' => 'Danh mục',
+        'filter' => 'Lọc sản phẩm',
+        'allcate' => 'Tất cả danh mục',
+        'where' => 'Địa điểm',
+        'allcity' => 'Tất cả thành phố',
+        'price' => 'Giá',
+        'sortby' => 'Sắp xếp theo',
+        'lowest' => 'Thấp nhất',
+        'highest' => 'Cao nhất',
+        'lowtohigh' => 'Giá từ thấp đến cao',
+        'hightolow' => 'Giá từ cao xuống thấp',
+        'oldest' => 'Cũ nhất',
+        'latest' => 'Mới nhất'
     ]
 
 ];

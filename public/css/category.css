@@ -1,0 +1,70 @@
+.tieuchi{
+    margin-bottom: 15px;
+}
+.tieuchi p{
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.tieuchi select{
+    height: 35px;
+    background-color: white;
+}
+.tieuchi span{
+    display: inline-flex;
+}
+.tieuchi input{
+    font-size: 13px;
+}
+.tieuchi input:first-child{
+    margin-left: 0px;
+}
+.btnFilter{
+    margin-left: 10px;
+}
+.head1{
+    margin-left: 15px;
+    width: 97%;
+    background-color: #eee;
+    height: 60px;
+    display: inline-flex;
+    margin-bottom: 10px;
+}
+.head1 p{
+    padding: 15px 20px 0px 20px;
+}
+.head1 button{
+    height: 35px;
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: white;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.head1 select{
+    background-color: white;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 240px;
+}
+
+.head1 select:focus{
+    color: orange;
+}
+.page{
+    width: 40px;
+}
+.option button:focus{
+    background-color: orange;
+}
+.filter{
+    padding: 10px;
+    background-color: rgba(0,0,0,.03);
+}
+.filter__title{
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #f74d18;
+    font-weight: bold;
+}

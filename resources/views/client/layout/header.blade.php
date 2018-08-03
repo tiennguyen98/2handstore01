@@ -20,22 +20,28 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
     <div class="header-search">
         <div class="container">
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <img src="public/images/logo.png" alt="" class="logo">
+                    <a href="#" title="">Demo</a>
                 </div>
                 <div class="col-md-9">
 
                     {!! Form::open([
-                        'route' => 'updating',
+                        'route' => 'login',
                         'class' => 'search']) 
                     !!}
 
-                    {!! Form::text('search', @lang('client.search')) !!}
-                    {!! Form::submit(@lang('client.search'), ['class' => 'search-submit']) !!}
+                    {!! Form::text('search', null, ['placeholder' => __('client.search')]) !!}
+                    
+                    {!! Form::button(__('client.search.submit'), 
+                                    [
+                                        'class' => 'search-submit', 
+                                        'type' => 'submit'
+                                    ])
+                    !!}
                     
                     {!! Form::close() !!}
 
