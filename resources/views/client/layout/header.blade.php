@@ -14,18 +14,30 @@
                 <div class="col-lg-4 col-md-6 offset-lg-4 text-right">
                     <ul>
                         <li><a href="#"><i class="far fa-question-circle"></i> @lang('client.help') </a></li>
-                        <li class="font-weight-bold"><a href="#"> @lang('auth.register') </a></li>
-                        <li class="font-weight-bold"><a href="#"> @lang('auth.login') </a></li>
+                        @if(!Auth::check())
+                            <li class="font-weight-bold"><a href="{{ route('register') }}"> @lang('auth.register') </a></li>
+                            <li class="font-weight-bold"><a href="{{ route('login') }}"> @lang('auth.login') </a></li>
+                        @else
+                        <li class="font-weight-bold"><a href="#"> {{ Auth::user()->name }} </a></li>
+                        <li class="font-weight-bold"><a href="#" 
+                            onclick="javascript:document.getElementById('logout').submit()"> @lang('auth.logout') </a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
         </div>
     </div> 
+    {!! Form::open([
+        'id' => 'logout',
+        'method' => 'POST',
+        'url' => route('logout'),
+    ]) !!}
+    {!! Form::close() !!}
     <div class="header-search">
         <div class="container">
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <a href="#" title="">Demo</a>
+                    <img src="{{ asset('images/logo.png') }}" alt="" class="logo">
                 </div>
                 <div class="col-md-9">
 
