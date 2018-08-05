@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ConfirmEmailNotification;
+use App\Notifications\PasswordResetNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -75,5 +77,17 @@ class User extends Authenticatable
     public function provider_users()
     {
         return $this->hasMany('provider_users');
+    }
+
+    public function verified()
+    {
+        return $this->is_active == 1;
+    }
+
+    public function sendConfirmEmail()
+    {
+        $user = $this;
+        
+        return $this->notify(new ConfirmEmailNotification($user));
     }
 }

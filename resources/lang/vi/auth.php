@@ -11,5 +11,6 @@ return [
     'remember' => 'Ghi nhớ',
     'forgot' => 'Quên mật khẩu',
     'logout' => 'Đăng xuất',
-    
+    'verify' => 'Vui lòng xác nhận email của bạn',
+    'registerd' => 'Đăng ký thành công',
 ];
