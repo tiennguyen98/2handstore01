@@ -13,7 +13,7 @@
                         'class' => 'search-form']) 
                     !!}
 
-                    {!! Form::text('email', @lang('admin.search'), ['class' => 'form-control mr-sm-2']) !!}
+                    {!! Form::text('email', __('admin.search'), ['class' => 'form-control mr-sm-2']) !!}
                     {!! Form::submit('Search', ['class' => 'search-close']) !!}
                     
                     {!! Form::close() !!}
@@ -29,7 +29,7 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="#" onclick="javascript:document.getElementById('logout').submit()">
                         <i class="fa fa-power -off"></i>
                         @lang('auth.logout')
                     </a>
@@ -42,15 +42,26 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="language" >
                     <div class="dropdown-item">
-                        <span class="flag-icon flag-icon-us"></span>
+                        <a href="{{ route('language.change', ['lang' => 'en']) }}" class="change-lang">
+                            <span class="flag-icon flag-icon-us"></span>
+                        </a>
                     </div>
                     <div class="dropdown-item">
-                        <i class="flag-icon flag-icon-vn"></i>
+                        <a href="{{ route('language.change', ['lang' => 'vi']) }}" class="change-lang">
+                            <i class="flag-icon flag-icon-vn"></i>
+                        </a>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
+    {!! Form::open([
+        'method' => 'POST',
+        'id' => 'logout',
+        'url' => route('logout'),
+        ])
+    !!}
+    {!! Form::close() !!}
 
 </header>
