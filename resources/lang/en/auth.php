@@ -25,5 +25,6 @@ return [
     'remember' => 'Remember Me',
     'forgot' => 'Forgotten Password',
     'logout' => 'Logout',
-    
+    'verify' => 'Please verify your email address',
+    'registed' => 'Register Success',
 ];

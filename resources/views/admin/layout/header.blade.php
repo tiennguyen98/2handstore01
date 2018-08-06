@@ -13,7 +13,7 @@
                         'class' => 'search-form']) 
                     !!}
 
-                    {!! Form::text('email', @lang('admin.search'), ['class' => 'form-control mr-sm-2']) !!}
+                    {!! Form::text('email', __('admin.search'), ['class' => 'form-control mr-sm-2']) !!}
                     {!! Form::submit('Search', ['class' => 'search-close']) !!}
                     
                     {!! Form::close() !!}
@@ -29,7 +29,7 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="#" onclick="javascript:document.getElementById('logout').submit()">
                         <i class="fa fa-power -off"></i>
                         @lang('auth.logout')
                     </a>
@@ -52,5 +52,12 @@
 
         </div>
     </div>
+    {!! Form::open([
+        'method' => 'POST',
+        'id' => 'logout',
+        'url' => route('logout'),
+        ])
+    !!}
+    {!! Form::close() !!}
 
 </header>
