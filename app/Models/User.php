@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ConfirmEmailNotification;
 use App\Notifications\PasswordResetNotification;
@@ -23,7 +24,7 @@ class User extends Authenticatable
         'address',
         'phone',
         'description',
-        'is_active',
+        'status',
         'avatar',
         'verify_token',
         'role_id',
@@ -81,13 +82,39 @@ class User extends Authenticatable
 
     public function verified()
     {
-        return $this->is_active == 1;
+        return $this->status == 1;
     }
 
-    public function sendConfirmEmail()
+    public function scopeCustomer($query)
     {
-        $user = $this;
+        return $query->where('role_id', '>', '1');
+    }
+
+    public function getAvatar()
+    {
+        return asset(Storage::url($this->avatar != null ? $this->avatar : 'images/default.png'));
+    }
+
+    public function scopeVerified($query)
+    {
+        return $query->where('status', '=', '1');
+    }
+
+    public function scopeUnverify($query)
+    {
+        return $query->where('status', '=', '0');
+    }
+
+    public function scopeBlocked($query)
+    {
+        return $query->where('status', '=', '-1');
+    }
+
+    public function scopeOption($query, $option) {
+        if($option === 'verified') return $this->scopeVerified($query);
+        if($option === 'unverify') return $this->scopeUnverify($query);
+        if($option === 'blocked') return $this->scopeBlocked($query);
         
-        return $this->notify(new ConfirmEmailNotification($user));
+        return $query;
     }
 }

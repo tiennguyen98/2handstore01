@@ -1,5 +1,5 @@
 {
-    "resend verify email": "gửi lại email xác nhận",
+    "resend verify email": "Gửi Lại Email Xác Nhận",
     "input your email": "nhập email của bạn",
     "resend verify email success": "gửi lại email xác nhận thành công",
     "verify email error": "xác nhận email bị lỗi",
@@ -16,5 +16,24 @@
     "forgot password": "Quên mật khẩu",
     "You are receiving this email because we received a password reset request for your account.": "Bạn nhận được email này vì chúng tôi nhận được yêu cầu khôi phục mật khẩu",
     "If you did not request a password reset, no further action is required.": "Nếu bạn không cần khôi phục mật khẩu, bạn không cần phải làm gì thêm",
-    "Reset Password": "Khôi phục mật khẩu"
+    "Reset Password": "Khôi phục mật khẩu",
+    "The :attribute field must be phone number": "Trường :attribute phải là số điện thoại",
+    "verified": "Đã xác nhận",
+    "unverified": "Chưa xác nhận",
+    "blocked": "Đã bị khóa",
+    "block": "Khóa Tài Khoản",
+    "unblock": "Mở Khóa",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "address": "Địa Chỉ",
+    "phone": "SDT",
+    "Num.": "STT",
+    "name": "Họ và Tên",
+    "No Data": "Không có dữ liệu",
+    "yes": "Có",
+    "no": "Không",
+    "user information": "Thông tin người dùng",
+    "E-Mail Address": "Địa Chỉ Email",
+    "Send Password Reset Link": "Gửi Link Khôi Phục Mật Khẩu",
+    "Confirm Password": "Xác Nhận Mật Khẩu"
 }

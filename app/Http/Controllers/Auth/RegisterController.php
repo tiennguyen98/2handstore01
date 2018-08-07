@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'address' => $data['city'],
             'phone' => $data['phone'],
             // 'description', $data['description'],
-            'is_active' => 0,
+            'status' => 0,
             // 'avatar' => $data['avatar'],
             'verify_token' => Str::random(40),
             'role_id' => 2,
@@ -94,8 +94,7 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
-        // dispatch(new SendVerifyEmail($user));
-        $user->sendConfirmEmail();
+        dispatch(new SendVerifyEmail($user));
 
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath())->withErrors(['messages' => trans('auth.registed')]);
@@ -106,7 +105,7 @@ class RegisterController extends Controller
         $user = User::where(['verify_token' => $verify_token])->first();
         if ($user) {
             $user->verify_token = null;
-            $user->is_active = 1;
+            $user->status = 1;
             $user->save();
         } else {
             return redirect()->route('login')->withErrors(['verify' => trans('verify email error')]);
@@ -127,8 +126,9 @@ class RegisterController extends Controller
         ]);
 
         $user = User::where(['email' => $request->email])->first();
-        // dispatch(new SendVerifyEmail($user));
-        $user->sendConfirmEmail();
+        $user->verify_token = Str::random(40);
+        $user->save();
+        dispatch(new SendVerifyEmail($user));
 
         return redirect()->route('login')->withErrors(['success', trans('resend verify email success')]);
     }

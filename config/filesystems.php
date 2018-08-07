@@ -12,6 +12,7 @@ return [
     | based disks are available to your application. Just store away!
     |
     */
+    'img_path' => 'public/images',
 
     'default' => env('FILESYSTEM_DRIVER', 'local'),
 
