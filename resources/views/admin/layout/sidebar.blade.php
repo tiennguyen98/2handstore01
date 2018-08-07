@@ -22,12 +22,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>@lang('admin.user.users')</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li>
-                            <i class="fa fa-plus-square"></i>
-                            <a href="ui-buttons.html">@lang('admin.user.add')</a>
-                        </li>
-                        <li>
                             <i class="fa fa-list-ul"></i>
-                            <a href="ui-buttons.html">@lang('admin.user.list')</a>
+                            <a href="{{ route('admin.users.index') }}">@lang('admin.user.list')</a>
                         </li>
                     </ul>
                 </li>

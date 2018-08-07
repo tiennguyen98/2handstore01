@@ -32,7 +32,7 @@ class ConfirmEmail extends Mailable
     public function build()
     {
         $url = route('register.verify', ['verify_token' => $this->user->verify_token]);
-        
+
         return $this->markdown('emails.confirmEmail', ['user' => $this->user, 'url' => $url]);
     }
 }

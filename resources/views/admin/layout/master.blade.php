@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     @include('admin.assets.css')
+    @yield('css')
 
 </head>
 <body>
@@ -39,8 +40,8 @@
         </div>
     </div>
 
-    @include('admin.assets.js')
-
+    @include('admin.assets.js') 
+    
     @yield('js')
     
 </body>

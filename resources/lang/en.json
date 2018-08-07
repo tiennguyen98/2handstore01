@@ -16,5 +16,16 @@
     "forgot password": "Forgot Password",
     "You are receiving this email because we received a password reset request for your account.": "You are receiving this email because we received a password reset request for your account.",
     "If you did not request a password reset, no further action is required.": "If you did not request a password reset, no further action is required.",
-    "reset password": "Reset Password"
+    "reset password": "Reset Password",
+    "The :attribute field must be phone number": "The :attribute field must be phone number",
+    "verified": "Verified",
+    "unverified": "Unverified",
+    "blocked": "Blocked",
+    "block": "Block",
+    "unblock": "Unblock",
+    "save": "Save",
+    "cancel": "Cancel",
+    "address": "Address",
+    "phone": "Phone Number",
+    "user information": "User Information"
 }
