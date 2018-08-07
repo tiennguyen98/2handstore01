@@ -117,4 +117,15 @@ class User extends Authenticatable
         
         return $query;
     }
+
+    public function saveUser($data)
+    {
+        if(isset($data['avatar']) && $this->avatar !== null) {
+            Storage::delete($this->avatar);
+        }
+        
+        $this->fill($data);
+        
+        return $this->save();
+    }
 }

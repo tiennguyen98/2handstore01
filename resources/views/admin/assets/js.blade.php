@@ -1,4 +1,4 @@
-{{--  <script src="{{ asset('bower_components/sufee-admin-dashboard/assets/js/vendor/jquery-2.1.4.min.js') }}"></script>  --}}
+<script src="{{ asset('bower_components/sufee-admin-dashboard/assets/js/vendor/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ asset('bower_components/jquery/dist/jquery.js') }}"></script>
 <script src="{{ asset('bower_components/sufee-admin-dashboard/assets/js/popper.min.js') }}"></script>
 <script src="{{ asset('bower_components/sufee-admin-dashboard/assets/js/plugins.js') }}"></script>
