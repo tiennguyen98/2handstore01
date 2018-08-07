@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
+
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'price',
@@ -16,6 +20,14 @@ class Product extends Model
         'user_id',
         'status',
     ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
 
     public function user()
     {
@@ -51,4 +63,44 @@ class Product extends Model
     {
         return $this->belongsTo('App\Province');
     }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City', 'province_id', 'id');
+    }
+
+    public function thumbnail()
+    {
+        return asset(config('site.thumbnail') . $this->thumbnail);
+    }
+
+    public function status()
+    {
+        switch ($this->status) {
+            case 0:
+                return [
+                    'css' => 'dark',
+                    'status' => __('admin.product.status.sold')
+                ];
+                break;
+            case 1:
+                return [
+                        'css' => 'success',
+                        'status' => __('admin.product.status.available')
+                    ];
+                break;
+        }
+    }
+
+    public function scopeList($query)
+    {
+        return $query->with('category', 'user')
+                    ->latest();
+    }
+
+    public function getMoneyAttribute()
+    {
+        return number_format($this->price) . ' VND';
+    }
+
 }

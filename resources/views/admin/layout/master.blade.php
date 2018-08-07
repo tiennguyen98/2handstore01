@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     @include('admin.assets.css')
+
     @yield('css')
 
 </head>

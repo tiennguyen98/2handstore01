@@ -21,8 +21,8 @@ Route::group([
     Route::get('/dashboard', 'HomeController@adminIndex')->name('index');
     Route::group(
         [
-        'prefix' => '/users',
-        'as' => 'users.',
+            'prefix' => '/users',
+            'as' => 'users.',
         ],
         function () {
             Route::get('/', 'UserController@index')->name('index');
@@ -33,12 +33,25 @@ Route::group([
             Route::get('/option', 'UserController@option')->name('option');
         }
     );
+    Route::group(
+        [
+            'prefix' => 'product',
+            'as' => 'product.'
+        ], 
+        function () {
+            Route::get('/', 'Admin\ProductController@index')->name('list');
+            Route::delete('{product?}', 'Admin\ProductController@destroy')->name('destroy');
+        }
+    );
+
 });
 
-Route::group([
-    'prefix' => '/register',
-    'as' => 'register.'
-    ], function () {
+Route::group(
+    [
+        'prefix' => '/register',
+        'as' => 'register.'
+    ], 
+    function () {
         Route::group([
             'namespace' => 'Auth',
         ], function () {

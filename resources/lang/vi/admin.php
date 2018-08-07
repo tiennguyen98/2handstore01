@@ -23,5 +23,21 @@ return [
         'system' => 'Hệ thống'
     ],
     'search' => 'Tìm kiếm',
+    'product' => [
+        'status' => [
+            'sold' => 'Đã bán',
+            'available' => 'Vẫn còn hàng'
+        ],
+        'name' => 'Tên',
+        'thumbnail' => 'Ảnh',
+        'price' => 'Gía',
+        'postedby' => 'Người đăng',
+        'category' => 'Danh mục',
+        'province' => 'Tỉnh',
+    ],
+    'control' => [
+        'delete' => 'Xóa',
+        'confirm' => 'Bạn muốn :action item này?'
+    ],
     
 ];

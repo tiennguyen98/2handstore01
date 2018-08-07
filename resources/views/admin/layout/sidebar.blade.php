@@ -11,7 +11,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>
+                    <a href="{{ route('admin.index') }}"> <i class="menu-icon fa fa-dashboard"></i>
                         @lang('admin.dashboard')
                     </a>
                 </li>
@@ -55,7 +55,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li>
                             <i class="fa fa-list-ul"></i>
-                            <a href="ui-buttons.html">
+                            <a href="{{ route('product.list') }}">
                                 @lang('admin.article.list')
                             </a>
                         </li>
