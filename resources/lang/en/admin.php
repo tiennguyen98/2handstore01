@@ -12,7 +12,11 @@ return [
     'category' => [
         'categories' => 'Categories',
         'add' => 'Add Category',
-        'list' => 'List Category'
+        'list' => 'List Category',
+        'name' => 'Name',
+        'slug' => 'Slug',
+        'thumbnail' => 'Thumbnail',
+        'parent' => 'Parent'
     ],
     'article' => [
         'articles' => 'Articles',

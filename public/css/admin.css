@@ -5,7 +5,18 @@ a.status{
     display: inline-block;
     padding: 0;
 }
+
 .avatar {
     width: 80px;
+    height: 100px;
+}
+
+.thumbnail {
+    width: 70px;
+    height: 70px;
+}
+
+#uploading-img {
+    width: 100px;
     height: 100px;
 }

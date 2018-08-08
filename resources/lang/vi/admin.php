@@ -12,7 +12,11 @@ return [
     'category' => [
         'categories' => 'Danh mục',
         'add' => 'Thêm danh mục',
-        'list' => 'Danh sách danh mục'
+        'list' => 'Danh sách danh mục',
+        'name' => 'Tên',
+        'slug' => 'Slug',
+        'thumbnail' => 'Thumbnail',
+        'parent' => 'Parent'
     ],
     'article' => [
         'articles' => 'Bài Viết',

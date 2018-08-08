@@ -37,20 +37,20 @@ Route::group([
         [
             'prefix' => 'product',
             'as' => 'product.'
-        ], 
+        ],
         function () {
             Route::get('/', 'Admin\ProductController@index')->name('list');
             Route::delete('{product?}', 'Admin\ProductController@destroy')->name('destroy');
         }
     );
-
+    Route::resource('/categories', 'CategoryController');
 });
 
 Route::group(
     [
         'prefix' => '/register',
         'as' => 'register.'
-    ], 
+    ],
     function () {
         Route::group([
             'namespace' => 'Auth',

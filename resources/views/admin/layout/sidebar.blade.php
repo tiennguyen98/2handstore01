@@ -35,13 +35,13 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li>
                             <i class="fa fa-plus-square"></i>
-                            <a href="ui-buttons.html">
+                            <a href="{{ route('admin.categories.create') }}">
                                 @lang('admin.category.add')
                             </a>
                         </li>
                         <li>
                             <i class="fa fa-list-ul"></i>
-                            <a href="ui-buttons.html">
+                            <a href="{{ route('admin.categories.index') }}">
                                 @lang('admin.category.list')
                             </a>
                         </li>
@@ -55,7 +55,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li>
                             <i class="fa fa-list-ul"></i>
-                            <a href="{{ route('product.list') }}">
+                            <a href="{{ route('admin.product.list') }}">
                                 @lang('admin.article.list')
                             </a>
                         </li>
