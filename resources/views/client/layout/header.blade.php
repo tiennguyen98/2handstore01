@@ -5,8 +5,11 @@
                 <div class="col-lg-4 col-md-6">
                     <ul>
                         <li class="font-weight-bold">
-                            <a href="#">
-                                @lang('client.seller-channel')
+                            <a href="{{ route('language.change', ['lang' => 'en']) }}" class="change-lang">
+                                <img src="{{ asset('bower_components/sufee-admin-dashboard/images/flags/4x3/us.svg') }}" alt="">
+                            </a>
+                            <a href="{{ route('language.change', ['lang' => 'vi']) }}" class="change-lang">
+                                <img src="{{ asset('bower_components/sufee-admin-dashboard/images/flags/4x3/vn.svg') }}" alt="">
                             </a>
                         </li>
                     </ul>

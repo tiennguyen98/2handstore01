@@ -1,0 +1,198 @@
+.breadcrumb{
+    background-color: #f5f5f5;
+}
+
+.product-top {
+    overflow: auto;
+    background-color: white;
+    border-bottom: 1px solid #b9b9b952;
+}
+
+.product-top-left {
+    display: inline-block;
+    max-width: 50%;
+}
+
+.product-slideshow {
+    position: relative;
+}
+
+.product-carousel {
+    margin-top: 10px;
+}
+
+
+.product-slideshow-dots {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    /* top: -5px; */
+    text-align: center;
+} 
+.product-slideshow-dots .dot {
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: .5rem;
+    margin-left: -.3rem;
+    margin-right: .5rem;
+    box-sizing: border-box;
+    background-color: hsla(0,0%,100%,.7);
+}
+
+.product-slideshow-dots .active {
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+
+.product-top-right {
+    max-width: 50%;
+    float: right;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.05);
+    padding: 2rem;
+    border-radius: 2px;
+}
+
+.product-detail {
+    border-bottom: 1px solid #b9b9b952;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.product-title h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+    display: inline-block;
+}
+
+.product-order {
+    text-align: center;
+}
+
+.oldprice {
+    color: grey;
+    text-decoration: line-through;
+    font-size: 1.5rem;
+}
+
+.newprice {
+    color: orangered;
+    font-size: 2rem;
+}
+
+.product-infor-lable {
+    padding: 1rem;
+}
+
+.product-infor-value {
+    padding: 1rem;
+}
+
+.product-description {
+    padding: 12px;
+}
+
+.product-description-content {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    position: relative;
+    line-height:1.4em;
+    height:4.2em;
+}
+
+.product-infor {
+    border-bottom: 1px solid #b9b9b952;
+}
+
+.product-owner {
+    padding: 15px;
+}
+
+.avatar {
+    max-width: 69px;
+    display: inline-block;
+}
+
+.avatar img {
+    border-radius: 50%;
+}
+
+.owner-infor {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.suggested {
+    /*background-color: white;*/
+}
+
+.comment-section {
+    background-color: white;
+    padding: 10px
+}
+
+.comment-section h2{
+    font-size: 24px;
+}
+
+.comments {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.comments::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.comments::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+.comments::-webkit-scrollbar-thumb {
+    background: #ff5722; 
+}
+
+/* Handle on hover */
+.comments::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.comment {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #b9b9b952;
+}
+
+.comment-editor {
+    background-color: white;
+    padding: 10px;
+}
+
+.comment-content {
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.reply {
+    position: absolute;
+    display: inline-block;
+    right: 3em;
+    top: 40%;
+}
+
+.reply a i{
+    padding-right: 5px;
+}
+
+.reply a {
+    color: #333;
+    font-size: 14px;
+}
+
+.reply-comment {
+    margin-left: 5em;
+}

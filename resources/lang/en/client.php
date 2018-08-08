@@ -35,6 +35,19 @@ return [
         'hightolow' => 'High to Low',
         'oldest' => 'Oldest',
         'latest' => 'Latest'
+    ],
+    'product' => [
+        'shipto' => 'Ship to',
+        'contact' => 'Contact Now',
+        'buynow' => 'Buy Now',
+        'brand' => 'Brand',
+        'description' => 'Description',
+        'showmore' => 'Show More',
+        'postedby' => 'Posted By',
+        'address' => 'Address',
+        'comment' => 'Comment',
+        'reply' => 'Reply',
+        'related' => 'Related Product',
     ]
 
 ];

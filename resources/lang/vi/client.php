@@ -34,6 +34,19 @@ return [
         'hightolow' => 'Giá từ cao xuống thấp',
         'oldest' => 'Cũ nhất',
         'latest' => 'Mới nhất'
+    ],
+    'product' => [
+        'shipto' => 'Vận chuyển đến',
+        'contact' => 'Liên hệ ngay',
+        'buynow' => 'Mua ngay',
+        'brand' => 'Hãng sản xuất',
+        'description' => 'Mô tả',
+        'showmore' => 'Xem thêm',
+        'postedby' => 'Đăng bởi',
+        'address' => 'Địa chỉ',
+        'comment' => 'Bình luận',
+        'reply' => 'Trả lời',
+        'related' => 'Sản phẩm liên quan',
     ]
 
 ];

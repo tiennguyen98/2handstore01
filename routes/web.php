@@ -63,3 +63,5 @@ Route::group(
 );
 
 Auth::routes();
+
+Route::get('lang/{lang}', 'LangController@changeLanguage')->name('language.change');
