@@ -44,6 +44,9 @@ return [
     'control' => [
         'delete' => 'Delete',
         'confirm' => 'Do you want to :action?'
+    ],
+    'comment' => [
+        'list' => 'List Comments'
     ]
-
+    
 ];

@@ -17,4 +17,9 @@ class Comment extends Model
     {
         $this->hasMany('App\Comment', 'parent_id', 'id');
     }
+
+    public function scopeComments($query)
+    {
+        return $query->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
+    }
 }

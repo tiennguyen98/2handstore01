@@ -43,5 +43,8 @@ return [
         'delete' => 'Xóa',
         'confirm' => 'Bạn muốn :action item này?'
     ],
+    'comment' => [
+        'list' => 'Các Bình Luận'
+    ]
     
 ];

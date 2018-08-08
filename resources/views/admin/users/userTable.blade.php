@@ -20,12 +20,14 @@
                 <td>{{ $user->phone }}</td>
                 <td>{{ $user->verified() ? __('yes') : __('no') }}</td>
                 <td>
-                    <button data-id="{{ $user->id }}" class="show btn btn-warning" role="button" data-toggle="modal" data-target="#userModal">{{ __('show') }}</button>
+                    <button onclick="show('{{ route('admin.users.show') }}', '{{ $user->id }}')" class="show btn btn-warning" data-toggle="modal" data-target="#userModal">{{ __('show') }}</button>
+
                     <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-primary">{{ __('edit') }}</a>
+                    
                     @if($user->status >= 0)
-                        <button data-id="{{ $user->id }}" class="block btn btn-danger">{{ __('block') }}</button>
+                        <button onclick="block('{{ route('admin.users.block') }}', '{{ $user->id }}')" class="block btn btn-danger">{{ __('block') }}</button>
                     @else
-                        <button data-id="{{ $user->id }}" class="block btn btn-success">{{ __('unblock') }}</button>
+                        <button onclick="block('{{ route('admin.users.block') }}', '{{ $user->id }}')" class="block btn btn-success">{{ __('unblock') }}</button>
                     @endif
                 </td>
             </tr>
@@ -53,4 +55,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="paginate">
+    {{ $users->links() }}
 </div>
