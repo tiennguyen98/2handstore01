@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 
     @include('admin.assets.css')
     @yield('css')
