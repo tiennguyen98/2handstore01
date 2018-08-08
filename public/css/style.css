@@ -12,6 +12,11 @@ img {
     width: 100%;
     z-index: 999;
 }
+.change-lang img{
+    background-color: #fff;
+    padding: 2px;
+    width: 25px;
+}
 .main {
     padding-top: 105px;
 }

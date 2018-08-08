@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class CheckRole
+class LangMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,10 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role->name == 'admin') {
-            return $next($request);
+        if ($lang = $request->session()->get('lang')) {
+            \App::setLocale($lang);
         }
-        return redirect()->route('index');
+        
+        return $next($request);
     }
 }
