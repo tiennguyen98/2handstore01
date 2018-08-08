@@ -12,6 +12,7 @@
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 
     @include('admin.assets.css')
+
     @yield('css')
 
 </head>

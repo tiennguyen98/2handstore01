@@ -24,5 +24,22 @@ return [
         'system' => 'System'
     ],
     'search' => 'Search',
-    
+    'product' => [
+        'status' => [
+            'status' => 'Status',
+            'sold' => 'Sold',
+            'available' => 'Available'
+        ],
+        'name' => 'Name',
+        'thumbnail' => 'Thumbnail',
+        'price' => 'Price',
+        'postedby' => 'Posted by',
+        'category' => 'Category',
+        'province' => 'Province',
+    ],
+    'control' => [
+        'delete' => 'Delete',
+        'confirm' => 'Do you want to :action?'
+    ]
+
 ];
