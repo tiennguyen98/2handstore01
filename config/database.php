@@ -13,7 +13,7 @@ return [
     |
     */
     'paginate' => 10,
-    'suggested' => 6,
+    'suggested' => 10,
     
     'default' => env('DB_CONNECTION', 'mysql'),
 
