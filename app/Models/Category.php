@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Category extends Model
 {
@@ -25,6 +26,47 @@ class Category extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category', 'parent_id', 'id');
+        return $this->belongsTo('App\Category');
+    }
+
+    public function getThumbnail()
+    {
+        return asset(Storage::url($this->thumbnail));
+    }
+
+    public function scopeParentCategories($query)
+    {
+        return $query->where('parent_id', '=', null)
+            ->orderBy('name', 'asc')
+            ->with('categories')
+            ->paginate(config('database.paginate'));
+    }
+
+    public function saveCategory($data)
+    {
+        if($this->thumbnail !== null && isset($data['thumbnail'])) 
+            Storage::delete($this->thumbnail);
+
+        if (isset($data['is_parent']) && $data['is_parent'] == 1) 
+        {
+            $data['parent_id'] = null;
+        }
+
+        $this->fill($data);
+
+        return $this->save();
+    }
+
+    public function scopeArrayCategories($query)
+    {
+        return $query->where('parent_id', '=', null)
+                ->pluck('name', 'id')
+                ->toArray();
+    }
+
+    public function deleteCategory()
+    {
+        Storage::delete($this->thumbnail);
+        Category::destroy($this->id);
     }
 }

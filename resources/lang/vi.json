@@ -36,5 +36,13 @@
     "E-Mail Address": "Địa Chỉ Email",
     "Send Password Reset Link": "Gửi Link Khôi Phục Mật Khẩu",
     "Confirm Password": "Xác Nhận Mật Khẩu",
-    "Close": "Đóng"
+    "Close": "Đóng",
+    "Categories Manager": "Quản Lý Danh Mục",
+    "Create Category": "Thêm Danh Mục",
+    "Input Category Name": "Nhập Tên Danh Mục",
+    "Input Category Slug": "Nhập Slug Cho Danh Mục",
+    "Edit": "Sửa",
+    "Delete": "Xóa", 
+    "is parent": "Là Danh Mục Cha",
+    "Edit Category": "Sửa Danh Mục"
 }
