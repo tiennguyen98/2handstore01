@@ -25,7 +25,7 @@ class CategorySeeder extends Seeder
                 'name' => $value,
                 'slug' => str_slug($value),
                 'thumbnail' => 'default.jpg',
-                'parent_id' => 0
+                'parent_id' => null
             ]);
         }
     }
