@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-
     use SoftDeletes;
 
     protected $fillable = [
@@ -15,6 +14,7 @@ class Product extends Model
         'price',
         'thumbnail',
         'detail',
+        'brand',
         'category_id',
         'province_id',
         'user_id',
@@ -34,7 +34,7 @@ class Product extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function comments()
+    public function commentUsers()
     {
         return $this->belongsToMany('App\User', 'comments')->withPivot('content', 'parent_id');
     }
@@ -51,7 +51,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany('images');
+        return $this->hasMany('App\Image');
     }
 
     public function category()
@@ -103,4 +103,18 @@ class Product extends Model
         return number_format($this->price) . ' VND';
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    public function scopeSuggestedProducts($query, $id)
+    {
+        return $query->where('category_id', '=', $id)->limit(config('database.suggested'))->get();
+    }
+
+    public function getBrandAttribute($value)
+    {
+        return strtoupper($value);
+    }
 }

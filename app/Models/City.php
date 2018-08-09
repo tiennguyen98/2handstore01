@@ -19,4 +19,9 @@ class City extends Model
     {
         return $this->hasManyThrough('App\Product', 'App\Province');
     }
+
+    public function scopeCities($query)
+    {
+        return $query->orderBy('name', 'asc')->pluck('name', 'id');
+    }
 }

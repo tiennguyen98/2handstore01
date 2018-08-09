@@ -78,3 +78,16 @@ function reply(element) {
     $("#parent_id").val($(element).attr('data-id'));
     $(element).parents('.comment').append($('#comment-editor').prop('hidden', false));
 }
+
+function deleteComment(url, id) {
+    let position = $('.comments').scrollTop();
+    $.ajax({
+        url: url,
+        method: 'post',
+        data: {id: id, _method: 'delete'},
+        success: function (result) {
+            $('#comments').html(result);
+            $('.comments').delay(50).scrollTop(position);
+        }
+    })
+}

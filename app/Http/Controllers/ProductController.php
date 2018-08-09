@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Comment;
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CommentController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::comments();
-        $page = $comments->currentPage();
-
-        return view('admin.comments.index', compact('comments', 'page'));
+        //
     }
 
     /**
@@ -38,16 +35,9 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $this->validate($request, [
-            'content' => 'required|string|max:191'
-        ]);
-        Comment::saveComment($request);
-        $product = Product::findOrFail($id);
-        $comments = Comment::parentComments($product->id);
-
-        return view('client.product.comment', compact('product', 'comments'));
+        //
     }
 
     /**
@@ -58,7 +48,12 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $comments = Comment::parentComments($product->id);
+        $suggestedProducts = Product::suggestedProducts($product->category_id);
+        $cities = City::cities();
+
+        return view('client.product.product', compact('product', 'comments', 'suggestedProducts', 'cities'));
     }
 
     /**
@@ -92,19 +87,6 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        Comment::destroy($id);
-        $comments = Comment::comments();
-        $page = $comments->currentPage();
-
-        return view('admin.comments.content', compact('comments', 'page'));
-    }
-
-    public function clientDestroy(Request $request, $id)
-    {
-        Comment::destroy($id);
-        $product = Product::findOrFail($request->id);
-        $comments = Comment::parentComments($product->id);
-
-        return view('client.product.comment', compact('product', 'comments'));
+        //
     }
 }
