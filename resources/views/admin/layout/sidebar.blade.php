@@ -77,7 +77,7 @@
                 </li>
                 <h3 class="menu-title">@lang('admin.system.system')</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#"> <i class="menu-icon fa fa-gear"></i>
+                    <a href="{{ route('admin.config.index') }}"> <i class="menu-icon fa fa-gear"></i>
                         @lang('admin.system.config')
                     </a>
                 </li>

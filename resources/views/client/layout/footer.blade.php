@@ -77,11 +77,11 @@
         </div>
         <div class="footer__bottom">
             <p class="text-center">
-                @lang('client.address'): Ha Noi
+                @lang('client.address'): {{ $site_info['address'] }}
                 <br>
-                Email: support@2hand.vn
+                Email: {{ $site_info['email'] }}
                 <br>
-                @lang('client.phone'): 01693088822
+                @lang('client.phone'): {{ $site_info['phone'] }}
             </p>
             <p class="text-center">
                 @lang('client.copyright')

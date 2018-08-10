@@ -44,7 +44,7 @@ Route::group([
         }
     );
     Route::resource('/categories', 'CategoryController');
-
+    
     Route::group([
         'prefix' => 'comments',
         'as' => 'comments.'
@@ -52,6 +52,16 @@ Route::group([
         Route::get('/', 'CommentController@index')->name('index');
         Route::delete('/destroy/{id}', 'CommentController@destroy')->name('destroy');
     });
+    Route::group(
+        [
+            'prefix' => 'config',
+            'as' => 'config.',
+        ],
+        function () {
+            Route::get('/', 'Admin\ConfigController@index')->name('index');
+            Route::put('/', 'Admin\ConfigController@save')->name('save');
+        }
+    );
 });
 
 Route::group(
