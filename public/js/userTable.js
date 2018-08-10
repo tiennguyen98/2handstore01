@@ -1,38 +1,41 @@
-$('.show').click(function () {
-    var id = $(this).attr('data-id');
+function show(url, id) {
     $.ajax({
-        url: "{{ route('admin.users.show') }}",
+        url: url,
         method: 'GET',
         data: {id: id},
         success: function (result) {
             $('#modal-body').html(result);
         }
     });
-});
+}
 
-$('.block').click(function () {
-    var id = $(this).attr('data-id');
+function block(url, id) {
     var option = $('.btn-warning').attr('data-option');
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+        }
+    });
     $.ajax({
-        url: "{{ route('admin.users.block') }}",
+        url: url,
         method: 'POST',
-        data: {id: id, option: option,  _token: "{{ csrf_token() }}"},
+        data: {id: id, option: option},
         success: function (result) {
             $('.table-user').html(result);
         }
     });
-});
+}
 
-$('.show-option').click(function() {
+function showOption(url, target) {
     $('.show-option').removeClass('btn-warning');
-    $(this).addClass('btn-warning');
-    var option = $(this).attr('data-option');
+    $(target).addClass('btn-warning');
+    var option = $(target).attr('data-option');
     $.ajax({
-        url: "{{ route('admin.users.option') }}",
+        url: url,
         method: 'get',
         data: {option: option},
         success: function(result) {
             $('.table-user').html(result);
         }
     });
-});
+}
