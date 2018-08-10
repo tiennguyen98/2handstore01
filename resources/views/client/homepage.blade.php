@@ -1,9 +1,5 @@
 @extends('client.layout.master')
 
-
-@section('title', 'Second Hand Store')
-
-
 @section('content')
 
 <div class="slider">
