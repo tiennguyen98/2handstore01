@@ -14,35 +14,55 @@
     !!}
         <div class="form-group row">
             {!! Form::label('avatar', 'Avatar',[
-                'class' => 'col-sm-1'
+                'class' => 'col-sm-2'
             ]) !!}
             <div class="col-sm-5">
                 <img name="avatar" id="avatar" src="{{ $user->getAvatar() }}" alt="avatar">
                 {!! Form::file('image', ['id' => 'image']) !!}
             </div>
-        </div>
-        <div class="form-group row">
-            {!! Form::label('name', 'Name', ['class' => 'col-sm-1 col-form-label']) !!}
-            <div class="col-sm-5">
-                {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            <div class="offset-sm-2 col-sm-5 mt-3">
+                @if($errors->has('image'))
+                    <span class="alert alert-danger"><strong>{{ $errors->first('image') }}</strong></span>
+                @endif
             </div>
         </div>
         <div class="form-group row">
-            {!! Form::label('is_active', __('is_active'), ['class' => 'col-sm-1 col-form-label']) !!}
+            {!! Form::label('name', __('Name'), ['class' => 'col-sm-2 col-form-label']) !!}
+            <div class="col-sm-5">
+                {!! Form::text('name', null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="offset-sm-2 col-sm-5 mt-3">
+                @if($errors->has('name'))
+                    <span class="alert alert-danger"><strong>{{ $errors->first('name') }}</strong></span>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            {!! Form::label('is_active', __('is_active'), ['class' => 'col-sm-2 col-form-label']) !!}
             <div class="col-sm-5">
                 {!! Form::radio('status', 1) !!} {{ __('verified') }}
                 {!! Form::radio('status', 0) !!} {{ __('unverify') }}
                 {!! Form::radio('status', -1) !!} {{ __('blocked') }}
             </div>
+            <div class="offset-sm-2 col-sm-5 mt-3">
+                @if($errors->has('is_active'))
+                    <span class="alert alert-danger"><strong>{{ $errors->first('is_active') }}</strong></span>
+                @endif
+            </div>
         </div>
         <div class="form-group row">
-            {!! Form::label('description', __('description'), ['class' => 'col-sm-1 col-form-label']) !!}
+            {!! Form::label('description', __('Description'), ['class' => 'col-sm-2 col-form-label']) !!}
             <div class="col-sm-5">
                 {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
             </div>
+            <div class="offset-sm-2 col-sm-5 mt-3">
+                @if($errors->has('description'))
+                    <span class="alert alert-danger"><strong>{{ $errors->first('description') }}</strong></span>
+                @endif
+            </div>
         </div>    
         <div class="form-group row">
-            <div class="col-sm-5 offset-sm-1">
+            <div class="col-sm-5 offset-sm-2">
                 {!! Form::button(__('save'), [
                     'class' => 'btn btn-success',
                     'type' => 'submit'

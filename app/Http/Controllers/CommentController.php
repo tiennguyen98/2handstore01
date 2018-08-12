@@ -16,7 +16,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::comments();
+        $comments = Comment::allComments();
         $page = $comments->currentPage();
 
         return view('admin.comments.index', compact('comments', 'page'));
@@ -93,7 +93,7 @@ class CommentController extends Controller
     public function destroy($id)
     {
         Comment::destroy($id);
-        $comments = Comment::comments();
+        $comments = Comment::allComments();
         $page = $comments->currentPage();
 
         return view('admin.comments.content', compact('comments', 'page'));

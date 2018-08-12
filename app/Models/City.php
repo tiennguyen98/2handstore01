@@ -24,4 +24,9 @@ class City extends Model
     {
         return $query->orderBy('name', 'asc')->pluck('name', 'id');
     }
+
+    public function scopeGetProvinces($query)
+    {
+        $query->provinces->pluck('name', 'id')->get();
+    }
 }
