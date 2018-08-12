@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     public function scopeCustomer($query)
     {
-        return $query->where('role_id', '>', '1');
+        return $query->where('role_id', '>', '1')->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
     }
 
     public function getAvatar()
@@ -134,5 +134,15 @@ class User extends Authenticatable
         $this->fill($data);
         
         return $this->save();
+    }
+
+    public function getNameAttribute($value)
+    {
+        return strlen($value) < 45 ? $value : (substr($value, 0, 42) . '...');
+    }
+
+    public function scopeCustomerOption($query, $option)
+    {
+        return $query->option($option)->customer();
     }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Rules\CheckPhoneRule;
 
 class UserController extends Controller
 {
@@ -13,17 +15,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::customer()->orderBy('updated_at')->paginate(config('database.paginate'));
+        $users = User::customer();
         $page = $users->currentPage();
         
+        if ($request->ajax()) {
+            return view('admin.users.userTable', compact(['users', 'page']));
+        }
+
         return view('admin.users.index', compact(['users', 'page']));
     }
 
     public function option(Request $request)
     {
-        $users = User::customer()->option($request->option)->orderBy('updated_at')->paginate(config('database.paginate'));
+        $users = User::customerOption($request->option);
         $page = $users->currentPage();
 
         return view('admin.users.userTable', compact(['users', 'page']));
@@ -81,8 +87,7 @@ class UserController extends Controller
         $file = $request->file($name);
         $fileName = $file->getClientOriginalName();
         $filePath = config('filesystems.img_path');
-        if(file_exists($file))
-        {
+        if (file_exists($file)) {
             $fileName = md5(str_random(15)) . $fileName;
         }
         $path = $file->storeAs($filePath, $fileName);
@@ -90,6 +95,32 @@ class UserController extends Controller
         return $path;
     }
 
+    public function updateUser($request, $id)
+    {
+        $this->validate($request, [
+            'image' => 'mimes:jpeg,jpg,png,bmp,svg|max:5120',
+            'name' => 'string|min:5|max:255',
+            'description' => 'string|nullable',
+            'address' => 'string|nullable',
+            'phone' => [
+                'nullable',
+                new CheckPhoneRule()
+            ]
+        ]);
+        
+        if ($request->has('image')) {
+            $request->merge([
+                'avatar' => $this->getFilePath($request, 'image')
+            ]);
+        }
+
+        try {
+            $user = User::findOrFail($id);
+            $user->saveUser($request->only('name', 'description', 'address', 'phone', 'avatar', 'status'));
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -99,24 +130,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'image.*' => 'mimes:jpeg,jpg,png,bmp,svg|max:5120',
-            'name' => 'string|min:5|max:255',
-            'description' => 'string|nullable'
-        ]);
-        
-        if($request->has('image')) {
-            $request->merge([
-                'avatar' => $this->getFilePath($request, 'image')
-            ]);
-        }
-
-        try {
-            $user = User::findOrFail($id);
-            $user->saveUser($request->all());
-        } catch(Exception $e) {
-            return $e;
-        }
+        $this->updateUser($request, $id);
 
         return redirect()->route('admin.users.index');
     }
@@ -132,11 +146,26 @@ class UserController extends Controller
         //
     }
 
-    public function toggleBlock(Request $request) {
+    public function toggleBlock(Request $request)
+    {
         $user = User::findOrFail($request->id);
         $user->status >= 0 ? $user->status = -1 : $user->status = 0;
         $user->save();
         
         return redirect()->route('admin.users.option', ['option' => $request->option]);
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+
+        return view('client.user.profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $this->updateUser($request, $id);
+
+        return redirect()->route('client.user.profile');
     }
 }
