@@ -9,13 +9,10 @@ function show(url, id) {
     });
 }
 
-function block(url, id) {
+function block(url, id, message) {
+    message = message || 'Do you really want to block this user?';
+    if(!confirm(message)) return;
     var option = $('.btn-warning').attr('data-option');
-    $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
-        }
-    });
     $.ajax({
         url: url,
         method: 'POST',
@@ -29,13 +26,5 @@ function block(url, id) {
 function showOption(url, target) {
     $('.show-option').removeClass('btn-warning');
     $(target).addClass('btn-warning');
-    var option = $(target).attr('data-option');
-    $.ajax({
-        url: url,
-        method: 'get',
-        data: {option: option},
-        success: function(result) {
-            $('.table-user').html(result);
-        }
-    });
+    ajaxGet(url, '.table-user');
 }

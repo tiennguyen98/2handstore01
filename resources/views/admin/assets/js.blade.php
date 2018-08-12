@@ -6,3 +6,4 @@
 <script src="{{ asset('bower_components/sufee-admin-dashboard/assets/js/chartjs.min.js') }}"></script>
 <script src="{{ asset('bower_components/sufee-admin-dashboard/assets/js/dashboard.js') }}"></script>
 <script src="{{ asset('js/ajaxSetup.js') }}"></script>
+<script src="{{ asset('js/ajaxGet.js') }}"></script>

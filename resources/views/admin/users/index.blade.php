@@ -9,10 +9,11 @@
 @endsection
 
 @section('content')
-<button onclick="showOption('{{ route('admin.users.option') }}', this)" class="show-option btn btn-primary btn-warning" data-option="all">{{ __('Show All User') }}</button>
-<button onclick="showOption('{{ route('admin.users.option') }}', this)" class="show-option btn btn-primary" data-option="verified">{{ __('Show Verified User') }}</button>
-<button onclick="showOption('{{ route('admin.users.option') }}', this)" class="show-option btn btn-primary" data-option="unverify">{{ __('Show Unverify User') }}</button>
-<button onclick="showOption('{{ route('admin.users.option') }}', this)" class="show-option btn btn-primary" data-option="blocked">{{ __('Show Blocked User') }}</button>
+<a href="{{ route('admin.users.index') }}" class="show-option btn btn-primary btn-warning" data-option="all">{{ __('Show All User') }}</a>
+<button onclick="showOption('{{ route('admin.users.option', ['option' => 'verified']) }}', this)" class="show-option btn btn-primary" data-option="verified">{{ __('Show Verified User') }}</button>
+<button onclick="showOption('{{ route('admin.users.option', ['option' => 'unverify']) }}', this)" class="show-option btn btn-primary" data-option="unverify">{{ __('Show Unverify User') }}</button>
+<button onclick="showOption('{{ route('admin.users.option', ['option' => 'blocked']) }}', this)" class="show-option btn btn-primary" data-option="blocked">{{ __('Show Blocked User') }}</button>
+
     <div class="table-user">
         @include('admin.users.userTable')
     </div>
