@@ -9,12 +9,17 @@
                 <div class="form-inline">
 
                     {!! Form::open([
-                        'url' => 'foo/bar', 
+                        'id' => 'search',
+                        'method' => 'get',
+                        'url' => route(Route::currentRouteName()), 
                         'class' => 'search-form']) 
                     !!}
 
-                    {!! Form::text('email', __('admin.search'), ['class' => 'form-control mr-sm-2']) !!}
-                    {!! Form::submit('Search', ['class' => 'search-close']) !!}
+                    {!! Form::text('search', __('admin.search'), [
+                        'id' => 'input-search',
+                        'class' => 'form-control mr-sm-2'
+                    ]) !!}
+                    {{-- {!! Form::submit('Search', ['class' => 'search-close']) !!} --}}
                     
                     {!! Form::close() !!}
 

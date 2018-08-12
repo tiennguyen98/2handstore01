@@ -13,10 +13,17 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::parentCategories();
         $page = $categories->currentPage();
+
+        if ($request->ajax()) {
+            return view('admin.categories.content', compact([
+                'categories',
+                'page'
+            ]));
+        }
 
         return view('admin.categories.index', compact([
             'categories',
@@ -137,12 +144,7 @@ class CategoryController extends Controller
     {
         $cate = Category::findOrFail($id);
         $cate->deleteCategory();
-        $categories = Category::parentCategories();
-        $page = $categories->currentPage();
 
-        return view('admin.categories.content', compact([
-            'categories',
-            'page'
-        ]));
+        return redirect()->route('admin.categories.index');
     }
 }

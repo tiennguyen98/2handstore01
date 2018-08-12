@@ -20,3 +20,7 @@ a.status{
     width: 100px;
     height: 100px;
 }
+
+td {
+    word-break: break-word;
+}

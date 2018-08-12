@@ -13,9 +13,15 @@ class Report extends Model
         'type', 'content', 'product_id', 'user_id'
     ];
 
-    public function scopeReports($query)
+    public function scopeReports($query, $search = null)
     {
-        return $query->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
+        return $query->join('products', 'reports.product_id', 'products.id')
+                ->join('users', 'reports.user_id', 'users.id')
+                ->select('reports.*', 'users.email as email', 'products.name as name')
+                ->where('products.name', 'like', '%' . $search . '%')
+                ->orWhere('users.email', 'like', '%' . $search . '%')
+                ->orderBy('updated_at', 'desc')
+                ->paginate(config('database.paginate'));
     }
 
     public function product()

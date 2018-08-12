@@ -1,21 +1,23 @@
 <table class="table">
     <thead>
-        <th>{{ __('Num.') }}</th>
-        <th>{{ __('user_id') }}</th>
-        <th>{{ __('product_id') }}</th>
-        <th>{{ __('content') }}</th>
-        <th>{{ __('parent_id') }}</th>
-        <th></th>
+        <tr class="d-flex">
+            <th class="col-1 col-sm-1">{{ __('Num.') }}</th>
+            <th class="col-2">{{ __('User Email') }}</th>
+            <th class="col-2">{{ __('Product Name') }}</th>
+            <th class="col-3">{{ __('Content') }}</th>
+            <th class="col-3">{{ __('Parent Comment') }}</th>
+            <th></th>
+        </tr>
     </thead>
     <tbody>
         @php($i = --$page * config('database.paginate') + 1)
         @forelse($comments as $comment)
-            <tr class="{{ $i % 2 == 0 ? 'table-warning' : 'table-primary'}}">
-                <td>{{ $i++ }}</td>
-                <td>{{ $comment->user_id }}</td>
-                <td>{{ $comment->product_id }}</td>
-                <td>{{ $comment->content }}</td>
-                <td>{{ $comment->parent_id }}</td>
+            <tr class="d-flex {{ $i % 2 == 0 ? 'table-warning' : 'table-primary'}}">
+                <td class="col-1 col-sm-1">{{ $i++ }}</td>
+                <td class="col-2">{{ $comment->email }}</td>
+                <td class="col-2">{{ $comment->name }}</td>
+                <td class="col-3">{{ $comment->content }}</td>
+                <td class="col-3">{{ $comment->parentComment() }}</td>
                 <td>
                     <button onclick="destroy('{{ route('admin.comments.destroy', ['id' => $comment->id]) }}', '{{ __('Do you really want to delete this item?') }}')" class="delete btn btn-danger">{{ __('Delete') }}</button>
                 </td>
