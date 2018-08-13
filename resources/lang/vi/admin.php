@@ -48,6 +48,9 @@ return [
     ],
     'reports' => [
         'list' => 'Danh Sách Tố Cáo'
+    ],
+    'order' => [
+        'list' => 'Các đơn hàng'
     ]
     
 ];

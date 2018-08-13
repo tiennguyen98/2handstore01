@@ -50,6 +50,9 @@ return [
     ],
     'reports' => [
         'list' => 'Reports List'
+    ],
+    'order' => [
+        'list' => 'List Orders'
     ]
     
 ];
