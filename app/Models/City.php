@@ -20,6 +20,7 @@ class City extends Model
         return $this->hasManyThrough('App\Product', 'App\Province');
     }
 
+
     public function scopeCities($query)
     {
         return $query->orderBy('name', 'asc')->pluck('name', 'id');
@@ -28,5 +29,16 @@ class City extends Model
     public function scopeGetProvinces($query)
     {
         $query->provinces->pluck('name', 'id')->get();
+    }
+    
+    public function scopeConvertToArray($query)
+    {
+        $cities = City::get();
+        $arrayCities = [];
+        foreach ($cities as $city) {
+            $arrayCities[$city->id] = $city->name;
+        }
+        
+        return $arrayCities;
     }
 }

@@ -50,6 +50,9 @@ return [
         'comment' => 'Comment',
         'reply' => 'Reply',
         'related' => 'Related Product',
+        'new' => 'Add New Product',
+        'save' => 'Save',
+        'back' => 'Back'
     ],
     'empty' => 'No Data'
 
