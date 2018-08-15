@@ -71,6 +71,13 @@ Route::group([
         Route::get('/', 'ReportController@index')->name('index');
         Route::delete('/destroy', 'ReportController@destroy')->name('destroy');
     });
+    Route::group([
+        'prefix' => '/orders',
+        'as' => 'orders.',
+    ], function () {
+        Route::get('/', 'OrderController@index')->name('index');
+        Route::delete('/destroy/{id}', 'OrderController@destroy')->name('destroy');
+    });
 });
 
 Route::group(
