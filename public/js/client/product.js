@@ -91,3 +91,17 @@ function deleteComment(url, id) {
         }
     })
 }
+
+function report(url) {
+    let type = $('#type').val();
+    let content = $('#report-content').val();
+    $.ajax({
+        url: url,
+        method: 'POST',
+        data: {type: type, content: content},
+        success: function (result) {
+            $('#type').val(1);
+            $('#report-content').val('');
+        }
+    });
+}
