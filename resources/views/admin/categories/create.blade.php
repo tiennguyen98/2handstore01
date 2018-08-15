@@ -36,8 +36,8 @@
                 <img src="{{ isset($category) ? $category->getThumbnail() : '' }}" id="uploading-img" alt="">
             </div>
             <div class="offset-sm-2 col-sm-5 mt-2">
-                @if($errors->has('thumbnail'))
-                    <span class="alert alert-danger"><strong>{{ $errors->first('thumbnail') }}</strong></span>
+                @if($errors->has('image'))
+                    <span class="alert alert-danger"><strong>{{ $errors->first('image') }}</strong></span>
                 @endif
             </div>
         </div>

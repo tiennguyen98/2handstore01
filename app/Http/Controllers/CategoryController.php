@@ -54,7 +54,7 @@ class CategoryController extends Controller
         return [
             'name' => 'required|string|max:255',
             'slug' => 'required|string|max:255',
-            'image.*' => 'mimes:jpeg,png,jpg,bmp,svg|max:2048',
+            'image' => 'mimes:jpeg,png,jpg,bmp,svg|max:2048',
             'parent_id' => 'nullable|numeric',
         ];
     }

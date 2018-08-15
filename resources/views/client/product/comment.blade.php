@@ -22,7 +22,7 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" onclick="deleteComment('{{ route('client.products.destroyComment', ['id' => $comment->id]) }}', {{ $product->id }})">
+                        <a class="dropdown-item" onclick="deleteComment('{{ route('client.destroyComment', ['id' => $comment->id]) }}', {{ $product->id }})">
                             {{ __('Delete') }}
                         </a>
                     </div>
@@ -50,7 +50,7 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" onclick="deleteComment('{{ route('client.products.destroyComment', ['id' => $reply->id]) }}', {{ $product->id }})">
+                        <a class="dropdown-item" onclick="deleteComment('{{ route('client.destroyComment', ['id' => $reply->id]) }}', {{ $product->id }})">
                             {{ __('Delete') }}
                         </a>
                     </div>

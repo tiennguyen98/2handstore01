@@ -24,7 +24,7 @@ class Comment extends Model
         return $this->belongsTo('App\Comment', 'parent_id', 'id');
     }
 
-    public function scopeComments($query)
+    public function scopeAllComments($query)
     {
         return $query->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
     }

@@ -28,7 +28,7 @@
     "address": "Địa Chỉ",
     "phone": "SDT",
     "Num.": "STT",
-    "name": "Họ và Tên",
+    "Name": "Họ và Tên",
     "No Data": "Không có dữ liệu",
     "yes": "Có",
     "no": "Không",
@@ -60,5 +60,16 @@
     "User Email": "Email Người Dùng",
     "Report": "Tố cáo vi phạm",
     "Description": "Mô tả",
-    "Submit": "Gửi"
+    "Submit": "Gửi",
+    "Profile": "Thông tin tài khoản",
+    "Orders": "Các đơn hàng",
+    "Browse… ": "Chọn...",
+    "Old Password": "Mật khẩu cũ",
+    "New Password": "Mật khẩu mới",
+    "The old password is invaild": "Mật khẩu cũ không đúng",
+    "Your password has been changed successfully!": "Đổi mật khẩu thành công!",
+    "Change Password": "Đổi Mật Khẩu",
+    "Do you really want to delete this item?": "Bạn có thực sự muốn xóa mục này?",
+    "Do you really want to block this user?": "Bạn có thực sự muốn khóa người dùng này?",
+    "Do you really want to unblock this user?": "Bạn có thực sự muốn mở khóa người dùng này?"
 }

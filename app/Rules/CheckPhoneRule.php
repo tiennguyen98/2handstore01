@@ -35,6 +35,6 @@ class CheckPhoneRule implements Rule
      */
     public function message()
     {
-        return 'The :attribute field must be phone number';
+        return __('The :attribute field must be phone number');
     }
 }
