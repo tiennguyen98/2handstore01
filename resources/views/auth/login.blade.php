@@ -97,7 +97,12 @@
                     </div>
 
                 {!! Form::close() !!}
-
+                <div class="my-2">
+                    <a class="btn btn-danger w-100 py-2 text-white login-google" href="{{ route('google.login') }}">
+                        <i class="fab fa-google-plus"></i>
+                        Google
+                    </a>
+                </div>
             </div>
         </div>
     </div>

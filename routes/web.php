@@ -135,3 +135,6 @@ Route::group([
 Auth::routes();
 
 Route::get('lang/{lang}', 'LangController@changeLanguage')->name('language.change');
+Route::get('/auth/google', 'Auth\SocialAuthController@redirectToProvider')->name('google.login');
+Route::get('/auth/google/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('google.callback');
+

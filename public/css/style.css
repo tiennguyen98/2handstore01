@@ -331,4 +331,6 @@ footer .footer__bottom p {
         text-align: right;
     }
 }
-
+.login-google{
+    background-color: #cf4332;
+}
