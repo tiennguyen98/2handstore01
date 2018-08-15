@@ -69,4 +69,27 @@ class Category extends Model
         Storage::delete($this->thumbnail);
         Category::destroy($this->id);
     }
+
+    public function scopeFindBySlug($query, $slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+        if ($category) {
+            return $category;
+        }
+
+        return false;
+    }
+
+    public function getProducts($sort)
+    {
+        if (!is_array($sort)) {
+            return false;
+        }
+        $other_path = '?sortBy=' . $sort['sortBy'] . '&type=' . $sort['type'];
+        
+        return $this->products()
+                ->orderBy($sort['sortBy'], $sort['type'])
+                ->paginate(config('database.paginate'))
+                ->withPath($other_path);
+    }
 }

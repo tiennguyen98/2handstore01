@@ -334,3 +334,10 @@ footer .footer__bottom p {
 .login-google{
     background-color: #cf4332;
 }
+.custom-paginate .page-link {
+    color: #eb521d;
+}
+.custom-paginate .page-item.active .page-link {
+    background-color: #eb521d;
+    border-color: #eb521d;
+}
