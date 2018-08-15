@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-lg-4 col-md-8 offset-lg-4 text-right">
                     <ul>
-                        <li><a href="#"><i class="far fa-question-circle"></i> @lang('client.help') </a></li>
+                        <li class="mr-auto"><a href="#"><i class="far fa-question-circle"></i> @lang('client.help') </a></li>
                         @if(!Auth::check())
                             <li class="font-weight-bold"><a href="{{ route('register') }}"> @lang('auth.register') </a></li>
                             <li class="font-weight-bold"><a href="{{ route('login') }}"> @lang('auth.login') </a></li>
@@ -53,11 +53,16 @@
                 <div class="col-md-9">
 
                     {!! Form::open([
-                        'route' => 'login',
-                        'class' => 'search']) 
+                        'method' => 'GET',
+                        'class' => 'search',
+                        'url' => route('client.products.search'),
+                    ]) 
                     !!}
 
-                    {!! Form::text('search', null, ['placeholder' => __('client.search')]) !!}
+                    {!! Form::text('search', old('search'), [
+                        'placeholder' => __('client.search'),
+                        'id' => 'header-search'
+                    ]) !!}
                     
                     {!! Form::button(__('client.search.submit'), 
                                     [

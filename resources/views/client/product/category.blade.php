@@ -7,12 +7,12 @@
 @endsection
 
 
-@section('title', __('client.category.category') . ': ' . $getCategory->name)
+@section('title', __('Search'))
 
 
 @section('content')
 
-<div class="container-fluid mt-5">
+<div class="col-lg-10 mr-auto ml-auto mt-5">
     <div class="row">
         <div class="col-md-3">
             <div class="bg-white p-4">
@@ -23,17 +23,38 @@
                     </h3>
                 </div>
 
-                {!! Form::open() !!}
+                {!! Form::open([
+                    'method' => 'get',
+                    'url' => route('client.products.search'),
+                    'id' => 'filter-form'
+                ]) !!}
+                    <input type="hidden" id="search" name="search" value="">
+                    <input type="hidden" id="sort" name="sort" value="">
                     <div class="tieuchi">
                         <p> @lang('client.category.category') </p>
                         {!! 
-                            Form::select('danhmuc', [__('client.category.allcate')], null, ['class' => 'form-control']) 
+                            Form::select('category', $categories, null, [
+                                'class' => 'form-control',
+                                'id' => 'category'
+                            ]) 
                         !!}
                     </div>
                     <div class="tieuchi">
-                        <p> @lang('client.category.where') </p>
+                        <p> @lang('client.category.city') </p>
                         {!! 
-                            Form::select('city', [__('client.category.allcity')], null, ['class' => 'form-control']) 
+                            Form::select('city', $cities, old('city'), [
+                                'class' => 'form-control',
+                                'id' => 'city'
+                            ]) 
+                        !!}
+                    </div> 
+                    <div class="tieuchi">
+                        <p> @lang('client.category.province') </p>
+                        {!! 
+                            Form::select('province', $province, old('province'), [
+                                'class' => 'form-control',
+                                'id' => 'province'
+                            ]) 
                         !!}
                     </div> 
                     <div class="tieuchi">
@@ -51,7 +72,10 @@
                         </span>
                     </div> 
                     <div class="tieuchi">
-                        {!! Form::submit(__('client.category.filter'), ['class' => 'btn btn-primary w-100']
+                        {!! Form::button(__('client.category.filter'), [
+                            'class' => 'btn btn-primary w-100',
+                            'id' => 'filter'
+                            ]
                             ) !!}
                     </div>
                 {!! Form::close() !!}
@@ -68,27 +92,20 @@
                                     <i class="fas fa-sort-amount-up"></i>
                                     @lang('client.category.sortby')
                                 </div>
-                                <div class="col-md-4">
-                                    {!! Form::select('price', 
-                                        [
-                                            __('client.category.sortByPrice'),
-                                            '?sortBy=price&type=asc' => __('client.category.lowtohigh'),
-                                            '?sortBy=price&type=desc' => __('client.category.hightolow'),
-                                        ],
-                                        null,
-                                        ['class' => 'form-control sort']
-                                    ) !!}
-                                </div>
-                                <div class="col-md-4">
-                                    {!! Form::select('time', 
-                                        [
-                                            __('client.category.sortByTime'),
-                                            '?sortBy=created_at&type=desc' => __('client.category.latest'),
-                                            '?sortBy=created_at&type=asc' => __('client.category.oldest'),
-                                        ],
-                                        null,
-                                        ['class' => 'form-control sort']
-                                    ) !!}
+                                <div class="col-md-4 offset-md-4">
+                                    {!! Form::select('sort', 
+                                            [
+                                                __('client.category.lowtohigh'),
+                                                __('client.category.hightolow'),
+                                                __('client.category.latest'),
+                                                __('client.category.oldest'),
+                                            ],
+                                            old('sort'),
+                                            [
+                                                'class' => 'form-control',
+                                                'id' => 'sort-select'
+                                            ]
+                                        ) !!}
                                 </div>
                             </div>
                         </div>
@@ -113,4 +130,5 @@
 
 @section('js')
 <script src="{{ asset('js/categoryClient.js') }}"></script>
+<script src="{{ asset('js/client/search.js') }}"></script>
 @endsection

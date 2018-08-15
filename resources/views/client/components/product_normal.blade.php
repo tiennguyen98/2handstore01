@@ -4,7 +4,7 @@
         <p>{{ $product->name }}</p>
         <div class="item__foot">
             <div class="place text-right">
-                <i class="fas fa-map-marker-alt"></i> {{ $product->city->name }}
+                <i class="fas fa-map-marker-alt"></i> {{ $product->province->city->name }}
             </div>
             <b>{{ $product->money }}</b>
             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>

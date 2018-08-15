@@ -15,7 +15,9 @@ class ProfileController extends Controller
         if ($request->user()) {
             $my_vote = $user->getVote($request->user());
         }
-        $user_products = $user->products()->paginate(config('database.paginate'));
+        $user_products = $user->products()
+                            ->withProvince()
+                            ->paginate(config('database.paginate'));
 
         return view('client.profile.index', compact('user', 'rates', 'my_vote', 'user_products'));
     }

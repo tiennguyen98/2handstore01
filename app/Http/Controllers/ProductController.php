@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\City;
 use App\Comment;
 use App\Product;
+use App\Category;
+use App\Province;
 use Illuminate\Http\Request;
 use App\Order;
 
@@ -110,5 +112,60 @@ class ProductController extends Controller
         $request->user()->orders()->save($product, $order_information);
 
         return redirect()->route('index');
+    }
+    
+    public function getSearchOrderBy(Request $request)
+    {
+        if ($request->orderBy) {
+            return;
+        }
+        switch ($request->sort) {
+            case '1':
+                $request->request->add([
+                    'orderBy' => 'price',
+                    'type' => 'desc'
+                ]);
+                break;
+            case '2':
+                $request->request->add([
+                    'orderBy' => 'updated_at',
+                    'type' => 'desc'
+                ]);
+                break;
+            case '3':
+                $request->request->add([
+                    'orderBy' => 'updated_at',
+                    'type' => 'asc'
+                ]);
+                break;
+            default:
+                $request->request->add([
+                    'orderBy' => 'price',
+                    'type' => 'asc'
+                ]);
+                break;
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $this->getSearchOrderBy($request);
+        $products = Product::searchProduct($request);
+        $categories = ['' => __('Choose category')] + Category::arrayCategories();
+        $cities = ['' => __('Choose city')] + City::cities()->all();
+        $province = [__('client.category.province')];
+        if ($request->city) {
+            $province = Province::getProvinces($request->city)->all();
+        }
+        session()->flashInput($request->input());
+        
+        return view('client.product.category', compact('products', 'categories', 'cities', 'province'));
+    }
+
+    public function getSearchProvince(Request $request)
+    {
+        $province = Province::where('city_id', '=', $request->id)->pluck('name', 'id');
+
+        return response()->json($province);
     }
 }

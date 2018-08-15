@@ -64,11 +64,6 @@ class Product extends Model
         return $this->belongsTo('App\Province');
     }
 
-    public function city()
-    {
-        return $this->belongsTo('App\City', 'province_id', 'id');
-    }
-
     public function thumbnail()
     {
         return asset(config('site.thumbnail') . $this->thumbnail);
@@ -121,5 +116,50 @@ class Product extends Model
     public function scopeDeleteProductByCategory($query, $id)
     {
         return $query->where('category_id', '=', $id)->delete();
+    }
+
+    public function scopeWithProvince($query)
+    {
+        return $query->with(['province' => function ($query) {
+            $query->with('city');
+        }]);
+    }
+    
+    public function scopeSearchProduct($query, $request)
+    {
+        $path = '?search=' . $request->search
+                . '&category=' . $request->category
+                . '&city=' . $request->city
+                . '&province=' . ($request->has('city') ? $request->province : '')
+                . '&minprice=' . $request->minprice
+                . '&maxprice=' . $request->maxprice
+                . '&sort=' . $request->sort
+                . '&orderBy=' . $request->orderBy
+                . '&type=' . $request->type;
+
+        return $query->where(function ($sub) use ($request) {
+            if ($request->search) {
+                $sub->where('name', 'like', '%' . $request->search . '%');
+            }
+            if ($request->category) {
+                $sub->where('category_id', '=', $request->category);
+            }
+            if ($request->province) {
+                $sub->where('province_id', '=', $request->province);
+            }
+            if ($request->minprice) {
+                $sub->where('price', '>=', $request->minprice);
+            }
+            if ($request->maxprice) {
+                $sub->where('price', '<=', $request->maxprice);
+            }
+        })->withProvince()
+            ->orderBy($request->orderBy ?: 'price', $request->type?: 'asc')
+            ->paginate(config('database.paginate'))->withPath($path);
+    }
+
+    public function getAddress()
+    {
+        return $this->province->name . ' ' . $this->province->city->name;
     }
 }
