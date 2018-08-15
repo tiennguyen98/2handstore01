@@ -27,4 +27,5 @@ return [
     'logout' => 'Logout',
     'verify' => 'Please verify your email address',
     'registed' => 'Register Success',
+    'confirm' => 'Confirm'
 ];
