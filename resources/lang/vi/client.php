@@ -33,7 +33,9 @@ return [
         'lowtohigh' => 'Giá từ thấp đến cao',
         'hightolow' => 'Giá từ cao xuống thấp',
         'oldest' => 'Cũ nhất',
-        'latest' => 'Mới nhất'
+        'latest' => 'Mới nhất',
+        'sortByPrice' => 'Theo giá',
+        'sortByTime' => 'Theo thời gian',
     ],
     'product' => [
         'shipto' => 'Vận chuyển đến',
@@ -47,6 +49,7 @@ return [
         'comment' => 'Bình luận',
         'reply' => 'Trả lời',
         'related' => 'Sản phẩm liên quan',
-    ]
+    ],
+    'empty' => 'Chưa có sản phẩm'
 
 ];

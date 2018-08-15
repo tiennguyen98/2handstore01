@@ -34,7 +34,9 @@ return [
         'lowtohigh' => 'Low to High',
         'hightolow' => 'High to Low',
         'oldest' => 'Oldest',
-        'latest' => 'Latest'
+        'latest' => 'Latest',
+        'sortByPrice' => 'Sort By Price',
+        'sortByTime' => 'Sort By Time',
     ],
     'product' => [
         'shipto' => 'Ship to',
@@ -48,6 +50,7 @@ return [
         'comment' => 'Comment',
         'reply' => 'Reply',
         'related' => 'Related Product',
-    ]
+    ],
+    'empty' => 'No Data'
 
 ];

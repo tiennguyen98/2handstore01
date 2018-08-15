@@ -7,7 +7,7 @@
 @endsection
 
 
-@section('title', 'Demo')
+@section('title', __('client.category.category') . ': ' . $getCategory->name)
 
 
 @section('content')
@@ -39,19 +39,15 @@
                     <div class="tieuchi">
                         <p> @lang('client.category.price') </p>
                         <span>
-                            {!! Form::text('minprice', null, 
-                                    [
-                                        'class' => 'form-control ml-1',
-                                        'placeholder' => __('client.category.lowest')
-                                    ]
-                                ) !!}
+                            {!! Form::text('minprice', null, [
+                                'class' => 'form-control ml-1',
+                                'placeholder' => __('client.category.lowest')
+                            ]) !!}
                             <span>~</span>
-                            {!! Form::text('maxprice', null, 
-                                    [
-                                        'class' => 'form-control ml-1',
-                                        'placeholder' => __('client.category.highest')
-                                    ]
-                                ) !!}
+                            {!! Form::text('maxprice', null, [
+                                'class' => 'form-control ml-1',
+                                'placeholder' => __('client.category.highest')
+                            ]) !!}
                         </span>
                     </div> 
                     <div class="tieuchi">
@@ -74,42 +70,47 @@
                                 </div>
                                 <div class="col-md-4">
                                     {!! Form::select('price', 
-                                            [
-                                                __('client.category.lowtohigh'),
-                                                __('client.category.hightolow'),
-                                            ],
-                                            null,
-                                            ['class' => 'form-control']
-                                        ) !!}
+                                        [
+                                            __('client.category.sortByPrice'),
+                                            '?sortBy=price&type=asc' => __('client.category.lowtohigh'),
+                                            '?sortBy=price&type=desc' => __('client.category.hightolow'),
+                                        ],
+                                        null,
+                                        ['class' => 'form-control sort']
+                                    ) !!}
                                 </div>
                                 <div class="col-md-4">
-                                    {!! Form::select('place', 
-                                            [
-                                                __('client.category.latest'),
-                                                __('client.category.oldest'),
-                                            ],
-                                            null,
-                                            ['class' => 'form-control']
-                                        ) !!}
+                                    {!! Form::select('time', 
+                                        [
+                                            __('client.category.sortByTime'),
+                                            '?sortBy=created_at&type=desc' => __('client.category.latest'),
+                                            '?sortBy=created_at&type=asc' => __('client.category.oldest'),
+                                        ],
+                                        null,
+                                        ['class' => 'form-control sort']
+                                    ) !!}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <a href="#" class="item">
-                            <img src="{{ asset('images/productImage1.jpeg') }}" alt="">
-                            <p>Sản phẩm 1</p>
-                            <div class="item__foot">
-                                <b>100.000.000 VND</b>
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                <span>(10000)</span>
-                            </div>
-                        </a>
-                    </div>
+                    @forelse($products as $product)
+                        @include('client.components.product')
+                    @empty
+                    {{ __('client.empty') }}
+                    @endforelse
+                </div>
+                <div class="custom-paginate text-center col-12 mt-4">
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
+<style>
 
+</style>
+@endsection
+
+@section('js')
+<script src="{{ asset('js/categoryClient.js') }}"></script>
 @endsection
