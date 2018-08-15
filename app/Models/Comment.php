@@ -78,4 +78,9 @@ class Comment extends Model
         
         return $parent !== null ? $parent->content : null;
     }
+
+    public function scopeDeleteSubComment($query, $id)
+    {
+        return $query->where('parent_id', '=', $id)->delete();
+    }
 }

@@ -7,11 +7,10 @@
             <div class="header-left">
                 <button class="search-trigger"><i class="fa fa-search"></i></button>
                 <div class="form-inline">
-
                     {!! Form::open([
                         'id' => 'search',
                         'method' => 'get',
-                        'url' => route(Route::currentRouteName()), 
+                        'url' => route(SearchHelper::search()), 
                         'class' => 'search-form']) 
                     !!}
 

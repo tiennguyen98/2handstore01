@@ -27,5 +27,6 @@ return [
     'logout' => 'Logout',
     'verify' => 'Please verify your email address',
     'registed' => 'Register Success',
-    'confirm' => 'Confirm'
+    'confirm' => 'Confirm',
+    'blocked' => 'Your account was blocked'
 ];

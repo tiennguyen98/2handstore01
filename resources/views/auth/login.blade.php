@@ -23,7 +23,12 @@
                         <p>{{ $errors->first('verify') }}</p>
                         <p><a href="{{ route('register.showResendForm') }}">{{ __('Click here to resend verify email') }} </a></p>
                     </div>
-                @endif                    
+                @endif       
+                @if($errors->has('blocked'))
+                    <div class="alert alert-danger">
+                        <p>{{ $errors->first('blocked') }}</p>
+                    </div>
+                @endif                
                 {!! Form::open(['route' => 'login']) !!}
 
                     <div class="form-group row">

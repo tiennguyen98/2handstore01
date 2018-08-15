@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -96,14 +97,21 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        Comment::destroy($id);
+        DB::transaction(function () use ($id) {
+            Comment::destroy($id);
+            Comment::deleteSubComment($id);
+        });
 
         return redirect()->route('admin.comments.index');
     }
 
     public function clientDestroy(Request $request, $id)
     {
-        Comment::destroy($id);
+        DB::transaction(function () use ($id) {
+            Comment::destroy($id);
+            Comment::deleteSubComment($id);
+        });
+
         $product = Product::findOrFail($request->id);
         $comments = Comment::parentComments($product->id);
 

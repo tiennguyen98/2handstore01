@@ -44,11 +44,11 @@ class Category extends Model
 
     public function saveCategory($data)
     {
-        if($this->thumbnail !== null && isset($data['thumbnail'])) 
+        if ($this->thumbnail !== null && isset($data['thumbnail'])) {
             Storage::delete($this->thumbnail);
+        }
 
-        if (isset($data['is_parent']) && $data['is_parent'] == 1) 
-        {
+        if (isset($data['is_parent']) && $data['is_parent'] == 1) {
             $data['parent_id'] = null;
         }
 
@@ -103,5 +103,10 @@ class Category extends Model
         }
         
         return $arrayCategories;
+    }
+    
+    public function scopeDeleteSubCategory($query, $id)
+    {
+        return $query->where('parent_id', '=', $id)->delete();
     }
 }
