@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <img src="{{ $site_info['logo'] }}" alt="" class="logo">
+                    <img src="{{ asset(Storage::url('images/logo.png')) }}" alt="" class="logo">
                 </div>
                 <div class="col-md-9">
 

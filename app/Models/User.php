@@ -60,7 +60,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Product', 'reports')->withPivot('content', 'type');
     }
 
-    public function comments()
+    public function commentProducts()
     {
         return $this->belongsToMany('App\Product', 'comments')->withPivot('content', 'parent_id');
     }
@@ -110,17 +110,24 @@ class User extends Authenticatable
         return $query->where('status', '=', '-1');
     }
 
-    public function scopeOption($query, $option) {
-        if($option === 'verified') return $this->scopeVerified($query);
-        if($option === 'unverify') return $this->scopeUnverify($query);
-        if($option === 'blocked') return $this->scopeBlocked($query);
+    public function scopeOption($query, $option)
+    {
+        if ($option === 'verified') {
+            return $this->scopeVerified($query);
+        }
+        if ($option === 'unverify') {
+            return $this->scopeUnverify($query);
+        }
+        if ($option === 'blocked') {
+            return $this->scopeBlocked($query);
+        }
         
         return $query;
     }
 
     public function saveUser($data)
     {
-        if(isset($data['avatar']) && $this->avatar !== null) {
+        if (isset($data['avatar']) && $this->avatar !== null) {
             Storage::delete($this->avatar);
         }
         

@@ -80,6 +80,20 @@ Route::group(
     }
 );
 
+Route::group([
+    'prefix' => '/client',
+    'as' => 'client.'
+], function () {
+    Route::group([
+        'prefix' => '/products',
+        'as' => 'products.'
+    ], function () {
+        Route::get('/show/{id}', 'ProductController@show')->name('show');
+        Route::post('/comment/{id}', 'CommentController@store')->name('comment')->middleware('auth');
+        Route::delete('/comment/destroy/{id}', 'CommentController@clientDestroy')->name('destroyComment')->middleware('auth');
+    });
+});
+
 Auth::routes();
 
 Route::get('lang/{lang}', 'LangController@changeLanguage')->name('language.change');
