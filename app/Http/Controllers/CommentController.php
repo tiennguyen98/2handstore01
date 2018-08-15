@@ -14,10 +14,14 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $comments = Comment::allComments();
+        $comments = Comment::allComments($request->search);
         $page = $comments->currentPage();
+
+        if ($request->ajax()) {
+            return view('admin.comments.content', compact('comments', 'page'));
+        }
 
         return view('admin.comments.index', compact('comments', 'page'));
     }
@@ -93,10 +97,8 @@ class CommentController extends Controller
     public function destroy($id)
     {
         Comment::destroy($id);
-        $comments = Comment::allComments();
-        $page = $comments->currentPage();
 
-        return view('admin.comments.content', compact('comments', 'page'));
+        return redirect()->route('admin.comments.index');
     }
 
     public function clientDestroy(Request $request, $id)

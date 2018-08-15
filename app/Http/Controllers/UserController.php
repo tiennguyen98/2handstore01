@@ -17,9 +17,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::customer();
+        $users = User::customer($request->search);
         $page = $users->currentPage();
-        
+
         if ($request->ajax()) {
             return view('admin.users.userTable', compact(['users', 'page']));
         }
@@ -29,7 +29,7 @@ class UserController extends Controller
 
     public function option(Request $request)
     {
-        $users = User::customerOption($request->option);
+        $users = User::customerOption($request->option, $request->search);
         $page = $users->currentPage();
 
         return view('admin.users.userTable', compact(['users', 'page']));

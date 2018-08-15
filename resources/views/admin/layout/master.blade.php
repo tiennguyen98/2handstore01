@@ -43,6 +43,7 @@
 
     @include('admin.assets.js') 
     <script src="{{ asset('js/destroy.js') }}"></script>
+    <script src="{{ asset('js/admin/search.js') }}"></script>
     @yield('js')
     
 </body>

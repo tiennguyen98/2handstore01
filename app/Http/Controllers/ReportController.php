@@ -12,10 +12,14 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $reports = Report::reports();
+        $reports = Report::reports($request->search);
         $page = $reports->currentPage();
+
+        if ($request->ajax()) {
+            return view('admin.reports.content', compact('reports', 'page'));
+        }
 
         return view('admin.reports.index', compact('reports', 'page'));
     }
@@ -88,9 +92,7 @@ class ReportController extends Controller
     public function destroy(Request $request)
     {
         Report::destroy($request->id);
-        $reports = Report::reports();
-        $page = $reports->currentPage();
 
-        return view('admin.reports.content', compact('reports', 'page'));
+        return redirect()->route('admin.reports.index');
     }
 }

@@ -24,9 +24,15 @@ class Comment extends Model
         return $this->belongsTo('App\Comment', 'parent_id', 'id');
     }
 
-    public function scopeAllComments($query)
+    public function scopeAllComments($query, $search = null)
     {
-        return $query->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
+        return $query->where('content', 'like', '%' . $search . '%')
+                    ->with('comment')
+                    ->join('users', 'comments.user_id', '=', 'users.id')
+                    ->join('products', 'comments.product_id', '=', 'products.id')
+                    ->select('comments.*', 'products.name as name', 'users.email as email')
+                    ->orderBy('updated_at', 'desc')
+                    ->paginate(config('database.paginate'));
     }
 
     public function user()
@@ -64,5 +70,12 @@ class Comment extends Model
         }
         
         return false;
+    }
+
+    public function parentComment()
+    {
+        $parent = $this->comment;
+        
+        return $parent !== null ? $parent->content : null;
     }
 }

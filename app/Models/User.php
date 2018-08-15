@@ -85,9 +85,9 @@ class User extends Authenticatable
         return $this->status == 1;
     }
 
-    public function scopeCustomer($query)
+    public function scopeCustomer($query, $search = null)
     {
-        return $query->where('role_id', '>', '1')->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
+        return $query->where('role_id', '>', '1')->where('email', 'like', '%' . $search . '%')->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
     }
 
     public function getAvatar()
@@ -141,8 +141,8 @@ class User extends Authenticatable
         return strlen($value) < 45 ? $value : (substr($value, 0, 42) . '...');
     }
 
-    public function scopeCustomerOption($query, $option)
+    public function scopeCustomerOption($query, $option, $search = null)
     {
-        return $query->option($option)->customer();
+        return $query->option($option)->customer($search);
     }
 }
