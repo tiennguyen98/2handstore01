@@ -25,9 +25,9 @@
                     <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-primary">{{ __('edit') }}</a>
                     
                     @if($user->status >= 0)
-                        <button onclick="block('{{ route('admin.users.block') }}', '{{ $user->id }}')" class="block btn btn-danger">{{ __('block') }}</button>
+                        <button onclick="block('{{ route('admin.users.block') }}', '{{ $user->id }}', '{{ __('Do you really want to block this user?') }}')" class="block btn btn-danger">{{ __('block') }}</button>
                     @else
-                        <button onclick="block('{{ route('admin.users.block') }}', '{{ $user->id }}')" class="block btn btn-success">{{ __('unblock') }}</button>
+                        <button onclick="block('{{ route('admin.users.block') }}', '{{ $user->id }}', '{{ __('Do you really want to unblock this user?') }}')" class="block btn btn-success">{{ __('unblock') }}</button>
                     @endif
                 </td>
             </tr>

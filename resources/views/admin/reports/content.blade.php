@@ -17,7 +17,7 @@
                 <td><a class="text-danger" href="{{ route('client.products.show', ['id' => $report->product_id]) }}" target="_blank">{{ $report->product->name }}</a></td>
                 <td>{{ $report->user->email }}</td>
                 <td>
-                    <button onclick="destroy('{{ route('admin.reports.destroy') }}', {{ $report->id }})" class="btn btn-danger">{{ __('Delete') }}</button>
+                    <button onclick="destroy('{{ route('admin.reports.destroy', ['id' => $report->id]) }}', '{{ __('Do you really want to delete this item?') }}')" class="btn btn-danger">{{ __('Delete') }}</button>
                 </td>
             </tr>
         @empty

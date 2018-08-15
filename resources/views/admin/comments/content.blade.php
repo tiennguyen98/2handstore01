@@ -17,7 +17,7 @@
                 <td>{{ $comment->content }}</td>
                 <td>{{ $comment->parent_id }}</td>
                 <td>
-                    <button onclick="destroy('{{ route('admin.comments.destroy', ['id' => $comment->id]) }}')" class="delete btn btn-danger">{{ __('Delete') }}</button>
+                    <button onclick="destroy('{{ route('admin.comments.destroy', ['id' => $comment->id]) }}', '{{ __('Do you really want to delete this item?') }}')" class="delete btn btn-danger">{{ __('Delete') }}</button>
                 </td>
             </tr>
         @empty

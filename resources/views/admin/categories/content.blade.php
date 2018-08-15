@@ -17,7 +17,7 @@
                 <td>{{ __('no') }}</td>
                 <td>
                     <a href="{{ route('admin.categories.edit', ['id' => $category->id]) }}" class="btn btn-primary">{{ __('Edit') }}</a>
-                    <button onclick="destroy('{{ route('admin.categories.destroy', ['id' => $category->id]) }}')" class="delete btn btn-danger">{{ __('Delete') }}</button>
+                    <button onclick="destroy('{{ route('admin.categories.destroy', ['id' => $category->id]) }}', '{{ __('Do you really want to delete this item?') }}')" class="delete btn btn-danger">{{ __('Delete') }}</button>
                 </td>
             </tr>
             <div>
@@ -30,7 +30,7 @@
                         <td>{{ $category->name }}</td>
                         <td>
                             <a href="{{ route('admin.categories.edit', ['id' => $cate->id]) }}" class="btn btn-primary">{{ __('Edit') }}</a>
-                            <button onclick="destroy('{{ route('admin.categories.destroy', ['id' => $category->id]) }}')" class="delete btn btn-danger">{{ __('Delete') }}</button>
+                            <button onclick="destroy('{{ route('admin.categories.destroy', ['id' => $cate->id]) }}', '{{ __('Do you really want to delete this item?') }}')" class="delete btn btn-danger">{{ __('Delete') }}</button>
                         </td>
                     </tr>
                 @endforeach
