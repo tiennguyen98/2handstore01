@@ -30,7 +30,7 @@ Route::group([
             Route::get('/show', 'UserController@show')->name('show');
             Route::put('/update/{id}', 'UserController@update')->name('update');
             Route::post('/block', 'UserController@toggleBlock')->name('block');
-            Route::get('/option', 'UserController@option')->name('option');
+            Route::get('/option/{option}', 'UserController@option')->name('option');
         }
     );
     Route::group(
@@ -99,9 +99,30 @@ Route::group([
     ], function () {
         Route::get('/show/{id}', 'ProductController@show')->name('show');
         Route::post('/comment/{id}', 'CommentController@store')->name('comment')->middleware('auth');
-        Route::delete('/comment/destroy/{id}', 'CommentController@clientDestroy')->name('destroyComment')->middleware('auth');
     });
     Route::post('/report/{id}', 'ReportController@store')->name('report.store')->middleware('auth');
+    Route::delete('/comment/destroy/{id}', 'CommentController@clientDestroy')->name('destroyComment')->middleware('auth');
+
+    Route::group([
+        'prefix' => '/user',
+        'as' => 'user.',
+        'middleware' => [
+                'auth'
+            ]
+        ], function () {
+            Route::get('/profile', 'UserController@profile')->name('profile');
+            Route::put('/update/{id}', 'UserController@updateProfile')->name('update');
+        });
+});
+
+Route::group([
+    'prefix' => '/password',
+    'as' => 'password.',
+    'middleware' => 'auth',
+    'namespace' => 'Auth'
+], function () {
+    Route::get('/edit', 'ChangePasswordController@edit')->name('edit');
+    Route::put('/update', 'ChangePasswordController@update')->name('update');
 });
 
 Auth::routes();

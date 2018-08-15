@@ -14,16 +14,24 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-6 offset-lg-4 text-right">
+                <div class="col-lg-4 col-md-8 offset-lg-4 text-right">
                     <ul>
                         <li><a href="#"><i class="far fa-question-circle"></i> @lang('client.help') </a></li>
                         @if(!Auth::check())
                             <li class="font-weight-bold"><a href="{{ route('register') }}"> @lang('auth.register') </a></li>
                             <li class="font-weight-bold"><a href="{{ route('login') }}"> @lang('auth.login') </a></li>
                         @else
-                        <li class="font-weight-bold"><a href="#"> {{ Auth::user()->name }} </a></li>
-                        <li class="font-weight-bold"><a href="#" 
-                            onclick="javascript:document.getElementById('logout').submit()"> @lang('auth.logout') </a></li>
+                        <div class="dropdown d-inline">
+                            <li class="font-weight-bold dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a href="#"> {{ Auth::user()->name }} </a>
+                            </li>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <a href="{{ route('client.user.profile') }}" class="dropdown-item">{{ __('Profile') }}</a>
+                              <a href="#" class="dropdown-item">{{ __('Orders') }}</a>
+                              <button class="dropdown-item"
+                                onclick="javascript:document.getElementById('logout').submit()"> @lang('auth.logout')</button>
+                            </div>
+                        </div>
                         @endif
                     </ul>
                 </div>
@@ -40,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <img src="{{ asset(Storage::url('images/logo.png')) }}" alt="" class="logo">
+                    <a href="{{ route('index') }}"><img src="{{ $site_info['logo'] }}" alt="" class="logo"></a>
                 </div>
                 <div class="col-md-9">
 

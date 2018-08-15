@@ -1,0 +1,67 @@
+.sidebar {
+    display: inline-block;
+    width: 25%;
+    background-color: white;
+}
+
+.avatar {
+    display: inline-block;
+    width: 25%;
+}
+
+.avatar img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+}
+
+ul li {
+    text-decoration: none;
+    list-style: none;
+    padding: 0.5rem 0 0.5rem 0; 
+}
+
+.profile-content {
+    width: 75%;
+    float: right;
+    background-color: white;
+    padding: 1.5rem;
+}
+
+.container.mt-3 {
+    overflow: auto;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: yellow;
+    cursor: inherit;
+    display: block;
+}
+
+.input-group {
+    display: inline-block;
+}
+
+.img-upload {
+    display: inline;
+}
+
+.img-upload img {
+    height: 175px;
+    width: 175px;
+    border-radius: 50%;
+}

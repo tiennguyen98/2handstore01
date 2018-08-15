@@ -165,7 +165,7 @@
                     </div>
                     <div class="form-group row">
                         {{ Form::label(
-                                __('auth.city'), 
+                                __('address'), 
                                 null, 
                                 [
                                     'class' => 'col-sm-3 col-form-label'
@@ -173,20 +173,14 @@
                             ) 
                         }}
                         <div class="col-sm-9">
-                            {!! Form::select(
-                                    'city',
-                                    [
-                                        'Ha Noi' => 'Ha Noi'
-                                    ],
-                                    null,
-                                    [
-                                        'class' => 'custom-select my-1 mr-sm-2'
-                                    ]
-                                ) 
+                            {!! Form::text('address', null, [
+                                    'class' => 'form-control',
+                                    'placeholder' => __('address')
+                                ]) 
                             !!}
-                            @if ($errors->has('city'))
+                            @if ($errors->has('address'))
                             <span>
-                                <strong>{{ $errors->first('city') }}</strong>
+                                <strong>{{ $errors->first('address') }}</strong>
                             </span>
                             @endif
                         </div>
