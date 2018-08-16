@@ -49,6 +49,9 @@ return [
         'comment' => 'Bình luận',
         'reply' => 'Trả lời',
         'related' => 'Sản phẩm liên quan',
+        'new' => 'Thêm sản phẩm mới',
+        'save' => 'Đăng tin',
+        'back' => 'Trở về'
     ],
     'empty' => 'Chưa có sản phẩm'
 

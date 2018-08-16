@@ -34,12 +34,14 @@ return [
             'sold' => 'Sold',
             'available' => 'Available'
         ],
-        'name' => 'Name',
+        'name' => 'Product Name',
         'thumbnail' => 'Thumbnail',
         'price' => 'Price',
         'postedby' => 'Posted by',
         'category' => 'Category',
         'province' => 'Province',
+        'description' => 'Description',
+        'city' => 'City'
     ],
     'control' => [
         'delete' => 'Delete',

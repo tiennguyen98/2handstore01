@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('.delete').click(function(){
         
-        let id = $(this).attr('data-id');
+        let id = $(this).parent('td').attr('data-id');
         let url = $(this).attr('data-url');
         let msg = $(this).attr('data-msg');
 
@@ -21,6 +21,21 @@ $(document).ready(function(){
                         $(this).remove();
                     });
                 }
+            }
+        });
+    });
+
+    $('.show').click(function(){
+        
+        let id = $(this).parent('td').attr('data-id');
+        let url = $(this).attr('data-url');
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(result) {
+                console.log(result);
+                $('.modal').modal();
             }
         });
     });

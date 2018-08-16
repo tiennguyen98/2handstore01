@@ -70,6 +70,7 @@ class Category extends Model
         Category::destroy($this->id);
     }
 
+
     public function scopeFindBySlug($query, $slug)
     {
         $category = Category::where('slug', $slug)->first();
@@ -91,5 +92,16 @@ class Category extends Model
                 ->orderBy($sort['sortBy'], $sort['type'])
                 ->paginate(config('database.paginate'))
                 ->withPath($other_path);
+    }
+    
+    public function scopeConvertToArray($query)
+    {
+        $categories = Category::get();
+        $arrayCategories = [];
+        foreach ($categories as $category) {
+            $arrayCategories[$category->id] = $category->name;
+        }
+        
+        return $arrayCategories;
     }
 }

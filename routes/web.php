@@ -41,6 +41,7 @@ Route::group([
         function () {
             Route::get('/', 'Admin\ProductController@index')->name('list');
             Route::delete('{product?}', 'Admin\ProductController@destroy')->name('destroy');
+            Route::get('{product}', 'Admin\ProductController@show')->name('show');
         }
     );
     Route::resource('/categories', 'CategoryController');
@@ -138,3 +139,15 @@ Route::get('lang/{lang}', 'LangController@changeLanguage')->name('language.chang
 Route::get('/auth/google', 'Auth\SocialAuthController@redirectToProvider')->name('google.login');
 Route::get('/auth/google/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('google.callback');
 Route::get('category/{slug}', 'Client\CategoryController@index')->name('client.category');
+Route::group(
+    [
+        'middleware' => 'auth',
+        'prefix' => 'product',
+        'as' => 'client.product.'
+    ], 
+    function () {
+        Route::get('/new', 'Client\ProductController@postProduct')->name('new');
+        Route::post('/new', 'Client\ProductController@store')->name('store');
+        Route::post('/upload-images', 'Client\ProductController@uploadImage')->name('upload.image');
+    }
+);

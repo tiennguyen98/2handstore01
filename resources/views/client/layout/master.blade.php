@@ -10,6 +10,8 @@
     <meta name="keyword" content="@yield('keyword', $site_info['keyword'])">
     <link rel="icon" type="image/x-icon" href="{{ $site_info['favicon'] }}">
     @include('client.assets.css')
+    
+    @yield('css')
 
     @yield('css')
 

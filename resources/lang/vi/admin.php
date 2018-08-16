@@ -32,12 +32,14 @@ return [
             'sold' => 'Đã bán',
             'available' => 'Vẫn còn hàng'
         ],
-        'name' => 'Tên',
+        'name' => 'Tên sản phẩm',
         'thumbnail' => 'Ảnh',
         'price' => 'Gía',
         'postedby' => 'Người đăng',
         'category' => 'Danh mục',
         'province' => 'Tỉnh',
+        'description' => 'Mô tả sản phẩm',
+        'city' => 'Thành phố'
     ],
     'control' => [
         'delete' => 'Xóa',
