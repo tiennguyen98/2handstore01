@@ -54,6 +54,10 @@ $(document).ready(function () {
         $(this).remove();
         $('.product-description-content.mb-0').height('auto');
     });
+
+    $('.order-product').click(function () {
+        $('.form-order').submit();
+    });
 });
 
 function comment(url, element, bottom) {

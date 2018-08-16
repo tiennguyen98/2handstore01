@@ -27,6 +27,11 @@ class Order extends Model
         return $this->belongsTo('App\Product');
     }
 
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
+
     public function scopeOrders($query, $search = null)
     {
         return $query->join('users', 'orders.user_id', 'users.id')

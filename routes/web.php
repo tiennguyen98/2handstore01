@@ -148,6 +148,7 @@ Route::get('lang/{lang}', 'LangController@changeLanguage')->name('language.chang
 Route::get('/auth/google', 'Auth\SocialAuthController@redirectToProvider')->name('google.login');
 Route::get('/auth/google/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('google.callback');
 Route::get('category/{slug}', 'Client\CategoryController@index')->name('client.category');
+
 Route::group(
     [
         'middleware' => 'auth',
@@ -163,3 +164,12 @@ Route::group(
 Route::get('profile/{user}', 'Client\ProfileController@index')->name('client.profile');
 Route::post('profile/{user}/rate', 'Client\ProfileController@rating')->name('client.profile.rate');
 Route::get('loadmore', 'HomeController@loadMoreProduct')->name('loadmore');
+
+Route::group([
+    'prefix' => '/order',
+    'middleware' => 'auth'
+], function () {
+    Route::get('{product}', 'ProductController@order')->name('client.order.view');
+    Route::post('{product}', 'ProductController@buy')->name('client.order.buy');
+});
+
