@@ -43,9 +43,13 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
         
-        // $remember = $request->has('remember');
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             if (!Auth::user()->verified()) {
+                if (Auth::user()->blocked()) {
+                    Auth::logout();
+
+                    return redirect()->back()->withErrors(['blocked' => trans('auth.blocked')]);
+                }
                 Auth::logout();
 
                 return redirect()->back()->withErrors(['verify' => trans('auth.verify')]);

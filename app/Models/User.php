@@ -186,4 +186,9 @@ class User extends Authenticatable
             return false;
         }
     }
+    
+    public function blocked()
+    {
+        return $this->status == -1;
+    }
 }

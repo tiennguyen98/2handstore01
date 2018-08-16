@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
@@ -142,8 +144,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $cate = Category::findOrFail($id);
-        $cate->deleteCategory();
+        DB::transaction(function () use ($id) {
+            $cate = Category::findOrFail($id);
+            Product::deleteProductByCategory($id);
+            Category::deleteSubCategory($id);
+            $cate->deleteCategory();
+        });
 
         return redirect()->route('admin.categories.index');
     }
