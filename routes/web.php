@@ -162,4 +162,4 @@ Route::group(
 );
 Route::get('profile/{user}', 'Client\ProfileController@index')->name('client.profile');
 Route::post('profile/{user}/rate', 'Client\ProfileController@rating')->name('client.profile.rate');
-
+Route::get('loadmore', 'HomeController@loadMoreProduct')->name('loadmore');
