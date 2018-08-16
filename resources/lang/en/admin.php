@@ -55,6 +55,17 @@ return [
     ],
     'order' => [
         'list' => 'List Orders'
+    ],
+    'slider' => 'Slider',
+    'slide' => [
+        'image' => 'Image',
+        'link' => 'Link',
+        'add' => 'Add',
+        'update' => 'Update',
+        'alert' => [
+            'image' => 'File must be an image.',
+            'linkmin' => 'Link must be at least 1 characters.',
+            'success' => 'Added successfuly',
+        ]
     ]
-    
 ];

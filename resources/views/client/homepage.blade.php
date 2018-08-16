@@ -2,28 +2,34 @@
 
 @section('content')
 
-<div class="slider">
-    <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('images/slide.jpeg') }}" alt="First slide">
+@if(count($slides) > 0)
+    <div class="slider">
+        <div class="container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach($slides as $slide)
+                        <div class="carousel-item 
+                        @if ($loop->first)
+                            active
+                        @endif
+                        ">
+                            <a href="{{ $slide->link() }}">
+                                <img class="d-block w-100" src="{{ $slide->getImage() }}" alt="First slide">
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
         </div>
     </div>
-</div>
+@endif
+
 <div class="box categories mt-4">
     <div class="container">
         <div class="box__title">

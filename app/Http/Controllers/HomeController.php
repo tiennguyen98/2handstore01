@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Slider;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('client.homepage');
+        $slides = Slider::latest()->get();
+
+        return view('client.homepage', compact('slides'));
     }
 
     public function adminIndex()

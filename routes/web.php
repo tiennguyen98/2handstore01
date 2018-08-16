@@ -45,7 +45,6 @@ Route::group([
         }
     );
     Route::resource('/categories', 'CategoryController');
-    
     Route::group([
         'prefix' => 'comments',
         'as' => 'comments.'
@@ -53,6 +52,7 @@ Route::group([
         Route::get('/', 'CommentController@index')->name('index');
         Route::delete('/destroy/{id}', 'CommentController@destroy')->name('destroy');
     });
+
     Route::group(
         [
             'prefix' => 'config',
@@ -61,6 +61,15 @@ Route::group([
         function () {
             Route::get('/', 'Admin\ConfigController@index')->name('index');
             Route::put('/', 'Admin\ConfigController@save')->name('save');
+        });
+    Route::group(['prefix' => 'sliders'], 
+        function () {
+            Route::get('/', 'Admin\SliderController@index')->name('slide.index');
+            Route::delete('/{slider?}', 'Admin\SliderController@destroy')->name('slide.destroy');
+            Route::get('/add', 'Admin\SliderController@add')->name('slide.add');
+            Route::post('/add', 'Admin\SliderController@store')->name('slide.store');
+            Route::get('/{slider}/edit', 'Admin\SliderController@edit')->name('slide.edit');
+            Route::put('/{slider}/edit', 'Admin\SliderController@update')->name('slide.update');
         }
     );
     Route::delete('/categories/delete', 'CategoryController@destroy')->name('categories.delete');
