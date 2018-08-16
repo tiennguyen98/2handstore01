@@ -64,4 +64,29 @@ class ProductController extends Controller
 
         return response()->json($data);
     }
+
+    public function getMyProducts(Request $request)
+    {
+        $products = $request->user()->getMyProducts();
+
+        return view('client.user.myproduct', compact('products'));
+    }
+
+    public function changeStatus(Product $product)
+    {
+        $this->authorize('status', $product);
+        $status = $product->status == 1 ? 0 : 1;
+        $product->update([
+            'status' => $status
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function myPurchases(Request $request)
+    {
+        $orders = $request->user()->getMyPurchases();
+
+        return view('client.user.mypurchases', compact('orders'));
+    }
 }

@@ -50,16 +50,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        {{ Form::label(__('auth.city'), null, ['class' => 'col-sm-3 col-form-label']) }}
+                        {{ Form::label(__('address'), null, ['class' => 'col-sm-3 col-form-label']) }}
                         <div class="col-sm-9">
-                            {!! Form::select('city', ['Ha Noi' => 'Ha Noi'], null, [
-                                'class' => 'custom-select my-1 mr-sm-2'
-                            ]) !!}
-                            @if ($errors->has('city'))
-                            <span>
-                                <strong>{{ $errors->first('city') }}</strong>
-                            </span>
-                            @endif
+                            {!! Form::text('address', null, [
+                                    'class' => 'form-control',
+                                    'placeholder' => __('address')
+                                ]) 
+                            !!}
                         </div>
                     </div>
                     <div class="text-center">

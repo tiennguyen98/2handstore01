@@ -28,6 +28,8 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                               <a href="{{ route('client.user.profile') }}" class="dropdown-item">{{ __('Profile') }}</a>
                               <a href="{{ route('client.orders') }}" class="dropdown-item">{{ __('Orders') }}</a>
+                              <a href="{{ route('client.myproduct.index') }}" class="dropdown-item">{{ __('client.products.posted') }}</a>
+                              <a href="{{ route('client.purchases.index') }}" class="dropdown-item">{{ __('client.purchases') }}</a>
                               <button class="dropdown-item"
                                 onclick="javascript:document.getElementById('logout').submit()"> @lang('auth.logout')</button>
                             </div>
@@ -70,7 +72,9 @@
 
                 </div>
                 <div class="col-md-1 cart">
-                    <button class="cart-icon"><i class="fas fa-shopping-cart"></i></button>
+                    @auth
+                        <a href="{{ route('client.product.new') }}" class="text-white mt-2 d-inline-block new-product"><i class="fas fa-plus-square"></i></a>
+                    @endauth
                 </div>
             </div>
         </div>

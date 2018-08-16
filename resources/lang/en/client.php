@@ -54,6 +54,8 @@ return [
         'save' => 'Save',
         'back' => 'Back'
     ],
-    'empty' => 'No Data'
+    'empty' => 'No Data',
+    'purchases' => 'My purchases',
+    'products.posted' => 'My Products'
 
 ];
