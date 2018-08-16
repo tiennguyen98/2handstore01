@@ -24,7 +24,7 @@ class HomeController extends Controller
     {
         $slides = Slider::latest()->get();
         $categories = Category::get();
-        $new_products = Product::latest()->paginate(config('database.homepaginate'));
+        $new_products = Product::latest()->withProvince()->paginate(config('database.homepaginate'));
 
         return view('client.homepage', compact('categories', 'new_products', 'slides'));
     }

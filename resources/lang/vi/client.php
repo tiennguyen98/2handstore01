@@ -31,11 +31,13 @@ return [
         'lowest' => 'Thấp nhất',
         'highest' => 'Cao nhất',
         'lowtohigh' => 'Giá từ thấp đến cao',
-        'hightolow' => 'Giá từ cao xuống thấp',
+        'hightolow' => 'Giá từ cao đến thấp',
         'oldest' => 'Cũ nhất',
         'latest' => 'Mới nhất',
         'sortByPrice' => 'Theo giá',
         'sortByTime' => 'Theo thời gian',
+        'city' => 'Tỉnh/Thành Phố',
+        'province' => 'Quận/ Huyện'
     ],
     'product' => [
         'shipto' => 'Vận chuyển đến',

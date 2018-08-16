@@ -15,4 +15,9 @@ class Province extends Model
     {
         return $this->belongsTo('App\City');
     }
+
+    public function scopeGetProvinces($query, $id)
+    {
+        return $query->where('city_id', $id)->pluck('name', 'id');
+    }
 }

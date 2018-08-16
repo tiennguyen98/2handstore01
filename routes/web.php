@@ -107,7 +107,7 @@ Route::group(
 );
 
 Route::group([
-    'prefix' => '/client',
+    'prefix' => '/',
     'as' => 'client.',
 ], function () {
     Route::group([
@@ -116,6 +116,8 @@ Route::group([
     ], function () {
         Route::get('/show/{id}', 'ProductController@show')->name('show');
         Route::post('/comment/{id}', 'CommentController@store')->name('comment')->middleware('auth');
+        Route::get('/search', 'ProductController@search')->name('search');
+        Route::get('/province', 'ProductController@getSearchProvince')->name('getSearchProvince');
     });
     Route::post('/report/{id}', 'ReportController@store')->name('report.store')->middleware('auth');
     Route::delete('/comment/destroy/{id}', 'CommentController@clientDestroy')->name('destroyComment')->middleware('auth');

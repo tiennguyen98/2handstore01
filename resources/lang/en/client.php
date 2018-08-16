@@ -31,12 +31,15 @@ return [
         'sortby' => 'Sort By',
         'lowest' => 'Lowest',
         'highest' => 'Highest',
-        'lowtohigh' => 'Low to High',
-        'hightolow' => 'High to Low',
+        'lowtohigh' => 'Price Low to High',
+        'hightolow' => 'Price High to Low',
         'oldest' => 'Oldest',
         'latest' => 'Latest',
         'sortByPrice' => 'Sort By Price',
         'sortByTime' => 'Sort By Time',
+        'lastest' => 'Lastest',
+        'city' => 'Choose City',
+        'province' => 'Choose District'
     ],
     'product' => [
         'shipto' => 'Ship to',

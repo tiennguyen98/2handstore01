@@ -117,6 +117,14 @@
                             <a href="#">{{ $product->brand }}</a>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="product-infor-lable">
+                            @lang('Address')
+                        </td>
+                        <td class="product-infor-value">
+                            <a href="#">{{ $product->getAddress() }}</a>
+                        </td>
+                    </tr>
                 </table>
                 <div class="product-description">
                     <span>@lang('client.product.description')</span>
@@ -140,7 +148,7 @@
                             @lang('client.product.postedby')
                         </label>
                         <span name="owner-name">
-                            <a href="#">{{ $product->user->name }}</a>
+                            <a href="{{ route('client.profile', ['user' => $product->user]) }}">{{ $product->user->name }}</a>
                         </span>
                     </div>
                     <div>
@@ -184,7 +192,7 @@
                         <i class="fas fa-star"></i>
                         <span>(10000)</span>
                     </div>
-                 </a>                
+                </a>                
             @endforeach
         </div>
     </div>
