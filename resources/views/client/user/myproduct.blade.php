@@ -25,7 +25,7 @@
                     </td>
                     <td>{{ $product->money }}</td>
                     <td>{{ $product->category->name }}</td>
-                    <td>{{ $product->city->name }}</td>
+                    <td>{{ $product->province->city->name }}</td>
                     <td>
                         {!! Form::open([
                             'url' => route('client.myproduct.status', ['product' => $product->id]),

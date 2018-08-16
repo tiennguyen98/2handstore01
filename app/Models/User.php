@@ -97,7 +97,7 @@ class User extends Authenticatable
 
     public function getAvatar()
     {
-        return asset(Storage::url($this->avatar != null ? $this->avatar : 'images/default.png'));
+        return asset(Storage::url($this->avatar != null ? $this->avatar : 'images/default.jpg'));
     }
 
     public function scopeVerified($query)
@@ -214,6 +214,6 @@ class User extends Authenticatable
 
     public function getMyPurchases()
     {
-        return $this->purchases()->paginate(config('database.paginate')); 
+        return $this->purchases()->paginate(config('database.paginate'));
     }
 }

@@ -16,6 +16,7 @@ class ProfileController extends Controller
             $my_vote = $user->getVote($request->user());
         }
         $user_products = $user->products()
+                            ->available()
                             ->withProvince()
                             ->paginate(config('database.paginate'));
 

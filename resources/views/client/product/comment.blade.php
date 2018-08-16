@@ -5,7 +5,7 @@
     <div class="comments">
         @foreach($comments as $comment)
             <div class="comment">
-                <div class="avatar"><img alt="avatar" src="{{ asset(Storage::url($comment->user->avatar)) }}"></div>
+                <div class="avatar"><img alt="avatar" src="{{ $comment->user->getAvatar() }}"></div>
                 <div class="comment-content">
                     <div class="commnet-owner">
                         <a href="javascript:void(0)">{{ $comment->user->name }}</a>
@@ -32,7 +32,7 @@
             @foreach ($comment->comments as $reply)
             <div class="comment reply-comment">
                 <div class="avatar">
-                    <img alt="avatar" src="{{ asset(Storage::url($reply->user->avatar)) }}">
+                    <img alt="avatar" src="{{ $comment->user->getAvatar() }}">
                 </div>
                 <div class="comment-content">
                     <div class="commnet-owner">

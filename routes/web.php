@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::group([
     'prefix' => '/admin',
     'as' => 'admin.',
-    'middleware' => ['auth']
+    'middleware' => ['auth', 'role']
 ], function () {
     Route::get('/dashboard', 'HomeController@adminIndex')->name('index');
     Route::group(
@@ -61,8 +61,10 @@ Route::group([
         function () {
             Route::get('/', 'Admin\ConfigController@index')->name('index');
             Route::put('/', 'Admin\ConfigController@save')->name('save');
-        });
-    Route::group(['prefix' => 'sliders'], 
+        }
+    );
+    Route::group(
+        ['prefix' => 'sliders'],
         function () {
             Route::get('/', 'Admin\SliderController@index')->name('slide.index');
             Route::delete('/{slider?}', 'Admin\SliderController@destroy')->name('slide.destroy');
@@ -174,7 +176,7 @@ Route::group(
         'middleware' => 'auth',
         'prefix' => 'product',
         'as' => 'client.product.'
-    ], 
+    ],
     function () {
         Route::get('/new', 'Client\ProductController@postProduct')->name('new');
         Route::post('/new', 'Client\ProductController@store')->name('store');
@@ -192,4 +194,3 @@ Route::group([
     Route::get('{product}', 'ProductController@order')->name('client.order.view');
     Route::post('{product}', 'ProductController@buy')->name('client.order.buy');
 });
-

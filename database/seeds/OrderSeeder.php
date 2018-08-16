@@ -22,7 +22,7 @@ class OrderSeeder extends Seeder
             foreach ($items as $item) {
                 Order::create([
                     'address' => $faker->address,
-                    'user_id' => $user,
+                    'buyer_id' => $user,
                     'product_id' => $products[$item],
                 ]);
             }

@@ -109,4 +109,9 @@ class Category extends Model
     {
         return $query->where('parent_id', '=', $id)->delete();
     }
+
+    public function getNameAttribute($value)
+    {
+        return __($value);
+    }
 }

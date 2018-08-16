@@ -105,7 +105,10 @@ class Product extends Model
 
     public function scopeSuggestedProducts($query, $id)
     {
-        return $query->where('category_id', '=', $id)->limit(config('database.suggested'))->get();
+        return $query->where('category_id', '=', $id)
+        ->where('status', '=', '1')
+        ->withProvince()
+        ->limit(config('database.suggested'))->get();
     }
 
     public function getBrandAttribute($value)
@@ -116,6 +119,11 @@ class Product extends Model
     public function scopeDeleteProductByCategory($query, $id)
     {
         return $query->where('category_id', '=', $id)->delete();
+    }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('status', '=', '1');
     }
 
     public function scopeWithProvince($query)

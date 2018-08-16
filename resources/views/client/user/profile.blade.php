@@ -22,7 +22,7 @@
                     </span>
                 </span>
                 <div class="img-upload">
-                    <img id='img-upload' src="{{ asset(Storage::url($user->avatar)) }}"/>
+                    <img id='img-upload' src="{{ $user->getAvatar() }}"/>
                 </div>
                 @if($errors->has('image'))
                     <div class="offset-sm-3 col-sm-8">

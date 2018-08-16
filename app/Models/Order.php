@@ -36,7 +36,7 @@ class Order extends Model
 
     public function scopeOrders($query, $search = null)
     {
-        return $query->join('users', 'orders.user_id', 'users.id')
+        return $query->join('users', 'orders.buyer_id', 'users.id')
                     ->join('products', 'orders.product_id', 'products.id')
                     ->where('users.email', 'like', '%' . $search . '%')
                     ->orWhere('products.name', 'like', '%' . $search . '%')

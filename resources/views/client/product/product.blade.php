@@ -140,7 +140,7 @@
             </div>
             <div class="product-owner">
                 <div class="avatar">
-                    <img src="{{ asset(Storage::url($product->user->avatar)) }}" alt="avatar">
+                    <img src="{{ $product->user->getAvatar() }}" alt="avatar">
                 </div>
                 <div class="owner-infor">
                     <div>
@@ -181,16 +181,14 @@
         <div class="products suggested-carousel owl-carousel owl-theme">
             @foreach ($suggestedProducts as $product)
                 <a href="{{ route('client.products.show', ['id' => $product->id]) }}" class="item">
-                    <img src="{{ asset(Storage::url($product->thumbnail)) }}" alt="{{ __('thumbnail') }}">
-                    <p>{{ $product->name }}</p>
+                    <img src="{{ $product->thumbnail() }}" alt="{{ __('thumbnail') }}">
+                    <p class="text-truncate">{{ $product->name }}</p>
+                    <div class="place text-right">
+                        <i class="fas fa-map-marker-alt"></i> 
+                        {{ $product->province->city->name }}
+                    </div>
                     <div class="item__foot">
                         <b>{{ $product->money }}</b>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>(10000)</span>
                     </div>
                 </a>                
             @endforeach
