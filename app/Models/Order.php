@@ -14,22 +14,24 @@ class Order extends Model
         'user_id',
         'product_id',
         'created_at',
-        'upated_at'
+        'upated_at',
+        'status',
+        'city_id'
     ];
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'buyer_id');
     }
 
     public function products()
     {
-        return $this->belongsTo('App\Product');
+        return $this->belongsTo('App\Product', 'product_id');
     }
 
     public function city()
     {
-        return $this->belongsTo('App\City');
+        return $this->belongsTo('App\City', 'city_id');
     }
 
     public function scopeOrders($query, $search = null)

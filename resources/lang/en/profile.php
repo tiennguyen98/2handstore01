@@ -6,6 +6,10 @@ return [
     'rating' => [
         'avg' => 'Average: ',
         'votes' => 'Votes: '
-    ]
-    
+    ],
+    'product' => 'Product Name',
+    'order.contact' => 'Buyer\'s contact',
+    'shipto' => 'Ship to',
+    'Sell' => 'Sell',
+    'Sold' => 'Sold',
 ];

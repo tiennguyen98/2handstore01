@@ -186,9 +186,19 @@ class User extends Authenticatable
             return false;
         }
     }
-    
+
     public function blocked()
     {
         return $this->status == -1;
+    }
+
+    public function myOrders()
+    {
+        return $this->hasManyThrough('App\Order', 'App\Product');
+    }
+
+    public function getProductOrders()
+    {
+        return $this->myOrders()->orderBy('product_id', 'DESC')->latest()->get();
     }
 }

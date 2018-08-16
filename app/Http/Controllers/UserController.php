@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Rules\CheckPhoneRule;
+use App\Order;
 
 class UserController extends Controller
 {
@@ -167,5 +168,29 @@ class UserController extends Controller
         $this->updateUser($request, $id);
 
         return redirect()->route('client.user.profile');
+    }
+
+    public function myOrders(Request $request)
+    {
+        $orders = $request->user()->getProductOrders();
+
+        return view('client.user.myorder', compact('orders'));
+    }
+
+    public function sellProduct(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'order_id' => 'required|exists:orders,id'
+            ]
+        );
+        $order = Order::find($request->order_id);
+        $status = $order->status == 0 ? 1 : 0;
+        $order->update([
+            'status' => $status
+        ]);
+
+        return redirect()->back();
     }
 }
