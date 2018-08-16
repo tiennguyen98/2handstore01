@@ -72,7 +72,7 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->belongsToMany('App\Product', 'orders')->withPivot('address', 'note');
+        return $this->belongsToMany('App\Product', 'orders', 'buyer_id')->withPivot('address', 'note');
     }
 
     public function provider_users()
@@ -176,5 +176,14 @@ class User extends Authenticatable
         }
         
         return false;
+    }
+
+    public function isBought($product_id)
+    {
+        if ($this->orders()->where('product_id', $product_id)->first()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

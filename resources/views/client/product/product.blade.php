@@ -63,7 +63,9 @@
                 <div class="shipping">
                     {!! 
                         Form::open([
-                            'class' => 'form-inline'
+                            'class' => 'form-inline form-order',
+                            'url' => route('client.order.view', ['product' => $product->id]),
+                            'method' => 'GET'
                         ]) 
                     !!}
                         {!! 
@@ -92,7 +94,7 @@
             </div>
             <div class="product-detail">
                 <div class="product-order">
-                    <a href="#" class="btn btn-success col-md-6">
+                    <a href="javascript:void(0)" class="btn btn-success col-md-6 order-product">
                         <i class="fas fa-shopping-cart"></i>
                         @lang('client.product.buynow')
                     </a>
