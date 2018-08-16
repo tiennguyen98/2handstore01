@@ -18,6 +18,7 @@ return [
         'logo',
         'favicon'
     ],
-    'slider' => 'public/slides'
+    'slider' => 'public/slides',
+    'thumbpath' => 'public/thumbnails'
 ];
 

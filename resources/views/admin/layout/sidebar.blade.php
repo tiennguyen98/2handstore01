@@ -55,7 +55,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li>
                             <i class="fa fa-list-ul"></i>
-                            <a href="{{ route('admin.product.list') }}">
+                            <a href="{{ route('admin.product.index') }}">
                                 @lang('admin.article.list')
                             </a>
                         </li>

@@ -28,7 +28,7 @@
                         <td>{{ $product->money }}</td>
                         <td>{{ $product->user->email }}</td>
                         <td>{{ $product->category->name }}</td>
-                        <td>{{ $product->city->name }}</td>
+                        <td>{{ $product->province->city->name }}</td>
                         <td>
                             <a class="status btn btn-{{ $product->status()['css'] }}" title="{{ $product->status()['status'] }}">
                             </a>

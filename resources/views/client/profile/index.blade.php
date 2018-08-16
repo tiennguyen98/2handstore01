@@ -96,6 +96,7 @@
             </li>
         </ul>
     </div>
+    <h2 class="text-center mt-4">@lang('profile.myproduct', ['name' => $user->name])</h2>
     <div class="row products mt-5">
         @forelse($user_products as $product)
             @include('client.components.product')

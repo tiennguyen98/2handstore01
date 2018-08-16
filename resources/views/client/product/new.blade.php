@@ -78,15 +78,27 @@
                         {!! Form::label('description', __('admin.product.thumbnail'), []) !!}
                         <div class="custom-file mb-4">
                             {!! Form::file('thumbnail', ['class' => 'custom-file-input']) !!}
-                            {!! Form::label('description', __('admin.product.thumbnail'), ['class' => 'custom-file-label']) !!}
+                            {!! Form::label(null, __('admin.product.thumbnail'), ['class' => 'custom-file-label']) !!}
                         </div>
 
-                        {!! Form::label('description', __('admin.product.category'), []) !!}
-                        {!! Form::select('category_id', $categories, null, ['class' => 'custom-select']) !!}
+                        <div class="form-group">
+                            {!! Form::label(null, __('admin.product.category'), []) !!}
+                            {!! Form::select('category_id', $categories, null, ['class' => 'custom-select']) !!}
+                        </div>
 
-                        {!! Form::label('description', __('admin.product.city'), []) !!}
-                        {!! Form::select('province_id', $cities, null, ['class' => 'custom-select']) !!}
-
+                        <div class="form-group">
+                            {!! Form::label(null, __('admin.product.city'), []) !!}
+                            {!! Form::select('city', $cities, null, [
+                                    'class' => 'custom-select', 
+                                    'id' => 'city',
+                                    'data-url' => route('client.products.getSearchProvince')
+                                ]) 
+                            !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label(null, __('client.category.province'), []) !!}
+                            {!! Form::select('province_id', [__('client.category.province')], null, ['class' => 'custom-select', 'id' => 'province']) !!}
+                        </div>
                     </div>
                 </div>
 

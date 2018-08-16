@@ -39,7 +39,7 @@ Route::group([
             'as' => 'product.'
         ],
         function () {
-            Route::get('/', 'Admin\ProductController@index')->name('list');
+            Route::get('/', 'Admin\ProductController@index')->name('index');
             Route::delete('{product?}', 'Admin\ProductController@destroy')->name('destroy');
             Route::get('{product}', 'Admin\ProductController@show')->name('show');
         }
