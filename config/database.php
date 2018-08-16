@@ -14,6 +14,7 @@ return [
     */
     'suggested' => 10,
     'paginate' => 20,
+    'homepaginate' => 36,
     
     'default' => env('DB_CONNECTION', 'mysql'),
 

@@ -341,3 +341,6 @@ footer .footer__bottom p {
     background-color: #eb521d;
     border-color: #eb521d;
 }
+.loading {
+    display: none;
+}
