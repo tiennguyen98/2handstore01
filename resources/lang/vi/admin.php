@@ -53,6 +53,18 @@ return [
     ],
     'order' => [
         'list' => 'Các đơn hàng'
+    ],    
+    'slider' => 'Slider',
+    'slide' => [
+        'image' => 'Ảnh',
+        'link' => 'Link',
+        'add' => 'Thêm',
+        'update' => 'Thay đổi',
+        'alert' => [
+            'image' => 'File phải là ảnh',
+            'linkmin' => 'Link phải >1 ký tự',
+            'success' => 'Thêm thành công'
+        ]
     ]
     
 ];

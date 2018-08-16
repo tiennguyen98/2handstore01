@@ -17,6 +17,7 @@ return [
     'assets' => [
         'logo',
         'favicon'
-    ]
+    ],
+    'slider' => 'public/slides'
 ];
 
