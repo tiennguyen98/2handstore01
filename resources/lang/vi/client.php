@@ -55,6 +55,8 @@ return [
         'save' => 'Đăng tin',
         'back' => 'Trở về'
     ],
-    'empty' => 'Chưa có sản phẩm'
+    'empty' => 'Chưa có sản phẩm',
+    'purchases' => 'Sản phẩm đã đặt',
+    'products.posted' => 'Sản phẩm đã đăng'
 
 ];

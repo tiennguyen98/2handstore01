@@ -75,6 +75,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Product', 'orders', 'buyer_id')->withPivot('address', 'note');
     }
 
+    public function purchases()
+    {
+        return $this->hasMany('App\Order', 'buyer_id');
+    }
+
     public function provider_users()
     {
         return $this->hasMany('provider_users');
@@ -200,5 +205,15 @@ class User extends Authenticatable
     public function getProductOrders()
     {
         return $this->myOrders()->orderBy('product_id', 'DESC')->latest()->get();
+    }
+
+    public function getMyProducts()
+    {
+        return $this->products()->latest()->paginate(config('database.paginate'));
+    }
+
+    public function getMyPurchases()
+    {
+        return $this->purchases()->paginate(config('database.paginate')); 
     }
 }

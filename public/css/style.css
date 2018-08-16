@@ -344,3 +344,9 @@ footer .footer__bottom p {
 .loading {
     display: none;
 }
+a.new-product{
+    font-size: 30px;
+}
+tbody img{
+    width: 100px;
+}

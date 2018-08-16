@@ -134,6 +134,22 @@ Route::group([
         });
     Route::get('/orders', 'UserController@myOrders')->name('orders');
     Route::put('/orders', 'UserController@sellProduct')->name('orders.sell');
+
+    Route::group([
+        'prefix' => '/myproduct',
+        'as' => 'myproduct.',
+        'middleware' => 'auth'
+    ], function () {
+        Route::get('/', 'Client\ProductController@getMyProducts')->name('index');
+        Route::put('/{product}', 'Client\ProductController@changeStatus')->name('status');
+    });
+    Route::group([
+        'prefix' => '/purchases',
+        'as' => 'purchases.',
+        'middleware' => 'auth'
+    ], function () {
+        Route::get('/', 'Client\ProductController@myPurchases')->name('index');
+    });
 });
 
 Route::group([
