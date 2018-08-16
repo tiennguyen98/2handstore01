@@ -145,4 +145,36 @@ class User extends Authenticatable
     {
         return $query->option($option)->customer($search);
     }
+
+    public function getAverageRate()
+    {
+        $rates = [
+            'avg' => 0,
+            'votes' => 0
+        ];
+        if (count($this->raters) > 0) {
+            $rates['avg'] = round($this->raters()->avg('stars'), 1);
+            $rates['votes'] = count($this->raters);
+        }
+
+        return $rates;
+    }
+
+    public function saveRater(User $user, $stars)
+    {
+        if (!$this->raters()->find($user->id)) {
+            return $this->raters()->save($user, ['stars' => $stars]);
+        } else {
+            return $this->raters()->updateExistingPivot($user, ['stars' => $stars]);
+        }
+    }
+
+    public function getVote(User $user)
+    {
+        if ($rater = $this->raters()->find($user->id)) {
+            return $rater->pivot->stars;
+        }
+        
+        return false;
+    }
 }
