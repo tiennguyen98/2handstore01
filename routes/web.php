@@ -130,6 +130,8 @@ Route::group([
             Route::get('/profile', 'UserController@profile')->name('profile');
             Route::put('/update/{id}', 'UserController@updateProfile')->name('update');
         });
+    Route::get('/orders', 'UserController@myOrders')->name('orders');
+    Route::put('/orders', 'UserController@sellProduct')->name('orders.sell');
 });
 
 Route::group([

@@ -27,7 +27,7 @@
                             </li>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                               <a href="{{ route('client.user.profile') }}" class="dropdown-item">{{ __('Profile') }}</a>
-                              <a href="#" class="dropdown-item">{{ __('Orders') }}</a>
+                              <a href="{{ route('client.orders') }}" class="dropdown-item">{{ __('Orders') }}</a>
                               <button class="dropdown-item"
                                 onclick="javascript:document.getElementById('logout').submit()"> @lang('auth.logout')</button>
                             </div>
