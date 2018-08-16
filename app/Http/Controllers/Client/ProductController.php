@@ -26,7 +26,7 @@ class ProductController extends Controller
         $data['thumbnail'] = 'default.jpg'; 
         if ($request->has('thumbnail')) {
             $data['thumbnail'] = $request->thumbnail->hashName(); 
-            $request->thumbnail->store('public');
+            $request->thumbnail->store(config('site.thumbpath'));
         }
 
         $product = $request->user()->products()->create($data);

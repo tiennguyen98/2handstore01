@@ -28,7 +28,8 @@ class ProductRequest extends FormRequest
             'price' => 'numeric|min:1000|required',
             'detail' => 'min:10|required',
             'category_id' => 'required',
-            'thumbnail' => 'image|nullable'
+            'thumbnail' => 'image|nullable',
+            'province_id' => 'required|exists:provinces,id'
         ];
     }
 }

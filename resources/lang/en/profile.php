@@ -12,4 +12,5 @@ return [
     'shipto' => 'Ship to',
     'Sell' => 'Sell',
     'Sold' => 'Sold',
+    'myproduct' => ':name \'s products'
 ];

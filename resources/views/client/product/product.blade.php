@@ -17,7 +17,7 @@
         <div class="product-top-left">
             <div class="product-images">
                 <div class="product-slideshow">
-                    <img id="show" src="{{ asset(Storage::url($product->thumbnail)) }}" alt="product image 1">
+                    <img id="show" src="{{ $product->thumbnail() }}" alt="product image 1">
                     <div class="product-slideshow-dots">
                         @php($count = count($product->images))
                         @if($count > 0)
@@ -30,7 +30,7 @@
                 </div>
                 <div class="product-carousel owl-carousel owl-theme">
                     <a href="#" class="item">
-                        <img class="item-thumb" src="{{ asset(Storage::url($product->thumbnail)) }}" alt="product image 1">
+                        <img class="item-thumb" src="{{ $product->thumbnail() }}" alt="product image 1">
                     </a>   
                     @foreach ($product->images as $image)
                         <a href="#" class="item">

@@ -31,3 +31,25 @@ Dropzone.options.myDropzone = {
         }
     }
 };
+
+$(document).on('change', '#city', function () {
+    var id = $(this).val();
+    var url = $(this).attr('data-url');
+    console.log(id);
+    $.ajax({
+        url: url,
+        method: 'get',
+        dataType: 'json',
+        data: {id: id},
+        success: function (result) {
+            $('#province').empty();
+            $.each(result, function (index, option) {
+                option = $('<option></option>')
+                            .attr('value', index)
+                            .text(option);
+                $('#province').append(option);
+            });
+            $('#province').prop('selectedIndex', 0);
+        }
+    })
+});
