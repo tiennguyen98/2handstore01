@@ -1,7 +1,7 @@
 <div class="sidebar">
     <div class="user-brief p-2">
         <div class="avatar">
-            <img src="{{ asset(Storage::url($user->avatar)) }}" alt="avatar">
+            <img src="{{ $user->getAvatar()}}" alt="avatar">
         </div>
         <div class="d-inline-block">{{ $user->name }}</div>
     </div>

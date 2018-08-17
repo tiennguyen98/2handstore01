@@ -8,8 +8,6 @@
                 {{ $product->province->city->name }}
             </div>
             <b>{{ $product->money }}</b>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <span>(10000)</span>
         </div>
     </a>
 </div>

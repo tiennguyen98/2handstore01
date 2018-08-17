@@ -18,7 +18,7 @@
                 {{ $product->money }}
             </p>
             <b>
-                {{ $product->city->name }}
+                {{ $product->province->city->name }}
             </b>
         </div>
         <div class="col-md-6">

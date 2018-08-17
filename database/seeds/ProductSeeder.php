@@ -15,16 +15,16 @@ class ProductSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         
-        foreach (range(1, 50) as $value) {
+        foreach (range(1, 1000) as $value) {
             Product::create([
                 'name' => $faker->sentence(),
                 'price' => rand(100000, 50000000),
-                'thumbnail' => 'default.jpg',
+                'thumbnail' => 'product' . rand(1, 25) . '.jpeg',
                 'detail' => $faker->paragraph(),
-                'status' => 1,
-                'user_id' => 1,
+                'status' => rand(0, 1),
+                'user_id' => rand(2, 43),
                 'category_id' => Category::get()->random()->id,
-                'province_id' => rand(1, 5)
+                'province_id' => rand(1, 705)
             ]);
         }
     }
