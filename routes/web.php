@@ -102,8 +102,8 @@ Route::group(
             'namespace' => 'Auth',
         ], function () {
             Route::get('/verify/{verify_token}', 'RegisterController@verify')->name('verify');
-            Route::get('/resendEmail', 'RegisterController@showResendForm')->name('showResendForm');
-            Route::post('/resendEmail', 'RegisterController@resendEmail')->name('resendEmail');
+            Route::get('/resendEmail', 'RegisterController@showResendForm')->name('show_resend_form');
+            Route::post('/resendEmail', 'RegisterController@resendEmail')->name('resend_email');
         });
     }
 );
@@ -119,10 +119,11 @@ Route::group([
         Route::get('/show/{id}', 'ProductController@show')->name('show');
         Route::post('/comment/{id}', 'CommentController@store')->name('comment')->middleware('auth');
         Route::get('/search', 'ProductController@search')->name('search');
-        Route::get('/province', 'ProductController@getSearchProvince')->name('getSearchProvince');
+        Route::get('/results', 'ProductController@result')->name('search_results');
+        Route::get('/province', 'ProductController@getSearchProvince')->name('get_search_rovince');
     });
     Route::post('/report/{id}', 'ReportController@store')->name('report.store')->middleware('auth');
-    Route::delete('/comment/destroy/{id}', 'CommentController@clientDestroy')->name('destroyComment')->middleware('auth');
+    Route::delete('/comment/destroy/{id}', 'CommentController@clientDestroy')->name('destroy_comment')->middleware('auth');
 
     Route::group([
         'prefix' => '/user',

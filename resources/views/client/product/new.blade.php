@@ -91,7 +91,7 @@
                             {!! Form::select('city', $cities, null, [
                                     'class' => 'custom-select', 
                                     'id' => 'city',
-                                    'data-url' => route('client.products.getSearchProvince')
+                                    'data-url' => route('client.products.get_search_province')
                                 ]) 
                             !!}
                         </div>

@@ -168,4 +168,11 @@ class ProductController extends Controller
 
         return response()->json($province);
     }
+
+    public function result(Request $request)
+    {
+        $products = Product::searchProduct($request)->take(config('database.autocomplete'));
+
+        return view('client.product.result', compact('products'));
+    }
 }

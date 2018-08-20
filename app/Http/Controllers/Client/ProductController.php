@@ -23,9 +23,9 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
-        $data['thumbnail'] = 'default.jpg'; 
+        $data['thumbnail'] = 'default.jpg';
         if ($request->has('thumbnail')) {
-            $data['thumbnail'] = $request->thumbnail->hashName(); 
+            $data['thumbnail'] = $request->thumbnail->hashName();
             $request->thumbnail->store(config('site.thumbpath'));
         }
 
@@ -45,8 +45,7 @@ class ProductController extends Controller
 
     public function uploadImage(Request $request)
     {
-
-        if(!$request->has('file') || count($request->file) < 1){
+        if (!$request->has('file') || count($request->file) < 1) {
             return response()->json([
                 'error' => true
             ]);
