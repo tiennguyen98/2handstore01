@@ -9,9 +9,13 @@ use App\Notifications\DeleteProduct;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::list()->paginate(20);
+        $products = Product::list()->paginate(config('database.paginate'));
+        
+        if ($request->ajax()) {
+            return view('admin.products.content', compact('products'));
+        }
 
         return view('admin.products.index', compact('products'));
     }

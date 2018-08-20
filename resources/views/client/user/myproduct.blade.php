@@ -1,10 +1,11 @@
 @extends('client.layout.master')
 
-@section('title', __('Products'))
+@section('title', __('client.products.posted'))
 
 @section('content')
 
 <div class="container bg-white mt-5">
+    <h2 class="text-center my-4 pt-4">{{ __('client.products.posted') }}</h2>
     <table class="table">
         <thead>
             <tr>

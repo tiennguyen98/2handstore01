@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="container bg-white mt-5">
+    <h2 class="text-center my-4 pt-4">{{ __('Orders') }}</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
