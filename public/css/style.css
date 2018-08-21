@@ -355,3 +355,31 @@ tbody img{
     right: 20px;
     top: 10px;
 }
+.notify{
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+a.notify_link{
+    background-color: #ff5722;
+    padding: 10px;
+    color: #FFF !important;
+    display: block;
+    box-shadow: 0 0 5px #8e8e8e;
+    margin-bottom: 15px;
+}
+.notification{
+    position: relative;
+}
+.notification button.read{
+    right: 10px;
+    position: absolute;
+    background: #FFF;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+}

@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Product');
     }
 
+    public function notifications()
+    {
+        return $this->hasMany('App\Notification');
+    }
+
     public function orders()
     {
         return $this->belongsToMany('App\Product', 'orders', 'buyer_id')->withPivot('address', 'note');
@@ -216,4 +221,12 @@ class User extends Authenticatable
     {
         return $this->purchases()->paginate(config('database.paginate'));
     }
+
+    public function getNumberNotify()
+    {
+        $notifications = $this->notifications()->where('status', '>', 0)->count();
+
+        return $notifications;
+    }
+
 }
