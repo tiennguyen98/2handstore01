@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Rules\CheckPhoneRule;
 use App\Order;
+use App\Notifications\SellYouProduct;
 
 class UserController extends Controller
 {
@@ -190,6 +191,9 @@ class UserController extends Controller
         $order->update([
             'status' => $status
         ]);
+        if ($status == 0) {
+            $order->user->notify(new SellYouProduct($order->products));
+        }
 
         return redirect()->back();
     }
