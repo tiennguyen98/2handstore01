@@ -9,9 +9,19 @@ use App\Category;
 use App\Province;
 use Illuminate\Http\Request;
 use App\Order;
+use App\Notification;
+use App\Events\OrderEvent;
+use App\Repositories\NotifyRepository;
 
 class ProductController extends Controller
 {
+    private $notify;
+
+    public function __construct(NotifyRepository $notifyRepository)
+    {
+        $this->notify = $notifyRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -110,6 +120,17 @@ class ProductController extends Controller
     {
         $order_information = $request->except('_token');
         $request->user()->orders()->save($product, $order_information);
+        event(new OrderEvent($product->user->id, 
+            __('notify.neworder', ['name' => $product->name]), 
+            route('client.orders')
+        ));
+        $notify = [
+            'content' => __('notify.neworder.insert'),
+            'detail' => $product->name,
+            'user_id' => $product->user->id,
+            'link' => route('client.orders')
+        ];
+        $this->notify->create($notify);
 
         return redirect()->route('index');
     }
