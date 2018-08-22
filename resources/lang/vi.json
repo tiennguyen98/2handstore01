@@ -85,5 +85,7 @@
     "Books": "Sách",
     "Toys": "Đồ Chơi",
     "Jewellery": "Trang Sức",
-    "Other": "Khác"
+    "Other": "Khác",
+    "Your product was purchased:": "Sản phẩm của bạn đã được đặt hàng:",
+    "Undefined" : "Chưa xác định"
 }

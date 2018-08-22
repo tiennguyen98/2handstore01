@@ -30,6 +30,8 @@
     
     @include('client.assets.js')
     
+    @include('client.notify')
+
     @yield('js')
     
 </body>

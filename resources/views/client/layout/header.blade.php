@@ -16,11 +16,11 @@
                 </div>
                 <div class="col-lg-4 col-md-8 offset-lg-4 text-right">
                     <ul>
-                        <li class="mr-auto"><a href="#"><i class="far fa-question-circle"></i> @lang('client.help') </a></li>
                         @if(!Auth::check())
                             <li class="font-weight-bold"><a href="{{ route('register') }}"> @lang('auth.register') </a></li>
                             <li class="font-weight-bold"><a href="{{ route('login') }}"> @lang('auth.login') </a></li>
                         @else
+                        <li class="mr-auto"><a href="{{ route('client.notifications.index') }}"><i class="fas fa-bell"></i> @lang('client.Notifications') ({{ Auth::user()->getNumberNotify() }})</a></li>
                         <div class="dropdown d-inline">
                             <li class="font-weight-bold dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <a href="#"> {{ Auth::user()->name }} </a>

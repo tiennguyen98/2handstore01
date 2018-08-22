@@ -152,6 +152,15 @@ Route::group([
     ], function () {
         Route::get('/', 'Client\ProductController@myPurchases')->name('index');
     });
+    Route::group([
+        'prefix' => '/notifications',
+        'as' => 'notifications.',
+        'middleware' => 'auth'
+    ], function () {
+        Route::get('/', 'Client\NotifyController@index')->name('index');
+        Route::put('seen', 'Client\NotifyController@changeStatus')->name('seen');
+        Route::put('seenall', 'Client\NotifyController@changeAllStatus')->name('seenall');
+    });
 });
 
 Route::group([

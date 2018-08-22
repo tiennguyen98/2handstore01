@@ -211,6 +211,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'SearchHelper' => \App\Helpers\SearchHelper::class,
+        'Pusher' => Pusher\Pusher::class,
+        
     ],
 
 ];

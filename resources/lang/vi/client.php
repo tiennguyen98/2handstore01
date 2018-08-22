@@ -57,6 +57,7 @@ return [
     ],
     'empty' => 'Chưa có sản phẩm',
     'purchases' => 'Sản phẩm đã đặt',
-    'products.posted' => 'Sản phẩm đã đăng'
+    'products.posted' => 'Sản phẩm đã đăng',
+    'Notifications' => 'Thông báo'
 
 ];
