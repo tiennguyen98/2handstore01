@@ -7,3 +7,4 @@
 <link rel="stylesheet" href="{{ asset('bower_components/sufee-admin-dashboard/assets/scss/style.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 <link href='{{ asset('fonts/OpenSan.css') }}' rel='stylesheet'>
+<link rel="stylesheet" href="">

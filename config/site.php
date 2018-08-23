@@ -19,6 +19,7 @@ return [
         'favicon'
     ],
     'slider' => 'public/slides',
-    'thumbpath' => 'public/thumbnails'
+    'thumbpath' => 'public/thumbnails',
+    'active' => 1
 ];
 

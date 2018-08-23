@@ -20,7 +20,9 @@ a.status{
     width: 100px;
     height: 100px;
 }
-
 td {
     word-break: break-word;
+}
+td img.image {
+    width: 100px;
 }

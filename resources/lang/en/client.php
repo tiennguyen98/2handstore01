@@ -60,6 +60,7 @@ return [
     'empty' => 'No Data',
     'purchases' => 'My purchases',
     'products.posted' => 'My Products',
-    'Notifications' => 'Notifications'
+    'Notifications' => 'Notifications',
+    'product.deleted' => 'This product is deleted',
 
 ];
