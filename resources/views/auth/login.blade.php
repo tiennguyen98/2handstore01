@@ -21,7 +21,7 @@
                 @if($errors->has('verify'))
                     <div class="alert alert-success">
                         <p>{{ $errors->first('verify') }}</p>
-                        <p><a href="{{ route('register.showResendForm') }}">{{ __('Click here to resend verify email') }} </a></p>
+                        <p><a href="{{ route('register.show_resend_form') }}">{{ __('Click here to resend verify email') }} </a></p>
                     </div>
                 @endif       
                 @if($errors->has('blocked'))

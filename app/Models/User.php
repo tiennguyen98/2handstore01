@@ -97,7 +97,10 @@ class User extends Authenticatable
 
     public function scopeCustomer($query, $search = null)
     {
-        return $query->where('role_id', '>', '1')->where('email', 'like', '%' . $search . '%')->orderBy('updated_at', 'desc')->paginate(config('database.paginate'));
+        return $query->where('role_id', '>', '1')
+                ->where('email', 'like', '%' . $search . '%')
+                ->orderBy('updated_at', 'desc')
+                ->paginate(config('database.paginate'));
     }
 
     public function getAvatar()

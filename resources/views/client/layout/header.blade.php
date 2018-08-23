@@ -63,9 +63,9 @@
 
                     {!! Form::text('search', old('search'), [
                         'placeholder' => __('client.search'),
-                        'id' => 'header-search'
+                        'id' => 'header-search',
+                        'data-url' => route('client.products.search_results')
                     ]) !!}
-                    
                     {!! Form::button(__('client.search.submit'), 
                                     [
                                         'class' => 'search-submit', 
@@ -74,7 +74,7 @@
                     !!}
                     
                     {!! Form::close() !!}
-
+                    <div id="result" class="col-sm-5 position-fixed"></div>
                 </div>
                 <div class="col-md-1 cart">
                     @auth

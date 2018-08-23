@@ -15,6 +15,10 @@ return [
     'suggested' => 10,
     'paginate' => 20,
     'homepaginate' => 36,
+    'autocomplete' => 5,
+    'verify' => 'verify',
+    'unverify' => 'unverify',
+    'blocked' => 'blocked',
     
     'default' => env('DB_CONNECTION', 'mysql'),
 

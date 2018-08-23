@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="offset-md-3 col-md-6 bg-white mt-5 pb-4">
-                {!! Form::open(['method' => 'POST', 'url' => route('register.resendEmail'), 'class' => 'form-horizontal mt-4']) !!}
+                {!! Form::open(['method' => 'POST', 'url' => route('register.resend_email'), 'class' => 'form-horizontal mt-4']) !!}
                 <div class="form-group row">
                     {!! Form::label('email', 'Email:', ['class' => 'col-form-label col-sm-3']) !!}
                     <div class="col-sm-9">

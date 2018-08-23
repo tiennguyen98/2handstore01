@@ -6,9 +6,10 @@ $('#filter').click(function (event) {
 
 $(document).on('change', '#city', function () {
     var id = $(this).val();
+    var url = $(this).attr('data-url');
     console.log(id);
     $.ajax({
-        url: './province',
+        url: url,
         method: 'get',
         dataType: 'json',
         data: {id: id},

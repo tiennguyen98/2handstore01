@@ -389,3 +389,7 @@ a.notify_link{
     align-items: center;
     top: 10px;
 }
+
+#result {
+    background-color: white;
+}

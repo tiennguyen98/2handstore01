@@ -9,9 +9,17 @@ use Illuminate\Support\Facades\Storage;
 use App\Rules\CheckPhoneRule;
 use App\Order;
 use App\Notifications\SellYouProduct;
+use App\Repositories\UserRepository;
 
 class UserController extends Controller
 {
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +27,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::customer($request->search);
+        $users = $this->userRepository->showCustomer($request->search);
         $page = $users->currentPage();
 
         if ($request->ajax()) {
@@ -31,7 +39,7 @@ class UserController extends Controller
 
     public function option(Request $request)
     {
-        $users = User::customerOption($request->option, $request->search);
+        $users = $this->userRepository->showOptionCustomer($request->option, $request->search);
         $page = $users->currentPage();
 
         return view('admin.users.userTable', compact(['users', 'page']));

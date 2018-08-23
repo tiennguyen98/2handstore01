@@ -33,25 +33,26 @@
                     <div class="tieuchi">
                         <p> @lang('client.category.category') </p>
                         {!! 
-                            Form::select('category', $categories, null, [
+                            Form::select('category', ['' => __('Choose category')] + $categories, null, [
                                 'class' => 'form-control',
-                                'id' => 'category'
+                                'id' => 'category',
                             ]) 
                         !!}
                     </div>
                     <div class="tieuchi">
                         <p> @lang('client.category.city') </p>
                         {!! 
-                            Form::select('city', $cities, old('city'), [
+                            Form::select('city', ['' => __('Choose city')] + $cities, old('city'), [
                                 'class' => 'form-control',
-                                'id' => 'city'
+                                'id' => 'city',
+                                'data-url' => route('client.products.get_search_province')
                             ]) 
                         !!}
                     </div> 
                     <div class="tieuchi">
                         <p> @lang('client.category.province') </p>
                         {!! 
-                            Form::select('province', $province, old('province'), [
+                            Form::select('province', [__('client.category.province')], old('province'), [
                                 'class' => 'form-control',
                                 'id' => 'province'
                             ]) 
