@@ -1,7 +1,8 @@
 @component('mail::message')
 
 <h1>{{ __(':greet', ['greet' => __('Hello')]) }}</h1>
-<p>{{ __('Your purchase was successful: ') . $product->name }}</p>
+<p>{{ __('Your purchase was successful: ') }} <b>{{ $product->name }}</b></p>
+<p>{{ __('Deal: ') }} <b>{{ $product->money }}</b></p>
 
 @component('mail::button', ['url' => route('client.myproduct.index')])
 {{ __('Click here to view') }}

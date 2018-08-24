@@ -60,6 +60,7 @@ return [
     'products.posted' => 'Sản phẩm đã đăng',
     'Notifications' => 'Thông báo',
     'product.deleted' => 'Sản phẩm này đã bị xóa',
-    'seen' => 'Đã xem'
-
+    'seen' => 'Đã xem',
+    'Discard' => 'Từ chối',
+    
 ];

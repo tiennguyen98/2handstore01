@@ -62,5 +62,7 @@ return [
     'products.posted' => 'My Products',
     'Notifications' => 'Notifications',
     'product.deleted' => 'This product is deleted',
-    'seen' => 'Seen'
+    'seen' => 'Seen',
+    'Discard' => 'Discard',
+    
 ];

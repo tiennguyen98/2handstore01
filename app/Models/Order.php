@@ -16,7 +16,8 @@ class Order extends Model
         'created_at',
         'upated_at',
         'status',
-        'city_id'
+        'city_id',
+        'price'
     ];
 
     public function user()
@@ -43,5 +44,10 @@ class Order extends Model
                     ->select('orders.*', 'users.email as email', 'products.name as name', 'products.thumbnail as thumbnail')
                     ->orderBy('updated_at', 'desc')
                     ->paginate(config('database.paginate'));
+    }
+
+    public function getMoneyAttribute()
+    {
+        return number_format($this->price) . ' VND';
     }
 }

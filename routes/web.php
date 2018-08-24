@@ -152,6 +152,7 @@ Route::group([
     ], function () {
         Route::get('/orders', 'UserController@myOrders')->name('orders');
         Route::put('/orders', 'UserController@sellProduct')->name('orders.sell');
+        Route::put('/orders/discard', 'UserController@discardOrder')->name('orders.discard');
     });
     Route::group([
         'prefix' => '/myproduct',

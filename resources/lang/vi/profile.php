@@ -12,5 +12,6 @@ return [
     'shipto' => 'Địa chỉ',
     'Sell' => 'Bán',
     'Sold' => 'Đã bán',
+    'deal' => 'Người dùng trả'
 
 ];
