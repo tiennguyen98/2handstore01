@@ -17,7 +17,7 @@
                 <td class="col-sm-1">{{ $i++ }}</td>
                 <td class="col-sm-2">{{ $order->email }}</td>
                 <td class="col-sm-2">
-                    <img src="{{ asset(Storage::url($order->thumbnail)) }}" alt="">
+                    {!! Html::image( asset(config('site.thumbnail') . $order->thumbnail), 'thumbnail') !!}
                 </td>
                 <td class="col-sm-2">{{ $order->name }}</td>
                 <td class="col-sm-2">{{ $order->address }}</td>

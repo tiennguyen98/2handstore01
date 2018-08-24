@@ -20,9 +20,21 @@ a.status{
     width: 100px;
     height: 100px;
 }
+
 td {
     word-break: break-word;
 }
+
 td img.image {
     width: 100px;
+}
+
+.noti-num {
+    min-width: 50%;
+    border-radius: 50%;
+    width: auto;
+    text-align: center;
+    height: 50%;
+    right: 0;
+    bottom: 0;
 }

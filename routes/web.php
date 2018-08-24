@@ -90,6 +90,14 @@ Route::group([
         Route::get('/', 'OrderController@index')->name('index');
         Route::delete('/destroy/{id}', 'OrderController@destroy')->name('destroy');
     });
+    Route::group([
+        'prefix' => '/chat',
+        'as' => 'chat.'
+    ], function () {
+        Route::get('/', 'MessageController@index')->name('index');
+        Route::post('/show', 'MessageController@showMessages')->name('show');
+        Route::post('/store', 'MessageController@store')->name('store');
+    });
 });
 
 Route::group(
@@ -110,7 +118,7 @@ Route::group(
 
 Route::group([
     'prefix' => '/',
-    'as' => 'client.',
+    'as' => 'client.'
 ], function () {
     Route::group([
         'prefix' => '/products',
@@ -170,7 +178,7 @@ Route::group([
 Route::group([
     'prefix' => '/password',
     'as' => 'password.',
-    'middleware' => 'auth',
+    'middleware' => ['auth'],
     'namespace' => 'Auth'
 ], function () {
     Route::get('/edit', 'ChangePasswordController@edit')->name('edit');
@@ -182,11 +190,10 @@ Auth::routes();
 Route::get('lang/{lang}', 'LangController@changeLanguage')->name('language.change');
 Route::get('/auth/google', 'Auth\SocialAuthController@redirectToProvider')->name('google.login');
 Route::get('/auth/google/callback', 'Auth\SocialAuthController@handleProviderCallback')->name('google.callback');
-Route::get('category/{slug}', 'Client\CategoryController@index')->name('client.category');
 
 Route::group(
     [
-        'middleware' => 'auth',
+        'middleware' => ['auth'],
         'prefix' => 'product',
         'as' => 'client.product.'
     ],
@@ -196,13 +203,26 @@ Route::group(
         Route::post('/upload-images', 'Client\ProductController@uploadImage')->name('upload.image');
     }
 );
+
 Route::get('profile/{user}', 'Client\ProfileController@index')->name('client.profile');
-Route::post('profile/{user}/rate', 'Client\ProfileController@rating')->name('client.profile.rate');
+Route::post('profile/{user}/rate', 'Client\ProfileController@rating')->name('client.profile.rate')->middleware('auth');
 Route::get('loadmore', 'HomeController@loadMoreProduct')->name('loadmore');
+Route::get('category/{slug}', 'Client\CategoryController@index')->name('client.category');
+
+Route::group([
+    'prefix' => '/chat',
+    'as' => 'chat.',
+    'middleware' => 'auth'
+], function () {
+    Route::post('/', 'MessageController@store')->name('store');
+    Route::post('/seen', 'MessageController@seenMessage')->name('seen');
+});
 
 Route::group([
     'prefix' => '/order',
-    'middleware' => 'auth'
+    'middleware' => [
+        'auth'
+    ]
 ], function () {
     Route::get('{product}', 'ProductController@order')->name('client.order.view');
     Route::post('{product}', 'ProductController@buy')->name('client.order.buy');

@@ -156,11 +156,12 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        \App\Providers\ViewServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class
     ],
 
     /*
@@ -212,7 +213,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'SearchHelper' => \App\Helpers\SearchHelper::class,
         'Pusher' => Pusher\Pusher::class,
-        
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

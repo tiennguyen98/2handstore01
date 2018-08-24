@@ -19,7 +19,6 @@ $(document).on('input', '#header-search', function () {
 });
 
 $('body').click(function (event) {
-    console.log(event.target.id);
     if(event.target.id !== 'result') {
         $('#result').html('');
     }
