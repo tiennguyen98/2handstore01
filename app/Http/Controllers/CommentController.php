@@ -7,9 +7,18 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Events\CommentEvent;
+use App\Repositories\NotifyRepository;
 
 class CommentController extends Controller
 {
+
+    private $notify;
+
+    public function __construct(NotifyRepository $notifyRepository)
+    {
+        $this->notify = $notifyRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -51,6 +60,23 @@ class CommentController extends Controller
         Comment::saveComment($request);
         $product = Product::findOrFail($id);
         $comments = Comment::parentComments($product->id);
+        // Notification
+        $user_id = $product->user->id;
+        if ($user_id != $request->user()->id) {
+            event(new CommentEvent(
+                    $user_id, 
+                    __('notify.comment', ['name' => $request->user()->name]), 
+                    route('client.products.show', ['id' => $product->id])
+                )
+            );
+            $notify = [
+                'content' => __('notify.comment.insert'),
+                'detail' => $request->user()->name,
+                'user_id' => $user_id,
+                'link' => route('client.products.show', ['id' => $product->id])
+            ];
+            $this->notify->create($notify);
+        }
 
         return view('client.product.comment', compact('product', 'comments'));
     }

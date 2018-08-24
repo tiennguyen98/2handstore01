@@ -81,6 +81,14 @@
                             {!! Form::label(null, __('admin.product.thumbnail'), ['class' => 'custom-file-label']) !!}
                         </div>
 
+                        <div class="form-group mb-2">
+                            {!! Form::label('', __('Quantity'), []) !!}
+                            {!! Form::number('quantity', null, [
+                                'class' => 'form-control',
+                                'placeholder' => __('Quantity')
+                            ]) !!}
+                        </div>
+
                         <div class="form-group">
                             {!! Form::label(null, __('admin.product.category'), []) !!}
                             {!! Form::select('category_id', $categories, null, ['class' => 'custom-select']) !!}

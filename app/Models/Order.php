@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class Order extends Model
 {
     protected $table = 'orders';
-
+    public $timestamps = true;
     protected $fillable = [
         'address',
         'user_id',
