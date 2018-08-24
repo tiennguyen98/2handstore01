@@ -9,11 +9,11 @@
         <th> @lang('verified') </th>
     </thead>
     <tbody>
-        @php( $i = --$page * 10 + 1)
+        @php( $i = --$page * config('database.paginate') + 1)
         @forelse($users as $user)
             <tr class="{{ $i % 2 == 0 ? 'table-success' : 'table-secondary' }}">
                 <td>{{ $i++ }}</td>
-                <td><img src="{{ $user->getAvatar() }}" alt="avatar" class="avatar"></td>
+                <td>{!! Html::image($user->getAvatar(), 'avatar', ['class' => 'avatar']) !!}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->address }}</td>

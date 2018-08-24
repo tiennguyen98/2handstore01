@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Slider;
-use App\Category;
 use App\Product;
+use App\Category;
+use Pusher\Pusher;
+use App\Events\OrderEvent;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

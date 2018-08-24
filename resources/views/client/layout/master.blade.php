@@ -9,6 +9,7 @@
     <meta name="description" content="@yield('description', $site_info['description'])">
     <meta name="keyword" content="@yield('keyword', $site_info['keyword'])">
     <link rel="icon" type="image/x-icon" href="{{ $site_info['favicon'] }}">
+    <link rel="stylesheet" href="{{ asset('css/chat.css') }}">
     @include('client.assets.css')
     
     @yield('css')
@@ -27,7 +28,11 @@
     </div>
     
     @include('client.layout.footer')
-    
+    @auth
+        @include('chat')
+    @endauth
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/client/chat.js') }}"></script>
     @include('client.assets.js')
     
     @include('client.notify')

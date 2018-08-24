@@ -102,16 +102,12 @@ abstract class EloquentRepository implements RepositoryInterface
         return $this->model->create($data);
     }
     
-    public function update(array $data, $id, $attribute = 'id', $withSoftDeletes = false)
+    public function update(array $data)
     {
-        if ($withSoftDeletes) {
-            $this->newQuery()->eagerLoadTrashed();
-        }
+        $this->newQuery()
+            ->loadWhere();
 
-        $this->makeModel();
-        $this->model->where($attribute, '=', $id)->update($data);
-
-        return $this->findBy($attribute, $id);
+        return $this->model->update($data);
     }
 
     public function delete($id)
@@ -192,5 +188,13 @@ abstract class EloquentRepository implements RepositoryInterface
             ->loadWhere();
         
         return $this->model->all();
+    }
+
+    public function with($relationships = [''])
+    {
+        $this->newQuery()
+            ->loadWhere();
+        
+        return $this->model->with($relationships);
     }
 }

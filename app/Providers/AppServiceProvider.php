@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
+use App\Option;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
-use App\Option;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,7 +32,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             '\App\Repositories\RepositoryInterface',
             '\App\Repositories\EloquentRepository',
-            '\App\Repositories\UserRepository'
+            '\App\Repositories\UserRepository',
+            '\App\Repositories\MessageRepository'
         );
     }
 }

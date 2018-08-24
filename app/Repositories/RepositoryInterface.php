@@ -20,7 +20,7 @@ interface RepositoryInterface
 
     public function create(array $data);
 
-    public function update(array $data, $id, $attribute = 'id', $withSoftDeletes = false);
+    public function update(array $data);
 
     public function delete($id);
 
@@ -31,4 +31,6 @@ interface RepositoryInterface
     public function pluck($columns = ['*']);
 
     public function toArray();
+
+    public function with($relationships = ['']);
 }

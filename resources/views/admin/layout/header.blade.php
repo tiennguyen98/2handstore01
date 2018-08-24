@@ -18,7 +18,6 @@
                         'id' => 'input-search',
                         'class' => 'form-control mr-sm-2'
                     ]) !!}
-                    {{-- {!! Form::submit('Search', ['class' => 'search-close']) !!} --}}
                     
                     {!! Form::close() !!}
 
@@ -28,11 +27,16 @@
 
         <div class="col-sm-5">
             <div class="user-area dropdown float-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle" src="{{ asset('bower_components/sufee-admin-dashboard/images/admin.jpg') }}" alt="User Avatar">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {!! Html::image(Auth::user()->getAvatar(), __('Avatar'), ['class' => 'user-avatar rounded-circle position-relative']) !!}
+                    <span class="noti-num bg-danger position-absolute text-light {{ $unseenMessage == 0 ? 'd-none' : '' }}">{{ $unseenMessage }}</span>
                 </a>
 
                 <div class="user-menu dropdown-menu">
+                    <a class="nav-link" href="{{ route('admin.chat.index') }}">
+                        <i class="fa fa-power -off"></i>
+                        {{ __('Messages') }}
+                    </a>
                     <a class="nav-link" href="#" onclick="javascript:document.getElementById('logout').submit()">
                         <i class="fa fa-power -off"></i>
                         @lang('auth.logout')

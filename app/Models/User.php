@@ -85,6 +85,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Order', 'buyer_id');
     }
 
+    public function toUsers()
+    {
+        return $this->belongsToMany('App\User', 'messages', 'from', 'to')->withPivot('message', 'status');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message', 'from', 'id');
+    }
+
     public function provider_users()
     {
         return $this->hasMany('provider_users');
