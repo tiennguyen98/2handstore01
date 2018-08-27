@@ -16,17 +16,20 @@ class UserRepository extends EloquentRepository
         $this->newQuery()
             ->loadWhere();
         $args = func_get_args();
+        $this->model->where('role_id', '>', '1');
         if (func_num_args() < 1 || strlen($args[0]) < 2) {
-            return $this->model->where('role_id', '>', '1')
-                    ->orderBy('updated_at', 'desc')
+            return $this->model->orderBy('updated_at', 'desc')
                     ->paginate(config('database.paginate'));
         }
         $args[0] = '+' . $args[0] . '*';
-
-        return $this->model->where('role_id', '>', '1')
-                ->whereRaw("MATCH (`email`, `name`) AGAINST (? IN BOOLEAN MODE)", [$args[0]])
-                ->orderBy('updated_at', 'desc')
+        $this->model->whereRaw("MATCH (`email`, `name`) AGAINST (? IN BOOLEAN MODE)", [$args[0]]);
+        if (func_num_args() == 1) {
+            return $this->model->orderBy('updated_at', 'desc')
                 ->paginate(config('database.paginate'));
+        }
+
+        return $this->model->orderBy('updated_at', 'desc')
+                ->paginate($args[1]);
     }
 
     public function verified()

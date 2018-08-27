@@ -50,7 +50,6 @@ $(document).ready(function () {
         }
     });
     $('.show-more').click(function() {
-        console.log(1);
         $(this).remove();
         $('.product-description-content.mb-0').height('auto');
     });
@@ -63,7 +62,6 @@ $(document).ready(function () {
 function comment(url, element, bottom) {
     bottom = bottom || false;
     var position = bottom === true ? $('.comments')[0].scrollHeight : $('.comments').scrollTop();
-    console.log(position);
     var parent_id = $('#parent_id').val();
     var content = $(element).siblings('textarea').val();
     $(element).siblings('textarea').val('');

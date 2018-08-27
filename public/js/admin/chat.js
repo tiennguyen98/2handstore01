@@ -47,8 +47,9 @@ $(document).ready(function () {
                                     <div class="chat_people">
                                         <div class="chat_img"> <img src="${data.avatar}" alt="avatar"> </div>
                                         <div class="chat_ib">
-                                            <h5>${data.message.user.name} <span class="chat_date">${data.message.created_at}</span></h5>
-                                            <p class="font-weight-bold text-danger">${data.message.message}</p>
+                                            <h5>${data.message.user.name}<span class="from-email">${data.message.user.email}</span></h5>
+                                            <p class="font-weight-bold text-danger">${data.message.message}</p> 
+                                            <h5><span class="chat_date">${data.message.created_at}</span></h5>
                                         </div>
                                     </div>
                                 </div>`
@@ -58,7 +59,11 @@ $(document).ready(function () {
                     .find('p')
                     .text(data.message.message)
                     .attr('data-id', data.message.id)
-                    .addClass('font-weight-bold text-danger');
+                    .addClass('font-weight-bold text-danger')
+                    .find('.from-email').text(data.message.user.email)
+                    .find('chat_dat').text(data.message.created_at);
+                // $('.chat_list[data-from=' + data.message.from + ']')
+
                 $('.inbox_chat').prepend($('.chat_list[data-from=' + data.message.from + ']'));
             }
             scrollBottom();
@@ -98,3 +103,45 @@ function sendMessage()
         }
     });
 }
+
+$(document).on('input', '.search-bar', function () {
+    var search = $(this).val();
+    if (search.length < 2) return;
+    $.ajax({
+        method: 'get',
+        url: $(this).attr('data-url'),
+        data: {search: search},
+        success: function (result) {
+            $('.search-result').html(result);
+        }
+    });
+});
+
+$(document).on('click', '.user-result', function (event) {
+    event.preventDefault();
+    const element = $(this);
+    var email = element.find('.search-email').text();
+    var chat = $('.from-email:contains(' + email + ')');
+    $('.chat_list').removeClass('active_chat');
+    if (chat.length == 0) {
+        var id = element.find('.search-email').attr('data-id');
+        var name = element.find('.search-name').text();
+        var img = element.find('.chat_img img').attr('src');
+        var prepend = `<div class="chat_list" data-from="${id}">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="${img}" alt="avatar"> </div>
+                                <div class="chat_ib">
+                                    <h5>${name}<span class="from-email">${email}</span></h5>
+                                    <p class="font-weight-bold text-danger"></p> 
+                                    <h5><span class="chat_date"></span></h5>
+                                </div>
+                            </div>
+                        </div>`;
+        $('.inbox_chat').prepend(prepend);
+    }
+    else{
+        chat.parents('.chat_list').addClass('active_chat');
+        $('.inbox_chat').prepend(chat.parents('.chat_list'));
+    }
+    $('.user-result').html('');
+})

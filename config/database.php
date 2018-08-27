@@ -23,6 +23,7 @@ return [
     'unseen' => 0,
     'admin' => 1,
     'customer' => 2,
+    'chat_customer' => 5,
     
     'default' => env('DB_CONNECTION', 'mysql'),
 
