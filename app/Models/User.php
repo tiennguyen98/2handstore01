@@ -84,7 +84,7 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->belongsToMany('App\Product', 'orders', 'buyer_id')->withPivot('address', 'note');
+        return $this->belongsToMany('App\Product', 'orders', 'buyer_id')->withPivot('address', 'note')->withTimestamps();
     }
 
     public function purchases()
