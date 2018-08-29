@@ -7,10 +7,12 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\ConfirmEmailNotification;
 use App\Notifications\PasswordResetNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\FullTextSearch;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use FullTextSearch;
 
     /**
      * The attributes that are mass assignable.
@@ -29,6 +31,11 @@ class User extends Authenticatable
         'verify_token',
         'role_id',
         'social',
+    ];
+
+    protected $searchable = [
+        'email',
+        'name'
     ];
 
     /**
@@ -241,5 +248,4 @@ class User extends Authenticatable
 
         return $notifications;
     }
-
 }

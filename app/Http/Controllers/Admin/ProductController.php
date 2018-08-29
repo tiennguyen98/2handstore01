@@ -6,12 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Notifications\DeleteProduct;
+use App\Repositories\ProductRepository;
 
 class ProductController extends Controller
 {
+    protected $productRepository;
+
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
+
     public function index(Request $request)
     {
-        $products = Product::list()->paginate(config('database.paginate'));
+        $products = $this->productRepository->listProduct($request->search);
         
         if ($request->ajax()) {
             return view('admin.products.content', compact('products'));

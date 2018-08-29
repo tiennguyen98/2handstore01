@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Traits\FullTextSearch;
 
 class Product extends Model
 {
     use SoftDeletes;
+    use FullTextSearch;
 
     protected $fillable = [
         'name',
@@ -20,6 +22,10 @@ class Product extends Model
         'user_id',
         'status',
         'quantity'
+    ];
+
+    protected $searchable = [
+        'name'
     ];
 
     /**

@@ -3,25 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Order;
 use App\Comment;
 use App\Product;
 use App\Category;
 use App\Province;
 use Illuminate\Http\Request;
-use App\Order;
 use App\Notification;
 use App\Events\OrderEvent;
 use App\Repositories\NotifyRepository;
+use App\Repositories\ProductRepository;
+use App\Repositories\CommentRepository;
+use App\Repositories\CityRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\ProvinceRepository;
 
 class ProductController extends Controller
 {
     private $notify;
+    protected $productRepository;
+    protected $commentRepository;
+    protected $cityRepository;
+    protected $categoryRepository;
+    protected $provinceRepository;
 
-    public function __construct(NotifyRepository $notifyRepository)
-    {
+    public function __construct(
+        ProductRepository $productRepository,
+        CommentRepository $commentRepository,
+        CityRepository $cityRepository,
+        CategoryRepository $categoryRepository,
+        ProvinceRepository $provinceRepository,
+        NotifyRepository $notifyRepository
+    ) {
+        $this->productRepository = $productRepository;
+        $this->commentRepository = $commentRepository;
+        $this->cityRepository = $cityRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->provinceRepository = $provinceRepository;
         $this->notify = $notifyRepository;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -62,9 +82,9 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        $comments = Comment::parentComments($product->id);
-        $suggestedProducts = Product::suggestedProducts($product->category_id);
-        $cities = City::cities();
+        $comments = $this->commentRepository->parentComments($product->id);
+        $suggestedProducts = $this->productRepository->suggestedProducts($product->category_id);
+        $cities = $this->cityRepository->cities();
 
         return view('client.product.product', compact('product', 'comments', 'suggestedProducts', 'cities'));
     }
@@ -120,8 +140,9 @@ class ProductController extends Controller
     {
         $order_information = $request->except('_token');
         $request->user()->orders()->save($product, $order_information);
-        event(new OrderEvent($product->user->id, 
-            __('notify.neworder', ['name' => $product->name]), 
+        event(new OrderEvent(
+            $product->user->id,
+            __('notify.neworder', ['name' => $product->name]),
             route('client.orders')
         ));
         $notify = [
@@ -171,12 +192,12 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $this->getSearchOrderBy($request);
-        $products = Product::searchProduct($request);
-        $categories = ['' => __('Choose category')] + Category::arrayCategories();
-        $cities = ['' => __('Choose city')] + City::cities()->all();
-        $province = [__('client.category.province')];
+        $products = $this->productRepository->searchProduct($request);
+        $categories = ['' => __('Choose category')] + $this->categoryRepository->arrayCategories();
+        $cities = ['' => __('Choose city')] + $this->cityRepository->cities();
+        $province = [''];
         if ($request->city) {
-            $province = Province::getProvinces($request->city)->all();
+            $province = $this->provinceRepository->getProvinces($request->city);
         }
         session()->flashInput($request->input());
         
@@ -185,14 +206,14 @@ class ProductController extends Controller
 
     public function getSearchProvince(Request $request)
     {
-        $province = Province::where('city_id', '=', $request->id)->pluck('name', 'id');
+        $province = [__('client.category.province')] + $this->provinceRepository->getProvinces($request->id);
 
         return response()->json($province);
     }
 
     public function result(Request $request)
     {
-        $products = Product::searchProduct($request)->take(config('database.autocomplete'));
+        $products = $this->productRepository->searchProduct($request)->take(config('database.autocomplete'));
 
         return view('client.product.result', compact('products'));
     }

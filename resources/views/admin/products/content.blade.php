@@ -29,7 +29,7 @@
                 </a>
             </td>
             <td data-id="{{ $product->id }}">
-                <a href="{{ route('client.products.show', ['id' => $product->id]) }}" class="btn btn-success">
+                <a href="{{ route('client.products.show', ['id' => $product->id]) }}" class="btn btn-success" target="_blank">
                     <i class="fa fa-eye"></i>
                 </a>
                 <a href="javascript:void(0)" 

@@ -52,7 +52,7 @@
                     <div class="tieuchi">
                         <p> @lang('client.category.province') </p>
                         {!! 
-                            Form::select('province', [__('client.category.province')], old('province'), [
+                            Form::select('province', [__('client.category.province')] + $province, old('province'), [
                                 'class' => 'form-control',
                                 'id' => 'province'
                             ]) 

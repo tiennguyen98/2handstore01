@@ -64,7 +64,8 @@
                     {!! Form::text('search', old('search'), [
                         'placeholder' => __('client.search'),
                         'id' => 'header-search',
-                        'data-url' => route('client.products.search_results')
+                        'data-url' => route('client.products.search_results'),
+                        'autocomplete' => 'off'
                     ]) !!}
                     {!! Form::button(__('client.search.submit'), 
                                     [
