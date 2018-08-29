@@ -87,9 +87,12 @@
     "Jewellery": "Trang Sức",
     "Other": "Khác",
     "Your product was purchased:": "Sản phẩm của bạn đã được đặt hàng:",
-    "Undefined" : "Chưa xác định",
     "Notification": "Thông Báo",
     "Quantity": "Số lượng",
     "Change Quantity": "Thay đổi số lượng",
-    "Out of stock": "Hết hàng"
+    "Out of stock": "Hết hàng",
+    "Notification": "Thông Báo",
+    "Your product has been commented by:": "Sản phẩm của bạn vừa được comment bởi:",
+    "Undefined": "Chưa xác định",
+    "Quantity": "Số lượng"
 }

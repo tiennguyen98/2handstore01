@@ -13,10 +13,10 @@
 @section('content')
 
 <div class="container">
-    <div class="product-top mt-5">
-        <div class="product-top-left">
+    <div class="product-top mt-5 row mx-0">
+        <div class="col-md-6 p-0">
             <div class="product-images">
-                <div class="product-slideshow">
+                <div class="product-slideshow text-center">
                     <img id="show" src="{{ $product->thumbnail() }}" alt="product image 1">
                     <div class="product-slideshow-dots">
                         @php($count = count($product->images))
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="product-top-right">
+        <div class="col-md-6 pt-4">
             <div class="product-detail">
                 <div class="product-title">
                     <h1>{{ $product->name }}</h1>
@@ -103,7 +103,7 @@
             </div>
             <div class="product-detail">
                 <div class="product-order">
-                    <a href="javascript:void(0)" class="btn btn-success col-md-6 order-product">
+                    <a href="javascript:void(0)" class="btn btn-success col-md-6 order-product mb-2">
                         <i class="fas fa-shopping-cart"></i>
                         @lang('client.product.buynow')
                     </a>
