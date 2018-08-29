@@ -128,7 +128,7 @@ Route::group([
         Route::post('/comment/{id}', 'CommentController@store')->name('comment')->middleware('auth');
         Route::get('/search', 'ProductController@search')->name('search');
         Route::get('/results', 'ProductController@result')->name('search_results');
-        Route::get('/province', 'ProductController@getSearchProvince')->name('get_search_province'); 
+        Route::get('/province', 'ProductController@getSearchProvince')->name('get_search_province');
         Route::get('get-image/{product}', 'Client\ProductController@getImages')->name('get-image');
         Route::post('delete-image', 'Client\ProductController@deleteImage')->name('delete-image');
         Route::put('{product}/update', 'Client\ProductController@update')->name('update');

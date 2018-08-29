@@ -6,6 +6,10 @@ $.ajaxSetup({
 
 $(document).on('input', '#header-search', function () {
     var search = $(this).val();
+    if (search.length < 2) {
+        $('#result').html('');
+        return;
+    }
     url = $(this).attr('data-url');
     let element = $(this);
     $.ajax({

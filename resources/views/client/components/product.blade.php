@@ -5,7 +5,7 @@
         <div class="item__foot">
             <div class="place text-right">
                 <i class="fas fa-map-marker-alt"></i> 
-                {{ $product->province->city->name }}
+                {{ $product->getAddress() }}
             </div>
             <b>{{ $product->money }}</b>
         </div>

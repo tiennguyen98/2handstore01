@@ -34,7 +34,7 @@
                 ]) !!}
                 
                 {!! Form::hidden('from_id', $user->id, [
-                    'id' => 'from-id'
+                    'id' => 'from_id'
                 ]) !!}
             </div>
             {!! Form::button(__('Send'), [
