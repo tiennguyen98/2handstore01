@@ -35,7 +35,6 @@ Dropzone.options.myDropzone = {
 $(document).on('change', '#city', function () {
     var id = $(this).val();
     var url = $(this).attr('data-url');
-    console.log(id);
     $.ajax({
         url: url,
         method: 'get',

@@ -1,6 +1,5 @@
 function ajaxGet(url, content) {
     content = content || '.content';
-    console.log(content);
     $.ajax({
         url: url,
         method: 'GET',

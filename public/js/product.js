@@ -34,7 +34,6 @@ $(document).ready(function(){
             url: url,
             type: 'GET',
             success: function(result) {
-                console.log(result);
                 $('.modal').modal();
             }
         });

@@ -97,6 +97,7 @@ Route::group([
         Route::get('/', 'MessageController@index')->name('index');
         Route::post('/show', 'MessageController@showMessages')->name('show');
         Route::post('/store', 'MessageController@store')->name('store');
+        Route::get('/search', 'UserController@searchUser')->name('search');
     });
 });
 

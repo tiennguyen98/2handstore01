@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/adminChat.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/chatSearch.css') }}">
 @endsection
 
 @section('content')
@@ -15,17 +16,19 @@
                     <div class="recent_heading">
                         <h4>{{ __('Recent') }}</h4>
                     </div>
-                    <div class="srch_bar">
+                    <div class="srch_bar position-relative">
                         <div class="stylish-input-group">
                             {!! Form::text('search-bar', null, [
                                 'class' => 'search-bar',
-                                'placeholder' => __('Search')
+                                'placeholder' => __('Search'),
+                                'data-url' => route('admin.chat.search')
                                 ]) 
                             !!}
                             <span class="input-group-addon">
                                 {!! Form::button('<i class="fa fa-search" aria-hidden="true"></i>') !!}
                             </span> 
                         </div>
+                        <div class="search-result position-absolute r-5"></div>
                     </div>
                 </div>
                 <div class="inbox_chat" data-url="{{ route('admin.chat.show') }}">
@@ -34,8 +37,9 @@
                             <div class="chat_people">
                                 <div class="chat_img"> {!! Html::image($message->user->getAvatar(), 'avatar') !!} </div>
                                 <div class="chat_ib">
-                                    <h5>{{ $message->user->name }} <span class="chat_date">{{ $message->created_at }}</span></h5>
+                                    <h5>{{ $message->user->name }} <span class="from-email">{{ $message->user->email }}</span></h5>
                                     <p class="{{ $message->status == 0 ? 'font-weight-bold text-danger' : ''}}">{{ $message->getShortMessage() }}</p>
+                                    <h5><span class="chat_date">{{ $message->created_at }}</span></h5>
                                 </div>
                             </div>
                         </div>
