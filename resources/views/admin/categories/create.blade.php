@@ -32,7 +32,7 @@
         <div class="form-group row">
             {!! Form::label(__('admin.category.thumbnail'), null, ['class' => 'col-sm-2']) !!}
             <div class="col-sm-5">
-                {!! Form::file('image', ['id' => 'image']) !!}
+                {!! Form::file('image', ['id' => 'image', 'class' => 'mb-3']) !!}
                 <img src="{{ isset($category) ? $category->getThumbnail() : '' }}" id="uploading-img" alt="">
             </div>
             <div class="offset-sm-2 col-sm-5 mt-2">
@@ -81,7 +81,7 @@
             <div class="form-group row select-parent" hidden="hidden">
                 {!! Form::label(__('parent'), null, ['class' => 'col-sm-2']) !!}
                 <div class="col-sm-5">
-                    {!! Form::select('parent_id', $categories) !!}
+                    {!! Form::select('parent_id', $categories, null, ['class' => 'form-control']) !!}
                 </div>
             </div>
         @endif

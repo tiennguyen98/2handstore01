@@ -19,6 +19,7 @@ Route::group([
     'middleware' => ['auth', 'role']
 ], function () {
     Route::get('/dashboard', 'HomeController@adminIndex')->name('index');
+    Route::get('get_chart', 'HomeController@getChart')->name('get_chart');
     Route::group(
         [
             'prefix' => '/users',

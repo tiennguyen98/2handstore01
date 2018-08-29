@@ -8,14 +8,23 @@ use App\Category;
 use Pusher\Pusher;
 use App\Events\OrderEvent;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    private $category;
+    private $product;
+
+    public function __construct(
+        CategoryRepository $categoryRepository, 
+        ProductRepository $productRepository
+    )
+    {
+        $this->category = $categoryRepository;
+        $this->product = $productRepository;
+    }
 
     /**
      * Show the application dashboard.
@@ -34,6 +43,17 @@ class HomeController extends Controller
     public function adminIndex()
     {
         return view('admin.dashboard');
+    }
+
+    public function getChart()
+    {
+        $product_analytic = $this->product->analytics(Carbon::now()->year);
+        $category_analytic = $this->category->analyticsCategory();
+
+        return response()->json([
+            'line' => $product_analytic,
+            'pie' => $category_analytic
+        ]);
     }
 
     public function loadMoreProduct(Request $request)
