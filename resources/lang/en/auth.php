@@ -28,5 +28,6 @@ return [
     'verify' => 'Please verify your email address',
     'registed' => 'Register Success',
     'confirm' => 'Confirm',
-    'blocked' => 'Your account was blocked'
+    'blocked' => 'Your account was blocked',
+    'phone' => 'Phone'
 ];

@@ -236,12 +236,18 @@ class User extends Authenticatable
 
     public function getProductOrders()
     {
-        return $this->myOrders()->orderBy('product_id', 'DESC')->latest()->get();
+        return $this->myOrders()
+                ->with('city', 'products', 'user')
+                ->latest()
+                ->get();
     }
 
     public function getMyProducts()
     {
-        return $this->products()->latest()->paginate(config('database.paginate'));
+        return $this->products()
+                ->with('province', 'category')
+                ->latest()
+                ->paginate(config('database.paginate'));
     }
 
     public function getMyPurchases()

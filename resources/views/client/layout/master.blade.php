@@ -31,6 +31,7 @@
     @auth
         @include('chat')
     @endauth
+    
     @include('client.assets.js')
     @include('client.notify')
 

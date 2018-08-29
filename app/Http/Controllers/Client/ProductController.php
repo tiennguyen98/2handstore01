@@ -54,12 +54,19 @@ class ProductController extends Controller
                 ]);
             }
         }
+        alert()->success(__('Success'), __('Your product is ready to order'));
 
-        return redirect()->route('index');
+        return redirect()->route('client.products.show', ['id' => $product->id]);
     }
 
     public function uploadImage(Request $request)
     {
+        $this->validate(
+            $request,
+            [
+                'file.*' => 'image'
+            ]
+        );
         if (!$request->has('file') || count($request->file) < 1) {
             return response()->json([
                 'error' => true
@@ -134,7 +141,8 @@ class ProductController extends Controller
                 $this->image->setProductId($imageIds, $product->id);
             }
         }
-
+        alert()->success(__('Success'), __('Your product is ready to order'));
+        
         return redirect()->route('client.myproduct.index');
     }
 

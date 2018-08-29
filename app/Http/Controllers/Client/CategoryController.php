@@ -39,9 +39,10 @@ class CategoryController extends Controller
             if ($request->has('type')) {
                 $sort['type'] = $request->type;
             }
+            $province = [];
             $products = $getCategory->getProducts($sort);
 
-            return view('client.product.category', compact('products', 'getCategory', 'cities', 'categories'));
+            return view('client.product.category', compact('products', 'getCategory', 'cities', 'categories', 'province'));
         } catch (\Exception $e) {
             abort(404);
         }

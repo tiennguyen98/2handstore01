@@ -109,10 +109,13 @@ abstract class EloquentRepository implements RepositoryInterface
         return $this->model->create($data);
     }
     
-    public function update(array $data)
+    public function update(array $data, $id = null)
     {
         $this->newQuery()
             ->loadWhere();
+        if ($id && $model = $this->model->find($id)) {
+            return $model->update($data);
+        }
 
         return $this->model->update($data);
     }
