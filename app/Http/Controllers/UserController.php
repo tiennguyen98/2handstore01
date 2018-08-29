@@ -10,14 +10,17 @@ use App\Rules\CheckPhoneRule;
 use App\Order;
 use App\Notifications\SellYouProduct;
 use App\Repositories\UserRepository;
+use App\Repositories\OrderRepository;
 
 class UserController extends Controller
 {
     protected $userRepository;
+    protected $order;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, OrderRepository $orderRepository)
     {
         $this->userRepository = $userRepository;
+        $this->order = $orderRepository;
     }
 
     /**
@@ -202,6 +205,19 @@ class UserController extends Controller
         if ($status == 0) {
             $order->user->notify(new SellYouProduct($order->products));
         }
+
+        return redirect()->back();
+    }
+
+    public function discardOrder(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'order_id' => 'required|exists:orders,id'
+            ]
+        );
+        $this->order->discard($request->order_id);
 
         return redirect()->back();
     }

@@ -8,9 +8,18 @@
         @lang('order.order')
     </h2>
     @if($is_active)
+    
+    @if($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger">
+                {{ $error }}
+            </div>
+        @endforeach
+    @endif
+
     <div class="row">
         <div class="col-md-6 text-center border-right">
-            <img src="{{ $product->thumbnail() }}" alt="">
+            {{ Html::image($product->thumbnail()) }}
             <h2>
                 {{ $product->name }}
             </h2>
@@ -30,6 +39,16 @@
                 <p>
                     @lang('order.ship_to'): <b>{{ $city->name }}</b>
                 </p>
+                <div class="form-group">
+                    {!! Form::label(null, __('client.price'), []) !!}
+                    {!! Form::number('price', $product->price, [
+                            'class' => 'form-control', 
+                            'placeholder' => __('client.price'),
+                            'min' => 0,
+                            'max' => $product->price
+                        ]) 
+                    !!}
+                </div>
                 <div class="form-group">
                     {!! Form::label(null, __('client.address'), []) !!}
                     {!! Form::text('address', null, ['class' => 'form-control', 'placeholder' => 

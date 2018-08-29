@@ -65,6 +65,10 @@ return [
             'linkmin' => 'Link phải >1 ký tự',
             'success' => 'Thêm thành công'
         ]
+    ],
+    'purchases' => [
+        'origin_price' => 'Giá gốc',
+        'deal' => 'Giá bạn trả'
     ]
     
 ];

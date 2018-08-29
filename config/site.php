@@ -21,6 +21,8 @@ return [
     ],
     'slider' => 'public/slides',
     'thumbpath' => 'public/thumbnails',
-    'active' => 1
+    'active' => 1,
+    'discard' => -1,
+    'inactive' => 0,
 ];
 

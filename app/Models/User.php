@@ -210,7 +210,14 @@ class User extends Authenticatable
 
     public function isBought($product_id)
     {
-        if ($this->orders()->where('product_id', $product_id)->first()) {
+        $order = $this->purchases()
+                ->where('product_id', $product_id)
+                ->where(function ($query) {
+                    $query->where('orders.status', config('site.inactive'));
+                    $query->orWhere('orders.status', config('site.active'));
+                })
+                ->first();
+        if ($order) {
             return true;
         } else {
             return false;

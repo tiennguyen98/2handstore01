@@ -67,5 +67,9 @@ return [
             'linkmin' => 'Link must be at least 1 characters.',
             'success' => 'Added successfuly',
         ]
+    ],
+    'purchases' => [
+        'origin_price' => 'Original Price',
+        'deal' => 'Your Deal'
     ]
 ];

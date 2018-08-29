@@ -138,6 +138,14 @@ class ProductController extends Controller
 
     public function buy(Request $request, Product $product)
     {
+        $this->validate(
+            $request,
+            [
+                'city_id' => 'required',
+                'address' => 'required',
+                'price' => 'required|min:0|max:' . $product->price,
+            ]
+        );
         $order_information = $request->except('_token');
         $request->user()->orders()->save($product, $order_information);
         event(new OrderEvent(
@@ -153,7 +161,7 @@ class ProductController extends Controller
         ];
         $this->notify->create($notify);
 
-        return redirect()->route('index');
+        return redirect()->route('client.purchases.index');
     }
     
     public function getSearchOrderBy(Request $request)
