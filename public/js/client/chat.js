@@ -28,6 +28,7 @@ function appendMessage(content) {
 
 function sendMessage() {
     var msgContent = $('#message-content').val();
+    if (msgContent.length < 1) return;
     appendMessage(msgContent);
     var from = $('#from_id').val();
     var to = $('#to_id').val();

@@ -90,6 +90,7 @@ function sendMessage()
 {
     var element = $('.write_msg');
     var message = $('.write_msg').val();
+    if (message.length < 1) return;
     $('.write_msg').val('')
     appendMessage(message);
     var url = element.attr('data-url');

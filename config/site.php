@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 
@@ -25,4 +25,3 @@ return [
     'discard' => -1,
     'inactive' => 0,
 ];
-
