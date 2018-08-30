@@ -9,3 +9,5 @@
     <script src="{{ asset('js/client/notifications.js') }}"></script>
     <script src="{{ asset('js/client/comment-push.js') }}"></script>
 @endauth
+<script src="{{ asset('bower_components/sweetalert2/dist/sweetalert2.all.js') }}"></script>
+@include('sweetalert::alert')

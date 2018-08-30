@@ -61,8 +61,8 @@ class CategoryController extends Controller
     public function getValidateRule()
     {
         return [
-            'name' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:categories,name',
+            'slug' => 'required|string|max:255|unique:categories,slug',
             'image' => 'mimes:jpeg,png,jpg,bmp,svg|max:2048',
             'parent_id' => 'nullable|numeric',
         ];

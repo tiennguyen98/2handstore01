@@ -13,7 +13,7 @@
                 <th scope="col">@lang('admin.product.name')</th>
                 <th scope="col">@lang('admin.product.price')</th>
                 <th scope="col">@lang('admin.product.category')</th>
-                <th scope="col">@lang('admin.product.province')</th>
+                <th scope="col">@lang('admin.product.city')</th>
                 <th scope="col">@lang('admin.product.status.status')</th>
                 <th></th>
             </tr>

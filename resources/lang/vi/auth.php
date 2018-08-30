@@ -13,5 +13,6 @@ return [
     'logout' => 'Đăng xuất',
     'verify' => 'Vui lòng xác nhận email của bạn',
     'registerd' => 'Đăng ký thành công',
-    'blocked' => 'Tài khoản của bạn đã bị khóa'
+    'blocked' => 'Tài khoản của bạn đã bị khóa',
+    'phone' => 'Số điện thoại'
 ];
