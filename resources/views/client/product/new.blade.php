@@ -83,7 +83,7 @@
 
                         <div class="form-group mb-2">
                             {!! Form::label('', __('Quantity'), []) !!}
-                            {!! Form::number('quantity', null, [
+                            {!! Form::number('quantity', 1, [
                                 'class' => 'form-control',
                                 'placeholder' => __('Quantity')
                             ]) !!}

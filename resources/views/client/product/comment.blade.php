@@ -61,12 +61,22 @@
         @endforeach
     </div>
 </div>
-<div id="comment-editor" hidden="hidden">
+<div id="comment-editor" class="mt-2" hidden="hidden">
     <div class="form-group">
-        <textarea name="content" class="form-control" rows="5" placeholder="@lang('client.product.comment')" required></textarea>
-        <input type="hidden" name="parent_id" id="parent_id" value="">
-        <button class="btn btn-primary mt-2" onclick="comment('{{ route('client.products.comment', ['id' => $product->id]) }}', this)">
-            @lang('client.product.comment')
-        </button>
+        {!! Form::textarea('content', null, [
+            'class' => 'form-control',
+            'rows' => '3',
+            'placeholder' => __('client.product.comment'),
+            'required'
+        ]) !!}
+
+        {!! Form::hidden('parent_id', null, [
+            'id' => 'parent_id'
+        ]) !!}
+
+        {!! Form::button(__('client.product.comment'), [
+            'class' => 'btn btn-primary mt-2',
+            'onclick' => 'comment(\'' . route('client.products.comment', ['id' => $product->id]) . '\', this)'
+        ]) !!}
     </div>
 </div>

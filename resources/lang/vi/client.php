@@ -56,11 +56,13 @@ return [
         'back' => 'Trở về'
     ],
     'empty' => 'Chưa có sản phẩm',
+    'price' => 'Trả giá',
     'purchases' => 'Sản phẩm đã đặt',
     'products.posted' => 'Sản phẩm đã đăng',
     'Notifications' => 'Thông báo',
     'product.deleted' => 'Sản phẩm này đã bị xóa',
     'seen' => 'Đã xem',
     'Discard' => 'Từ chối',
+    'Discarded' => 'Đã bị từ chối',
     
 ];

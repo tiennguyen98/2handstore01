@@ -32,13 +32,14 @@ class CategoryRepository extends EloquentRepository
 
     public function analyticsCategory()
     {
+        $this->makeModel();
         $data = [
             'categories' => [],
             'numbers' => [],
         ];
-        foreach ($this->model->all() as $value) {
+        foreach ($this->model->get() as $value) {
             $data['categories'][] = $value->name;
-            $data['numbers'][] = count($value->products);
+            $data['numbers'][] = $value->products()->count();
         }
 
         return $data;

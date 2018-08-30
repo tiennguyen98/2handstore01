@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Rules\CheckPhoneRule;
 use App\Order;
 use App\Notifications\SellYouProduct;
+use App\Notifications\DiscardOrder;
 use App\Repositories\UserRepository;
 use App\Repositories\OrderRepository;
 
@@ -218,14 +219,9 @@ class UserController extends Controller
             ]
         );
         $this->order->discard($request->order_id);
+        $order = $this->order->find($request->order_id);
+        $order->user->notify(new DiscardOrder($order->products, $order));
 
         return redirect()->back();
-    }
-    
-    public function searchUser(Request $request)
-    {
-        $users = $this->userRepository->showCustomer($request->search, config('database.chat_customer'));
-
-        return view('admin.chat.user', compact('users'));
     }
 }

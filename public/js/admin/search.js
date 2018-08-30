@@ -27,3 +27,7 @@ $(document).on('keypress', '#search', function (event) {
         return;
     }
 });
+
+$(document).on('focusout', '#input-search', function (event) {
+    $('.header-left').removeClass('open');
+});
