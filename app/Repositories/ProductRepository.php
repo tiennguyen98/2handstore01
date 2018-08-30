@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Carbon\Carbon;
+
 class ProductRepository extends EloquentRepository
 {
     public function model()
@@ -79,5 +81,19 @@ class ProductRepository extends EloquentRepository
                 ->withProvince()
                 ->latest()
                 ->paginate(config('database.paginate'));
+    }
+    
+    public function analytics($year)
+    {
+        $analytics = [];
+        for ($i = 1; $i <= 12; $i++) { 
+            $month = Carbon::now()->year($year)->month($i)->day(1)->toDateTimeString();
+            $next_month = Carbon::now()->year($year)->month($i + 1)->day(1)->toDateTimeString();
+            $analytics[] = $this->model->where('created_at', '>=', $month)
+                                        ->where('created_at', '<', $next_month)
+                                        ->count();
+        }
+
+        return $analytics;
     }
 }
