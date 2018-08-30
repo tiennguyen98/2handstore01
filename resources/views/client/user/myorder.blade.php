@@ -63,7 +63,7 @@
                             !!}
                         {!! Form::close() !!}
                     @else
-                        <span class="btn btn-danger">@lang('client.Discard')</span>
+                        <span class="btn btn-danger">@lang('client.Discarded')</span>
                     @endif
                 </td>
             </tr>

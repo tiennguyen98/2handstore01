@@ -58,11 +58,13 @@ return [
         'back' => 'Back'
     ],
     'empty' => 'No Data',
+    'price' => 'Your deal',
     'purchases' => 'My purchases',
     'products.posted' => 'My Products',
     'Notifications' => 'Notifications',
     'product.deleted' => 'This product is deleted',
     'seen' => 'Seen',
     'Discard' => 'Discard',
+    'Discarded' => 'Discarded',
     
 ];

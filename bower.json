@@ -21,6 +21,7 @@
     "sufee-admin-dashboard": "https://github.com/puikinsh/sufee-admin-dashboard.git",
     "jquery": "https://github.com/jquery/jquery.git#^3.3.1",
     "owl.carousel": "https://github.com/OwlCarousel2/OwlCarousel2.git#^2.3.4",
-    "dropzone": "https://github.com/enyo/dropzone.git#^5.5.0"
+    "dropzone": "https://github.com/enyo/dropzone.git#^5.5.0",
+    "sweetalert2": "^7.26.12"
   }
 }

@@ -41,7 +41,7 @@
                                         {!! Form::submit(__('admin.product.status.sold'), ['class' => 'btn btn-success']) !!}
                                     @endif
                                 @else
-                                    <span class="btn btn-danger">@lang('client.Discard')</span>
+                                    <span class="btn btn-danger">@lang('client.Discarded')</span>
                                 @endif
                             </td>
                         </tr>

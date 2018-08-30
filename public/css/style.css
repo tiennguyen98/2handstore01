@@ -363,7 +363,7 @@ tbody img{
 }
 .notify{
     position: fixed;
-    bottom: 15px;
+    bottom: 25px;
     right: 15px;
 }
 a.notify_link{

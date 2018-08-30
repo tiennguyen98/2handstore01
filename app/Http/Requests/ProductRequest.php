@@ -25,11 +25,12 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'price' => 'numeric|min:1000|required',
+            'price' => 'numeric|min:1000|max:9999999999|required',
             'detail' => 'min:10|required',
             'category_id' => 'required',
             'thumbnail' => 'image|nullable',
-            'province_id' => 'required|exists:provinces,id'
+            'province_id' => 'required|exists:provinces,id',
+            'quantity' => 'numeric|min:1|max:1000|required'
         ];
     }
 }

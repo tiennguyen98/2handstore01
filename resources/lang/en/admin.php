@@ -19,9 +19,9 @@ return [
         'parent' => 'Parent'
     ],
     'article' => [
-        'articles' => 'Articles',
-        'add' => 'Add Article',
-        'list' => 'List Article'
+        'articles' => 'Products',
+        'add' => 'Add Product',
+        'list' => 'List Product'
     ],
     'system' => [
         'config' => 'Website Config',

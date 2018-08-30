@@ -13,7 +13,7 @@ return [
     |
     */
     'img_path' => 'public/images',
-    'avatar' => 'images/img_avatar.png',
+    'avatar' => 'public/images/img_avatar.png',
 
     'default' => env('FILESYSTEM_DRIVER', 'local'),
 

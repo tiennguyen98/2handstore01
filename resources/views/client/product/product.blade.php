@@ -179,10 +179,23 @@
 
     <div class="comment-editor">
         <div class="form-group">
-            <textarea name="content" class="form-control" rows="5" placeholder="@lang('client.product.comment')" required></textarea>
-            <button class="btn btn-primary mt-2" onclick="comment('{{ route('client.products.comment', ['id' => $product->id]) }}', this, true)">
-                @lang('client.product.comment')
-            </button>
+            
+            {!! Form::textarea('content', null, [
+                'class' => 'form-control',
+                'rows' => '5',
+                'placeholder' => __('client.product.comment'),
+                'required',
+                Auth::check() ? '' : 'disabled' 
+            ]) !!}
+    
+            {!! Form::hidden('parent_id', null, [
+                'id' => 'parent_id'
+            ]) !!}
+    
+            {!! Form::button(__('client.product.comment'), [
+                'class' => 'btn btn-primary mt-2',
+                'onclick' => 'comment(\'' . route('client.products.comment', ['id' => $product->id]) . '\', this, true)'
+            ]) !!}
         </div>
     </div>
     <div class="box suggested mt-3">
