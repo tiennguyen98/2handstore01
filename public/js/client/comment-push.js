@@ -12,6 +12,7 @@ $(document).ready(function () {
     comment_channel.bind('App\\Events\\CommentEvent', function (data) {
         var element = `<a class="notify_link" href="${data['link']}">${data['message']}</a>`;
         $('.notify').append(element);
+        $('.count_notify').text(parseInt($('.count_notify').text()) + 1);
         setTimeout(function () {
             $('.notify_link').remove();
         }, 20000);

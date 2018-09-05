@@ -10,6 +10,7 @@ $(document).ready(function () {
     channel.bind('App\\Events\\OrderEvent', function (data) {
         var element = `<a class="notify_link" href="${data['link']}">${data['message']}</a>`;
         $('.notify').append(element);
+        $('.count_notify').text(parseInt($('.count_notify').text()) + 1);
         setTimeout(function () {
             $('.notify_link').remove();
         }, 20000);
